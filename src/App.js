@@ -15,8 +15,8 @@ import {
 } from "@mui/material";
 import { DatePicker } from "@mui/x-date-pickers";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import TaniBilgisiList from "./TaniBilgisiList";
-import CreateTaniBilgisi from "./CreateTaniBilgisi";
+import TaniBilgisiList from "./Components/TaniBilgisiList";
+import CreateTaniBilgisi from "./Components/CreateTaniBilgisi";
 import "./App.css";
 
 

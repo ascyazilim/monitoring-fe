@@ -7,7 +7,7 @@ import {
   Paper,
 } from "@mui/material";
 import axios from "axios";
-import "./App.css";
+import "../App.css";
 
 const CreateTaniBilgisi = () => {
   const [islemSiraNo, setIslemSiraNo] = useState("");
