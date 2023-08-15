@@ -29,7 +29,7 @@ const TaniBilgisiList = () => {
 
   return (
     <div>
-      <h2>Tanı Bilgileri Listesi</h2>
+      <h2 style={{textAlign:"center"}}>Tanı Bilgileri Listesi</h2>
       <TableContainer component={Paper}>
         <Table>
           <TableHead>

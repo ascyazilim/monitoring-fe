@@ -41,7 +41,7 @@ const CreateTaniBilgisi = () => {
   return (
     <Container maxWidth="lg">
       <Paper elevation={3} className="custom-form" style={{ padding: "20px" }}>
-        <h2>Tanı Bilgisi Oluşturma</h2>
+        <h2 style={{textAlign:"center"}}>Tanı Bilgisi Oluşturma</h2>
         <Grid container spacing={2}>
 
           <Grid item xs={12}>
