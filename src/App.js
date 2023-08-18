@@ -18,8 +18,22 @@ import TaniBilgisiList from "./Components/TaniBilgisiList";
 import CreateTaniBilgisi from "./Components/CreateTaniBilgisi";
 import "./App.css";
 import HastaBilgisi from "./Components/HastaBilgisi";
+import SettingsIcon from '@mui/icons-material/Settings';
+import {styled} from "@mui/system";
+import MuayeneBilgisi from "./Components/MuayeneBilgisi";
+import Navi from "./Components/Navi";
+
+const MyStyledButton = styled(Button)({
+  fontSize: "6px",
+  padding: "10px 20px",
+  backgroundColor: "skyblue",
+  color: "black",
+  
+  //borderRadius: "25px",
+});
 
 const App = () => {
+
   const [selectedUnit, setSelectedUnit] = useState("");
   const [selectedDoctor, setSelectedDoctor] = useState("");
   //const [selectedDateRange, setSelectedDateRange] = useState([null, null]);
@@ -121,8 +135,8 @@ const App = () => {
                   </div>
                   <div
                     style={{
-                      display: "grid",
-                      gridTemplateColumns: "repeat(3, 1fr)",
+                      display: "flex",
+                      flexDirection: "column",
                       gap: "10px",
                     }}
                   >
@@ -131,9 +145,9 @@ const App = () => {
                       color="primary"
                       type="submit"
                       href="/hasta"
-                      style={{ textTransform: "none" }}
+                      style={{ textTransform: "none"}}
                     >
-                      <Typography variant="caption">HastaListele</Typography>
+                      <Typography variant="body2">HastaListele</Typography>
                     </Button>
 
                     <Button
@@ -143,7 +157,7 @@ const App = () => {
                       href="/create"
                       style={{ textTransform: "none" }}
                     >
-                      <Typography variant="caption">TanıOluştur</Typography>
+                      <Typography variant="body2">TanıOluştur</Typography>
                     </Button>
 
                     <Button
@@ -153,7 +167,7 @@ const App = () => {
                       href="/"
                       style={{ textTransform: "none" }}
                     >
-                      <Typography variant="caption">TanıListele</Typography>
+                      <Typography variant="body2">TanıListele</Typography>
                     </Button>
                   </div>
                 </form>
@@ -164,19 +178,34 @@ const App = () => {
             <Paper elevation={3} style={{ padding: "10px" }}>
               <div style={{ marginBottom: "10px" }}>
                 
-                <div style={{ display: "flex", gap: "10px" }}>
-                  <Button variant="contained" color="primary">
-                    Muayene
-                  </Button>
-                  <Button variant="contained" color="primary">
+                <div style={{ display: "flex", justifyContent: "start" }}>
+                  <MyStyledButton 
+                    className="menuButton" 
+                    variant="contained" 
+                    startIcon={<SettingsIcon/>} 
+                    color="primary"
+                    href="/muayene"
+                  >
+                      Muayene
+                  </MyStyledButton>
+                  <MyStyledButton className="menuButton" variant="contained" startIcon={<SettingsIcon/>} color="primary">
                     Müdahale
-                  </Button>
-                  <Button variant="contained" color="primary">
+                  </MyStyledButton>
+                  <MyStyledButton className="menuButton" variant="contained" startIcon={<SettingsIcon/>} color="primary">
                     İlaç
-                  </Button>
-                  <Button variant="contained" color="primary">
+                  </MyStyledButton>
+                  <MyStyledButton className="menuButton" variant="contained" startIcon={<SettingsIcon/>} color="primary">
                     Reçete
-                  </Button>
+                  </MyStyledButton>
+                  <MyStyledButton className="menuButton" variant="contained" startIcon={<SettingsIcon/>} color="primary">
+                    Tedavi Planlama
+                  </MyStyledButton>
+                  <MyStyledButton className="menuButton" variant="contained" startIcon={<SettingsIcon/>} color="primary">
+                    Formlar
+                  </MyStyledButton>
+                  <MyStyledButton className="menuButton" variant="contained" startIcon={<SettingsIcon/>} color="primary">
+                    Karar-Taburcu
+                  </MyStyledButton>
                 </div>
               </div>
               <div
@@ -186,6 +215,8 @@ const App = () => {
                 <Route path="/" element={<TaniBilgisiList />} />
                 <Route path="/create" element={<CreateTaniBilgisi />} />
                 <Route path="/hasta" element={<HastaBilgisi />} />
+                <Route path="/muayene" element={<MuayeneBilgisi/>}/>
+                <Route path="detay" element={<Navi/>}/>
               </Routes>
             </Paper>
           </Grid>

@@ -1,46 +1,7 @@
-/* .custom-form{
-  max-width: 400px;
-  margin: 0 auto;
-  background-color: #fff;
-  padding: 20px;
-  border-radius: 5px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+.global-button{
+  font-size: 16px;
+  padding: 10px 20px;
+  background-color: ;
+  color: black;
+  border-radius: 25px;
 }
-
-h1{
-  text-align: center;
-  color: #352bea;
-}
-h2{
-  text-align: center;
-  color: #352bea;
-}
-
-ul {
-  list-style-type: none;
-}
-
-label {
-  display: block;
-  margin-bottom: 5px;
-}
-
-button {
-  width: 100%;
-  padding: 8px;
-  font-size: 14px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  margin-bottom: 15px;
-}
-
-button {
-  background-color: #4CAF50;
-  color: #fff;
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
-
-button:hover {
-  background-color: #45a049;
-} */

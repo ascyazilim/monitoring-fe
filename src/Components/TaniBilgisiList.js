@@ -27,9 +27,18 @@ const TaniBilgisiList = () => {
     }
   };
 
+  const handleDelete = async (id) => {
+    try {
+      await axios.delete(`http://localhost:8080/tani-bilgisi/delete/${id}`);
+      fetchTaniBilgileri();
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   return (
     <div>
-      <h2 style={{textAlign:"center"}}>Tanı Bilgileri Listesi</h2>
+      <h2 style={{ textAlign: "center" }}>Tanı Bilgileri Listesi</h2>
       <TableContainer component={Paper}>
         <Table>
           <TableHead>
@@ -55,15 +64,21 @@ const TaniBilgisiList = () => {
                 <TableCell>{tani.taniTipi}</TableCell>
                 <TableCell>{tani.ozelDurum}</TableCell>
                 <TableCell>
-                  <Button variant="contained" color="info">
-                    Detay
-                  </Button>
-                  <Button variant="contained" color="warning">
-                    Düzenle
-                  </Button>
-                  <Button variant="contained" color="error">
-                    Sil
-                  </Button>
+                  <div style={{display:"flex"}}>
+                    <Button variant="contained" color="info">
+                      Detay
+                    </Button>
+                    <Button variant="contained" color="warning">
+                      Düzenle
+                    </Button>
+                    <Button
+                      variant="contained"
+                      color="error"
+                      onClick={() => handleDelete(tani.id)}
+                    >
+                      Sil
+                    </Button>
+                  </div>
                 </TableCell>
               </TableRow>
             ))}
