@@ -1,16 +1,16 @@
-import React, { useState } from "react";
+import React from "react";
 import {
   Button,
   Container,
   Grid,
   Paper,
-  FormControlLabel,
-  Checkbox,
-  FormControl,
-  InputLabel,
-  Select,
-  MenuItem,
-  Typography,
+  // FormControlLabel,
+  // Checkbox,
+  // FormControl,
+  // InputLabel,
+  // Select,
+  // MenuItem,
+  // Typography,
 } from "@mui/material";
 //import { DatePicker } from "@mui/x-date-pickers";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
@@ -18,55 +18,62 @@ import TaniBilgisiList from "./Components/TaniBilgisiList";
 import CreateTaniBilgisi from "./Components/CreateTaniBilgisi";
 import "./App.css";
 import HastaBilgisi from "./Components/HastaBilgisi";
-import SettingsIcon from '@mui/icons-material/Settings';
-import {styled} from "@mui/system";
+import SettingsIcon from "@mui/icons-material/Settings";
+import { styled, textAlign } from "@mui/system";
 import MuayeneBilgisi from "./Components/MuayeneBilgisi";
 import Navi from "./Components/Navi";
+import CreateMuayeneBilgisi from "./Components/CreateMuayeneBilgisi";
+import MuayeneBilgisiDetay from "./Components/MuayeneBilgisiDetay";
+import AnaSayfa from "./Components/AnaSayfa";
+import HastaDetay from "./Components/HastaDetay";
+//import Sidebar from "./Components/SideBar";
 
 const MyStyledButton = styled(Button)({
   fontSize: "6px",
   padding: "10px 20px",
   backgroundColor: "skyblue",
   color: "black",
-  
+
   //borderRadius: "25px",
 });
 
 const App = () => {
-
-  const [selectedUnit, setSelectedUnit] = useState("");
-  const [selectedDoctor, setSelectedDoctor] = useState("");
+  // const [selectedUnit, setSelectedUnit] = useState("");
+  // const [selectedDoctor, setSelectedDoctor] = useState("");
   //const [selectedDateRange, setSelectedDateRange] = useState([null, null]);
 
-  const handleUnitChange = (event) => {
-    setSelectedUnit(event.target.value);
-  };
+  // const handleUnitChange = (event) => {
+  //   setSelectedUnit(event.target.value);
+  // };
 
-  const handleDoctorChange = (event) => {
-    setSelectedDoctor(event.target.value);
-  };
+  // const handleDoctorChange = (event) => {
+  //   setSelectedDoctor(event.target.value);
+  // };
 
   // const handleDateRangeChange = (newValue) => {
   //   setSelectedDateRange(newValue);
   // };
 
-  const units = [
-    "Acil",
-    "Dahiliye",
-    "Çocuk",
-    "Cerrahi",
-    "Kardiyoloji",
-    "Nöroloji",
-  ];
-  const doctors = ["Dr.Ali", "Dr.Sami"];
+  // const units = [
+  //   "Acil",
+  //   "Dahiliye",
+  //   "Çocuk",
+  //   "Cerrahi",
+  //   "Kardiyoloji",
+  //   "Nöroloji",
+  // ];
+  // const doctors = ["Dr.Ali", "Dr.Sami"];
 
   return (
-    <Container style={{margin: "10px"}}>
+    <Container
+      style={{ marginLeft: "10px", marginBottom: "10px", marginRight: "10px" }}
+    >
       {/* <h1 style={{ textAlign: "center" }}>Hasta Başı Monitör</h1> */}
       <Router>
+        <Navi />
         <Grid container spacing={3}>
           <Grid item xs={3}>
-            <Paper elevation={3} style={{ padding: "10px" }}>
+            {/* <Paper elevation={3} style={{ padding: "10px" }}>
               <Container maxWidth="sm">
                 <form>
                   <div>
@@ -101,28 +108,7 @@ const App = () => {
                       </Select>
                     </FormControl>
                   </div>
-                  {/* <div>
-                      <DatePicker
-                        label="Tarih Aralığı"
-                        value={selectedDateRange}
-                        onChange={handleDateRangeChange}
-                        renderInput={(startProps, endProps) => (
-                          <React.Fragment>
-                            <TextField
-                              {...startProps}
-                              variant="outlined"
-                              margin="normal"
-                            />
-                            <Box sx={{ mx: 2 }}> - </Box>
-                            <TextField
-                              {...endProps}
-                              variant="outlined"
-                              margin="normal"
-                            />
-                          </React.Fragment>
-                        )}
-                      />
-                    </div> */}
+                  
                   <div>
                     <FormControlLabel
                       control={
@@ -172,38 +158,67 @@ const App = () => {
                   </div>
                 </form>
               </Container>
-            </Paper>
+            </Paper> */}
           </Grid>
           <Grid item xs={9}>
             <Paper elevation={3} style={{ padding: "10px" }}>
               <div style={{ marginBottom: "10px" }}>
-                
                 <div style={{ display: "flex", justifyContent: "start" }}>
-                  <MyStyledButton 
-                    className="menuButton" 
-                    variant="contained" 
-                    startIcon={<SettingsIcon/>} 
+                  <MyStyledButton
+                    className="menuButton"
+                    variant="contained"
+                    startIcon={<SettingsIcon />}
                     color="primary"
                     href="/muayene"
                   >
-                      Muayene
+                    Muayene
                   </MyStyledButton>
-                  <MyStyledButton className="menuButton" variant="contained" startIcon={<SettingsIcon/>} color="primary">
+                  <MyStyledButton
+                    className="menuButton"
+                    variant="contained"
+                    startIcon={<SettingsIcon />}
+                    color="primary"
+                  >
                     Müdahale
                   </MyStyledButton>
-                  <MyStyledButton className="menuButton" variant="contained" startIcon={<SettingsIcon/>} color="primary">
+                  <MyStyledButton
+                    className="menuButton"
+                    variant="contained"
+                    startIcon={<SettingsIcon />}
+                    color="primary"
+                  >
                     İlaç
                   </MyStyledButton>
-                  <MyStyledButton className="menuButton" variant="contained" startIcon={<SettingsIcon/>} color="primary">
+                  <MyStyledButton
+                    className="menuButton"
+                    variant="contained"
+                    startIcon={<SettingsIcon />}
+                    color="primary"
+                  >
                     Reçete
                   </MyStyledButton>
-                  <MyStyledButton className="menuButton" variant="contained" startIcon={<SettingsIcon/>} color="primary">
+                  <MyStyledButton
+                    className="menuButton"
+                    variant="contained"
+                    startIcon={<SettingsIcon />}
+                    color="primary"
+                  >
                     Tedavi Planlama
                   </MyStyledButton>
-                  <MyStyledButton className="menuButton" variant="contained" startIcon={<SettingsIcon/>} color="primary">
+                  <MyStyledButton
+                    className="menuButton"
+                    variant="contained"
+                    startIcon={<SettingsIcon />}
+                    color="primary"
+                  >
                     Formlar
                   </MyStyledButton>
-                  <MyStyledButton className="menuButton" variant="contained" startIcon={<SettingsIcon/>} color="primary">
+                  <MyStyledButton
+                    className="menuButton"
+                    variant="contained"
+                    startIcon={<SettingsIcon />}
+                    color="primary"
+                  >
                     Karar-Taburcu
                   </MyStyledButton>
                 </div>
@@ -212,11 +227,20 @@ const App = () => {
                 style={{ borderBottom: "1px solid #ccc", marginBottom: "10px" }}
               ></div>
               <Routes>
+                <Route path="home" element={<AnaSayfa />} />
                 <Route path="/" element={<TaniBilgisiList />} />
                 <Route path="/create" element={<CreateTaniBilgisi />} />
                 <Route path="/hasta" element={<HastaBilgisi />} />
-                <Route path="/muayene" element={<MuayeneBilgisi/>}/>
-                <Route path="detay" element={<Navi/>}/>
+                <Route path="/muayene" element={<MuayeneBilgisi />} />
+                <Route path="/hasta-detay/:id" element={<HastaDetay />} />
+                <Route
+                  path="/muayene-olustur"
+                  element={<CreateMuayeneBilgisi />}
+                />
+                <Route
+                  path="/muayene-detay/:id"
+                  element={<MuayeneBilgisiDetay />}
+                />
               </Routes>
             </Paper>
           </Grid>

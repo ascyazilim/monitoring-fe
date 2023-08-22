@@ -1,99 +1,50 @@
-import {
-  Button,
-  Paper,
-  Table,
-  TableBody,
-  TableCell,
-  TableContainer,
-  TableHead,
-  TableRow,
-} from "@mui/material";
-import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React from "react";
+import { AiOutlineClose } from "react-icons/ai";
+import { Link } from "react-router-dom";
+import { SideBarData } from "./SideBarData";
+import "./Navbar.css";
+import { IconContext } from "react-icons/lib";
+import logo from "../img/birkil.jpg";
 
-const Navi = () => {
-  const [hastaBilgileri, setHastaBilgileri] = useState([]);
-  const [selectedHasta, setSelectedHasta] = useState(null);
-
-  useEffect(() => {
-    fetchHastaBilgileri();
-  }, []);
-
-  const fetchHastaBilgileri = async () => {
-    try {
-      const response = await axios.get("http://localhost:8080/hasta/all");
-      setHastaBilgileri(response.data);
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
-  const fetchHastaById = async (id) => {
-    try {
-      const response = await axios.get("http://localhost:8080/hasta/${id}");
-      setSelectedHasta(response.data);
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
+function Navi() {
   return (
-    <div>
-      <h2 style={{ textAlign: "center" }}>Hasta Bilgileri Listesi</h2>
-      <TableContainer component={Paper}>
-        <Table>
-          <TableHead>
-            <TableRow>
-              <TableCell>ID</TableCell>
-              <TableCell>TC KimlikNo</TableCell>
-              <TableCell>Adı</TableCell>
-              {/* <TableCell>Soyadı</TableCell>
-              <TableCell>Cinsiyet</TableCell>
-              <TableCell>Doğum Tarihi</TableCell>
-              <TableCell>Sigortalı Türü</TableCell>
-              <TableCell>Devredilen Kurum</TableCell>
-              <TableCell>Katılım Payından Muaf</TableCell>
-              <TableCell>Kapsam Adı</TableCell>
-              <TableCell>İlave Ücretten Muaf</TableCell> */}
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {hastaBilgileri.map((hasta) => (
-              <TableRow key={hasta.id}>
-                <TableCell>{hasta.id}</TableCell>
-                <TableCell>{hasta.tcKimNo}</TableCell>
-                <TableCell>{hasta.ad}</TableCell>
-                {/* <TableCell>{hasta.soyad}</TableCell>
-                <TableCell>{hasta.cinsiyet}</TableCell>
-                <TableCell>{hasta.dogumTarihi}</TableCell>
-                <TableCell>{hasta.sigortaliTuru}</TableCell>
-                <TableCell>{hasta.devredilenKurum}</TableCell>
-                <TableCell>{hasta.katilimPayindanMuaf}</TableCell>
-                <TableCell>{hasta.kapsamAdi}</TableCell>
-                <TableCell>{hasta.ilaveUcrettenMuaf}</TableCell> */}
-                <TableCell>
-                  <Button
-                    variant="contained"
-                    color="primary"
-                    onClick={() => fetchHastaById(hasta.id)}
-                  >
-                    Detay
-                  </Button>
-                </TableCell>
-              </TableRow>
-            ))}
-          </TableBody>
-        </Table>
-      </TableContainer>
-      {selectedHasta && (
-        <div>
-          <h2 style={{ textAlign: "center" }}>Seçili Hasta Detayları</h2>
-          <p>TC Kimlik No: {selectedHasta.tcKimNo}</p>
-          <p>Adı: {selectedHasta.ad}</p>
+    <>
+      <IconContext.Provider value={{ color: "#fff" }}>
+      
+        <div className="navbar">
+          {/* <Link to="#" className="menu-bars">
+            <FaBars onClick={showSidebar} />
+          </Link> */}
+          
         </div>
-      )}
-    </div>
+
+        <nav className="nav-menu active">
+          {" "}
+          {/* Nav menüsünü varsayılan olarak aktif olarak görüntülemek */}
+          <ul className="nav-menu-items">
+            <li className="navbar-toggle">
+              <div className="logo-container">
+                <img src={logo} alt="Birkil Logo" className="logo-image" />
+              </div>
+              {/* <Link to="#" className="menu-bars">
+                <AiOutlineClose />
+              </Link> */}
+            </li>
+            {SideBarData.map((item, index) => {
+              return (
+                <li key={index} className={item.cName}>
+                  <Link to={item.path}>
+                    {item.icon}
+                    <span>{item.title}</span>
+                  </Link>
+                </li>
+              );
+            })}
+          </ul>
+        </nav>
+      </IconContext.Provider>
+    </>
   );
-};
+}
 
 export default Navi;

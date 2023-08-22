@@ -1,77 +1,43 @@
-import React, { useState, useEffect } from "react";
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableContainer,
-  TableHead,
-  TableRow,
-  Paper,
-  Grid,
-} from "@mui/material";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { Route, Routes } from "react-router";
-import TaniBilgisiList from "./TaniBilgisiList";
+import { Card, Button } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
-const Muayene = () => {
-  const [muayeneBilgisi, setMuayeneBilgisi] = useState([]);
+function MuayeneBilgisi() {
+  const [muayeneListesi, setMuayeneListesi] = useState([]);
 
   useEffect(() => {
-    fetchMuayeneBilgisi();
+    // Verilerin alınacağı API endpointini düzenleyin
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(
+          "http://localhost:8080/muayene-bilgisi"
+        );
+        setMuayeneListesi(response.data);
+      } catch (error) {
+        console.error("Error:", error);
+      }
+    };
+
+    fetchData();
   }, []);
 
-  const fetchMuayeneBilgisi = async () => {
-    try {
-      const response = await axios.get("http://localhost:8080/muayene-bilgisi");
-      setMuayeneBilgisi(response.data);
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
   return (
-      <Grid container spacing={3}>
-        <Grid item xs={6}>
-          <h2 style={{ textAlign: "center" }}>Muayene Bilgileri Listesi</h2>
-          <TableContainer component={Paper}>
-            <Table>
-              <TableHead>
-                <TableRow>
-                  <TableCell>ID</TableCell>
-                  <TableCell>Dr Tescil No</TableCell>
-                  <TableCell>Sut Kodu</TableCell>
-                  <TableCell>Hizmet Sunucu RefNo</TableCell>
-                  <TableCell>İşlem Sıra No</TableCell>
-                  <TableCell>Muayene Tarihi</TableCell>
-                  <TableCell>Özel Durum</TableCell>
-                </TableRow>
-              </TableHead>
-              <TableBody>
-                {muayeneBilgisi.map((muayne) =>(
-                    <TableRow key={muayne.id}>
-                        <TableCell>{muayne.bransKodu}</TableCell>
-                        <TableCell>{muayne.drTescilNo}</TableCell>
-                        <TableCell>{muayne.sutKodu}</TableCell>
-                        <TableCell>{muayne.hizmetSunucuRefNo}</TableCell>
-                        <TableCell>{muayne.islemSiraNo}</TableCell>
-                        <TableCell>{muayne.muayeneTarihi}</TableCell>
-                        <TableCell>{muayne.ozelDurum}</TableCell>
-
-                    </TableRow>
-                ))}
-              </TableBody>
-
-            </Table>
-          </TableContainer>
-        </Grid>
-
-        <Grid item xs={6}>
-          <Routes>
-            <Route path="/" element={<TaniBilgisiList />} />
-          </Routes>
-        </Grid>
-      </Grid>
+    <div>
+      <h2>Muayene Bilgisi Listesi</h2>
+      <div>
+        {muayeneListesi.map((muayene) => (
+          <Card key={muayene.id} style={{ margin: "10px", padding: "10px" }}>
+            <div>ID: {muayene.id}</div>
+            <div>İşlem Sıra No: {muayene.islemSiraNo}</div>
+            <Link to={`/muayene-detay/${muayene.id}`}>
+              <Button>Detayları Görüntüle</Button>
+            </Link>
+          </Card>
+        ))}
+      </div>
+    </div>
   );
-};
+}
 
-export default Muayene;
+export default MuayeneBilgisi;
