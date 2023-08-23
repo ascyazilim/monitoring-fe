@@ -1,5 +1,6 @@
-import axios from "axios";
 import React, { useState } from "react";
+import { Button, TextField, Grid, Container, Paper } from "@mui/material";
+import axios from "axios";
 
 function CreateMuayeneBilgisi() {
   const [formData, setFormData] = useState({
@@ -35,82 +36,90 @@ function CreateMuayeneBilgisi() {
   };
 
   return (
-    <div>
-      <h2>Muayene Bilgisi Ekle</h2>
+    <Container component={Paper} maxWidth="xs" elevation={3} p={3}>
+      <h2 style={{ textAlign: "center" }}>Muayene Bilgisi Ekle</h2>
       <form onSubmit={handleSubmit}>
-        <div>
-          <label>Branş Kodu:</label>
-          <input
-            type="text"
-            name="bransKodu"
-            value={formData.bransKodu}
-            onChange={handleChange}
-            required
-          />
-        </div>
-        <div>
-          <label>Dr. Tescil No</label>
-          <input
-            type="text"
-            name="drTescilNo"
-            value={formData.drTescilNo}
-            onChange={handleChange}
-            required
-          />
-        </div>
-        <div>
-          <label>SUT Kodu:</label>
-          <input
-            type="text"
-            name="sutKodu"
-            value={formData.sutKodu}
-            onChange={handleChange}
-            required
-          />
-        </div>
-        <div>
-          <label>Hizmet Sunucu Ref No:</label>
-          <input
-            type="text"
-            name="hizmetSunucuRefNo"
-            value={formData.hizmetSunucuRefNo}
-            onChange={handleChange}
-            required
-          />
-        </div>
-        <div>
-          <label>İşlem Sıra No:</label>
-          <input
-            type="text"
-            name="islemSiraNo"
-            value={formData.islemSiraNo}
-            onChange={handleChange}
-          />
-        </div>
-        <div>
-          <label>Muayene Tarihi:</label>
-          <input
-            type="date"
-            name="muayeneTarihi"
-            value={formData.muayeneTarihi}
-            onChange={handleChange}
-            required
-          />
-        </div>
-        <div>
-          <label>Özel Durum:</label>
-          <input
-            type="text"
-            name="ozelDurum"
-            value={formData.ozelDurum}
-            onChange={handleChange}
-          />
-        </div>
-        <div>
-          <button type="submit">Ekle</button>
-        </div>
+        <Grid container spacing={2}>
+          <Grid item xs={12}>
+            <TextField
+              label="Branş Kodu"
+              name="bransKodu"
+              value={formData.bransKodu}
+              onChange={handleChange}
+              fullWidth
+              required
+            />
+          </Grid>
+          <Grid item xs={12}>
+            <TextField
+              label="Dr. Tescil No"
+              name="drTescilNo"
+              value={formData.drTescilNo}
+              onChange={handleChange}
+              fullWidth
+              required
+            />
+          </Grid>
+          <Grid item xs={12}>
+            <TextField
+              label="SUT Kodu"
+              name="sutKodu"
+              value={formData.sutKodu}
+              onChange={handleChange}
+              fullWidth
+              required
+            />
+          </Grid>
+          <Grid item xs={12}>
+            <TextField
+              label="Hizmet Sunucu Ref No"
+              name="hizmetSunucuRefNo"
+              value={formData.hizmetSunucuRefNo}
+              onChange={handleChange}
+              fullWidth
+              required
+            />
+          </Grid>
+          <Grid item xs={12}>
+            <TextField
+              label="İşlem Sıra No"
+              name="islemSiraNo"
+              value={formData.islemSiraNo}
+              onChange={handleChange}
+              fullWidth
+            />
+          </Grid>
+          <Grid item xs={12}>
+            <TextField
+              label="Muayene Tarihi"
+              name="muayeneTarihi"
+              type="date"
+              value={formData.muayeneTarihi}
+              onChange={handleChange}
+              fullWidth
+              required
+              InputLabelProps={{
+                shrink: true,
+              }}
+            />
+          </Grid>
+          <Grid item xs={12}>
+            <TextField
+              label="Özel Durum"
+              name="ozelDurum"
+              value={formData.ozelDurum}
+              onChange={handleChange}
+              fullWidth
+            />
+          </Grid>
+          <Grid item xs={12} style={{ textAlign: "center" }}>
+            <Button variant="contained" color="primary" type="submit">
+              Ekle
+            </Button>
+          </Grid>
+        </Grid>
       </form>
-    </div>
+    </Container>
   );
 }
 

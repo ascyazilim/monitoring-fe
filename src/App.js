@@ -26,6 +26,7 @@ import CreateMuayeneBilgisi from "./Components/CreateMuayeneBilgisi";
 import MuayeneBilgisiDetay from "./Components/MuayeneBilgisiDetay";
 import AnaSayfa from "./Components/AnaSayfa";
 import HastaDetay from "./Components/HastaDetay";
+import TaniBilgisiDetay from "./Components/TaniBilgisiDetay";
 //import Sidebar from "./Components/SideBar";
 
 const MyStyledButton = styled(Button)({
@@ -233,6 +234,7 @@ const App = () => {
                 <Route path="/hasta" element={<HastaBilgisi />} />
                 <Route path="/muayene" element={<MuayeneBilgisi />} />
                 <Route path="/hasta-detay/:id" element={<HastaDetay />} />
+                <Route path="/tani-detay/:id" element={<TaniBilgisiDetay/>}/>
                 <Route
                   path="/muayene-olustur"
                   element={<CreateMuayeneBilgisi />}

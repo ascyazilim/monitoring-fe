@@ -36,7 +36,7 @@ export const SideBarData = [
         cName: 'nav-text'
     },
     {
-        title: 'Create Tani Bilgisi',
+        title: 'Tani Bilgisi Oluştur',
         path: '/create',
         icon: <IoIcons.IoMdPeople />,
         cName: 'nav-text'

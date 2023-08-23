@@ -39,7 +39,7 @@ const HomePage = () => {
         <Grid item xs={6}>
           <Card>
             <CardContent>
-              <Typography variant="h5">Hasta Bilgileri</Typography>
+              <h2>Hasta Bilgileri</h2>
               <div className="scrollable-content">
               
                 {hastaBilgileri.map((hasta) => (
@@ -60,13 +60,13 @@ const HomePage = () => {
         <Grid item xs={6}>
           <Card>
             <CardContent>
-              <Typography variant="h5">Tanı Bilgileri</Typography>
+              <h2>Tanı Bilgileri</h2>
               <div className="scrollable-content">
                 {taniBilgileri.map((tani) => (
                   <div key={tani.id}>
                     <Typography>ID: {tani.id}</Typography>
                     <Typography>İşlem Sıra No: {tani.islemSiraNo}</Typography>
-                    <Link to={`/tani/${tani.id}`}>
+                    <Link to={`/tani-detay/${tani.id}`}>
                       <Button variant="contained" color="primary">
                         Detay
                       </Button>

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { Card, Button } from "react-bootstrap";
+import { Card, Button } from "@mui/material";
 import { Link } from "react-router-dom";
 
 function MuayeneBilgisi() {
@@ -24,18 +24,22 @@ function MuayeneBilgisi() {
 
   return (
     <div>
-      <h2>Muayene Bilgisi Listesi</h2>
-      <div>
-        {muayeneListesi.map((muayene) => (
-          <Card key={muayene.id} style={{ margin: "10px", padding: "10px" }}>
-            <div>ID: {muayene.id}</div>
-            <div>İşlem Sıra No: {muayene.islemSiraNo}</div>
-            <Link to={`/muayene-detay/${muayene.id}`}>
-              <Button>Detayları Görüntüle</Button>
-            </Link>
-          </Card>
-        ))}
-      </div>
+      <Card>
+        <h2>Muayene Bilgisi Listesi</h2>
+        <div>
+          {muayeneListesi.map((muayene) => (
+            <Card key={muayene.id} style={{ margin: "10px", padding: "10px" }}>
+              <div>ID: {muayene.id}</div>
+              <div>İşlem Sıra No: {muayene.islemSiraNo}</div>
+              <Link to={`/muayene-detay/${muayene.id}`}>
+                <Button variant="contained" color="primary">
+                  Detayları Görüntüle
+                </Button>
+              </Link>
+            </Card>
+          ))}
+        </div>
+      </Card>
     </div>
   );
 }
