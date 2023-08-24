@@ -19,12 +19,12 @@ const HastaBilgisi = () => {
   }, []);
 
   return (
-    <div>
-      <Card>
-        <h2>Hasta Bilgileri Listesi</h2>
+    <div style={{display: "grid", placeItems:"center"}}>
+      <Card style={{width: '400px'}}>
+        <h2 style={{textAlign:"center"}}>Hasta Bilgileri Listesi</h2>
         <div>
           {hastaBilgileri.map((hasta) => (
-            <Card key={hasta.id} style={{margin: "10px", padding:"10px"}}>
+            <Card key={hasta.id} style={{margin: "10px", padding:"10px", textAlign:"center"}}>
               <div>ID: {hasta.id}</div>
               <div>Ad: {hasta.ad}</div>
               <div>SoyAd: {hasta.soyad}</div>

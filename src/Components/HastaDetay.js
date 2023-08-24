@@ -3,6 +3,7 @@ import axios from "axios";
 import { useNavigate, useParams } from "react-router";
 //import { Card, Button } from "react-bootstrap";
 import { Card, Button } from "@mui/material";
+import { padding } from "@mui/system";
 
 function HastaDetay() {
   const { id } = useParams();
@@ -29,9 +30,9 @@ function HastaDetay() {
   }
 
   return (
-    <div>
-      <Card style={{ margin: "10px", padding: "10px" }}>
-        <h2>Hasta Detay</h2>
+    <div style={{display:"grid", placeItems:"center"}}>
+      <Card style={{ margin: "10px", padding: "10px", width:'250px' }}>
+        <h2 style={{textAlign:"center", padding:"5px"}}>{hastaDetay.ad} {hastaDetay.soyad}</h2>
         <div>ID: {hastaDetay.id}</div>
         <div>TcKimlikNo: {hastaDetay.tcKimNo}</div>
         <div>Ad: {hastaDetay.ad}</div>
@@ -44,7 +45,7 @@ function HastaDetay() {
         <div>Kapsam Adı: {hastaDetay.kapsamAdi}</div>
         <div>İlave Ücretten Muaf: {hastaDetay.ilaveUcrettenMuaf}</div>
 
-        <div>
+        <div style={{ padding:"10px", display:"grid", placeItems:"center"}}>
           <Button
             variant="contained"
             color="primary"
