@@ -3,6 +3,7 @@ import axios from "axios";
 import { useNavigate, useParams } from "react-router";
 //import { Card, Button } from "react-bootstrap";
 import { Card, Button } from "@mui/material";
+import "./Card.css";
 
 function TaniBilgisiDetay() {
   const { id } = useParams();
@@ -31,9 +32,9 @@ function TaniBilgisiDetay() {
   }
 
   return (
-    <div>
-      <Card style={{ margin: "10px", padding: "10px" }}>
-        <h2>Tanı Detay</h2>
+    <div className="mainDiv">
+      <Card className="mainCard">
+        <h2 className="mainCardH2">Tanı Detay</h2>
         <div>ID: {taniDetay.id}</div>
         <div>İşlem Sıra No: {taniDetay.islemSiraNo}</div>
         <div>Birincil Tanı: {taniDetay.birincilTani}</div>
@@ -42,8 +43,9 @@ function TaniBilgisiDetay() {
         <div>Tanı Tipi: {taniDetay.taniTipi}</div>
         <div>Özel Durum: {taniDetay.ozelDurum}</div>
 
-        <div>
+        <div className="backButton">
           <Button
+            className="backButton"
             variant="contained"
             color="primary"
             onClick={() => navigate(-1)}

@@ -3,6 +3,7 @@ import axios from "axios";
 import { useNavigate, useParams } from "react-router";
 //import { Card } from "react-bootstrap";
 import { Card, Button } from "@mui/material";
+import "./Card.css";
 
 function MuayeneBilgisiDetay() {
   const { id } = useParams();
@@ -30,9 +31,9 @@ function MuayeneBilgisiDetay() {
     return <div>Loading...</div>;
   }
   return (
-    <div>
-      <Card style={{ margin: "10px", padding: "10px" }}>
-        <h2>Muayene Detayı</h2>
+    <div className="mainDiv">
+      <Card className="mainCard">
+        <h2 className="mainCardH2">Muayene Detayı</h2>
 
         <div>ID: {muayeneDetay.id}</div>
         <div>Branş Kodu: {muayeneDetay.bransKodu}</div>
@@ -42,7 +43,7 @@ function MuayeneBilgisiDetay() {
         <div>İşlem Sıra No: {muayeneDetay.islemSiraNo}</div>
         <div>Muayene Tarihi: {muayeneDetay.muayeneTarihi}</div>
         <div>Özel Durum: {muayeneDetay.ozelDurum}</div>
-        <div>
+        <div className="backButton">
           <Button
             variant="contained"
             color="primary"

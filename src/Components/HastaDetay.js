@@ -33,20 +33,44 @@ function HastaDetay() {
   return (
     <div className="mainDiv">
       <Card className="mainCard">
-        <h2 className="mainCardH2">{hastaDetay.ad} {hastaDetay.soyad}</h2>
-        <div>ID: {hastaDetay.id}</div>
-        <div>TcKimlikNo: {hastaDetay.tcKimNo}</div>
-        <div>Ad: {hastaDetay.ad}</div>
-        <div>SoyAd: {hastaDetay.soyad}</div>
-        <div>Cinsiyet: {hastaDetay.cinsiyet}</div>
-        <div>Doğum Tarihi: {hastaDetay.dogumTarihi}</div>
-        <div>Sigortalı Türü: {hastaDetay.sigortaliTuru}</div>
-        <div>Devredilen Kurum: {hastaDetay.devredilenKurum}</div>
-        <div>Katılım Payından Muaf: {hastaDetay.katilimPayindanMuaf}</div>
-        <div>Kapsam Adı: {hastaDetay.kapsamAdi}</div>
-        <div>İlave Ücretten Muaf: {hastaDetay.ilaveUcrettenMuaf}</div>
+        <h2 className="mainCardH2">
+          {hastaDetay.ad} {hastaDetay.soyad}
+        </h2>
+        <div>
+          <span className="detaySpan">ID:</span> {hastaDetay.id}
+        </div>
+        <div>
+          <span className="detaySpan">TcKimlikNo:</span> {hastaDetay.tcKimNo}
+        </div>
+        <div>
+          <span className="detaySpan">Ad:</span> {hastaDetay.ad}
+        </div>
+        <div>
+          <span className="detaySpan">SoyAd:</span> {hastaDetay.soyad}
+        </div>
+        <div>
+          <span className="detaySpan">Cinsiyet:</span> {hastaDetay.cinsiyet}
+        </div>
+        <div>
+          <span className="detaySpan">Doğum Tarihi:</span> {hastaDetay.dogumTarihi}
+        </div>
+        <div>
+          <span className="detaySpan">Sigortalı Türü:</span> {hastaDetay.sigortaliTuru}
+        </div>
+        <div>
+          <span className="detaySpan">Devredilen Kurum:</span> {hastaDetay.devredilenKurum}
+        </div>
+        <div>
+          <span className="detaySpan">Katılım Payından Muaf:</span> {hastaDetay.katilimPayindanMuaf}
+        </div>
+        <div>
+          <span className="detaySpan">Kapsam Adı:</span> {hastaDetay.kapsamAdi}
+        </div>
+        <div>
+          <span className="detaySpan">İlave Ücretten Muaf:</span> {hastaDetay.ilaveUcrettenMuaf}
+        </div>
 
-        <div style={{ padding:"10px", display:"grid", placeItems:"center"}}>
+        <div className="backButton">
           <Button
             variant="contained"
             color="primary"

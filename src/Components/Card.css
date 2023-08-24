@@ -13,3 +13,14 @@
     text-align: center;
     padding: 5px;
 }
+
+.backButton{
+    padding: 10px;
+    display: grid;
+    place-items: center;
+}
+
+.detaySpan{
+    color: #1976d2;
+    font-weight: bold;
+}

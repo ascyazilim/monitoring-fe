@@ -2,6 +2,7 @@ import { Button, Card } from "@mui/material";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router";
+import "./Card.css";
 
 function DoktorBilgisiDetay() {
   const { id } = useParams();
@@ -30,9 +31,9 @@ function DoktorBilgisiDetay() {
   }
 
   return (
-    <div>
-      <Card style={{ margin: "10px", padding: "10px" }}>
-        <h2>Doktor Bilgisi Detay</h2>
+    <div className="mainDiv">
+      <Card className="mainCard">
+        <h2 className="mainCardH2">Doktor Bilgisi Detay</h2>
 
         <div>ID: {doktorDetay.id}</div>
         <div>Dr Tescil No: {doktorDetay.drTescilNo}</div>
@@ -40,8 +41,9 @@ function DoktorBilgisiDetay() {
         <div>Dr Soyadı: {doktorDetay.drSoyadi}</div>
         <div>Dr Branş Kodu: {doktorDetay.drBransKodu}</div>
         <div>Tipi: {doktorDetay.tipi}</div>
-        <div>
+        <div className="backButton">
           <Button
+            
             variant="contained"
             color="primary"
             onClick={() => navigate(-1)}
