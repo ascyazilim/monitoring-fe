@@ -3,6 +3,7 @@ import { Card, CardContent, Button, Grid, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import "../App.css";
+import "./Card.css";
 
 const HomePage = () => {
   const [hastaBilgileri, setHastaBilgileri] = useState([]);
@@ -37,7 +38,7 @@ const HomePage = () => {
       <h2 style={{ textAlign: "center" }}>Ana Sayfa</h2>
       <Grid container spacing={3}>
         <Grid item xs={6}>
-          <Card>
+          <Card className="mainCard" style={{width:"300px"}}>
             <CardContent>
               <h2>Hasta Bilgileri</h2>
               <div className="scrollable-content">
@@ -58,7 +59,7 @@ const HomePage = () => {
           </Card>
         </Grid>
         <Grid item xs={6}>
-          <Card>
+          <Card className="mainCard" style={{width:"300px"}}>
             <CardContent>
               <h2>Tanı Bilgileri</h2>
               <div className="scrollable-content">

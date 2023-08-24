@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Card, Button} from "@mui/material";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import "./Card.css"
 
 const HastaBilgisi = () => {
   const [hastaBilgileri, setHastaBilgileri] = useState([]);
@@ -19,9 +20,9 @@ const HastaBilgisi = () => {
   }, []);
 
   return (
-    <div style={{display: "grid", placeItems:"center"}}>
-      <Card style={{width: '400px'}}>
-        <h2 style={{textAlign:"center"}}>Hasta Bilgileri Listesi</h2>
+    <div className="mainDiv">
+      <Card className="mainCard" style={{width:"300px"}}>
+        <h2 className="mainCardH2">Hasta Bilgileri Listesi</h2>
         <div>
           {hastaBilgileri.map((hasta) => (
             <Card key={hasta.id} style={{margin: "10px", padding:"10px", textAlign:"center"}}>

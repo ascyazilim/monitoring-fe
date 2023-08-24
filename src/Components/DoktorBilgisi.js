@@ -21,12 +21,12 @@ function DoktorBilgisi() {
   }, []);
 
   return (
-    <div>
-      <Card>
-        <h2>Doktor Bilgisi Listesi</h2>
+    <div style={{display:"grid", placeItems:"center"}}>
+      <Card style={{width: '400px'}}>
+        <h2 style={{textAlign:"center"}}>Doktor Bilgisi Listesi</h2>
         <div>
           {doktorBilgisi.map((doktor) => (
-            <Card key={doktor.id} style={{ margin: "10px", padding: "10px" }}>
+            <Card key={doktor.id} style={{ margin: "10px", padding: "10px", textAlign:"center" }}>
               <div>ID: {doktor.id}</div>
               <div>Dr Adı: {doktor.drAdi}</div>
               <div>Dr Soyadı: {doktor.drSoyadi}</div>
