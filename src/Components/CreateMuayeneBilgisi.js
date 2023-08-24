@@ -48,6 +48,7 @@ function CreateMuayeneBilgisi() {
               onChange={handleChange}
               fullWidth
               required
+              helperText="max uzunluk: 4"
             />
           </Grid>
           <Grid item xs={12}>

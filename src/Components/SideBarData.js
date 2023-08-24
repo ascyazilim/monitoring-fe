@@ -1,13 +1,13 @@
-import React from 'react'
-import* as FaIcons from 'react-icons/fa'
-import * as AiIcons from 'react-icons/ai';
+import React from 'react';
+import * as FaIcons from 'react-icons/fa';
+import * as FaIcons6 from 'react-icons/fa6';
 import * as IoIcons from 'react-icons/io';
 import * as MdIcons from 'react-icons/md';
 
 export const SideBarData = [
     {
         title: 'AnaSayfa',
-        path: '/home',
+        path: '/',
         icon: <FaIcons.FaHome />,
         cName: 'nav-text'
     },
@@ -18,7 +18,7 @@ export const SideBarData = [
         cName: 'nav-text'
     },
     {
-        title: 'Muayene Bilgisi Ekle',
+        title: 'Muayene Bilgisi Oluştur',
         path: '/muayene-olustur',
         icon: <FaIcons.FaFileMedicalAlt />,
         cName: 'nav-text'
@@ -30,21 +30,22 @@ export const SideBarData = [
         cName: 'nav-text'
     },
     {
-        title: 'Tani Bilgisi',
-        path: '/',
+        title: "Doktor Bilgisi",
+        path: "/doktor",
+        icon: <FaIcons6.FaUserDoctor />,
+        cName: 'nav-text'
+    },
+    {
+        title: 'Tani Listesi',
+        path: '/tani',
         icon: <FaIcons.FaCartPlus />,
         cName: 'nav-text'
     },
     {
         title: 'Tani Bilgisi Oluştur',
-        path: '/create',
+        path: '/tani-olustur',
         icon: <IoIcons.IoMdPeople />,
         cName: 'nav-text'
     },
-    {
-        title: 'Tanı Listesi',
-        path: '/',
-        icon: <AiIcons.AiFillHome />,
-        cName: 'nav-text'
-    },
+
 ]

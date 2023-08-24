@@ -65,12 +65,12 @@ const TaniBilgisiList = () => {
                 <TableCell>{tani.ozelDurum}</TableCell>
                 <TableCell>
                   <div style={{display:"flex"}}>
-                    <Button variant="contained" color="info">
+                    {/* <Button variant="contained" color="info">
                       Detay
-                    </Button>
-                    <Button variant="contained" color="warning">
+                    </Button> */}
+                    {/* <Button variant="contained" color="warning">
                       Düzenle
-                    </Button>
+                    </Button> */}
                     <Button
                       variant="contained"
                       color="error"

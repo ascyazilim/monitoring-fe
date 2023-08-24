@@ -23,12 +23,12 @@ function MuayeneBilgisi() {
   }, []);
 
   return (
-    <div>
-      <Card>
-        <h2>Muayene Bilgisi Listesi</h2>
+    <div style={{display: "grid", placeItems:"center"}}>
+      <Card style={{ width: '400px'}}>
+        <h2 style={{textAlign:"center"}}>Muayene Bilgisi Listesi</h2>
         <div>
           {muayeneListesi.map((muayene) => (
-            <Card key={muayene.id} style={{ margin: "10px", padding: "10px" }}>
+            <Card key={muayene.id} style={{ margin: "10px", padding: "10px", textAlign:"center" }}>
               <div>ID: {muayene.id}</div>
               <div>İşlem Sıra No: {muayene.islemSiraNo}</div>
               <Link to={`/muayene-detay/${muayene.id}`}>

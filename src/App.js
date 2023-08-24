@@ -19,7 +19,7 @@ import CreateTaniBilgisi from "./Components/CreateTaniBilgisi";
 import "./App.css";
 import HastaBilgisi from "./Components/HastaBilgisi";
 import SettingsIcon from "@mui/icons-material/Settings";
-import { styled, textAlign } from "@mui/system";
+import { styled } from "@mui/system";
 import MuayeneBilgisi from "./Components/MuayeneBilgisi";
 import Navi from "./Components/Navi";
 import CreateMuayeneBilgisi from "./Components/CreateMuayeneBilgisi";
@@ -27,6 +27,8 @@ import MuayeneBilgisiDetay from "./Components/MuayeneBilgisiDetay";
 import AnaSayfa from "./Components/AnaSayfa";
 import HastaDetay from "./Components/HastaDetay";
 import TaniBilgisiDetay from "./Components/TaniBilgisiDetay";
+import DoktorBilgisi from "./Components/DoktorBilgisi";
+import DoktorBilgisiDetay from "./Components/DoktorBilgisiDetay";
 //import Sidebar from "./Components/SideBar";
 
 const MyStyledButton = styled(Button)({
@@ -228,13 +230,15 @@ const App = () => {
                 style={{ borderBottom: "1px solid #ccc", marginBottom: "10px" }}
               ></div>
               <Routes>
-                <Route path="home" element={<AnaSayfa />} />
-                <Route path="/" element={<TaniBilgisiList />} />
-                <Route path="/create" element={<CreateTaniBilgisi />} />
-                <Route path="/hasta" element={<HastaBilgisi />} />
-                <Route path="/muayene" element={<MuayeneBilgisi />} />
-                <Route path="/hasta-detay/:id" element={<HastaDetay />} />
+                <Route path="/" element={<AnaSayfa />} />
+                <Route path="/tani" element={<TaniBilgisiList />} />
+                <Route path="/tani-olustur" element={<CreateTaniBilgisi />} />
                 <Route path="/tani-detay/:id" element={<TaniBilgisiDetay/>}/>
+                <Route path="/hasta" element={<HastaBilgisi />} />
+                <Route path="/hasta-detay/:id" element={<HastaDetay />} />
+                <Route path="/doktor" element={<DoktorBilgisi />} />
+                <Route path="/doktor-detay/:id" element={<DoktorBilgisiDetay />} />
+                <Route path="/muayene" element={<MuayeneBilgisi />} />
                 <Route
                   path="/muayene-olustur"
                   element={<CreateMuayeneBilgisi />}
