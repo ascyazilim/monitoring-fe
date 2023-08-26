@@ -85,6 +85,10 @@ const TaniBilgisiList = () => {
           </TableBody>
         </Table>
       </TableContainer>
+      <footer style={{padding: "10px", backgroundColor: "#f0f0f0"}}>
+        <p><b>Birincil Tani:</b> E- Evet, H- Hayır</p>
+        <p><b>Tanı Tipi:</b> 1- Ön Tanı, 2- Kesin Tanı, 3- Ayırıcı Tanı</p>
+      </footer>
     </div>
   );
 };

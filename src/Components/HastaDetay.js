@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate, useParams } from "react-router";
 //import { Card, Button } from "react-bootstrap";
-import { Card, Button } from "@mui/material";
+import { Card, Button, TableContainer, Paper, Table, TableBody, TableRow, TableCell } from "@mui/material";
 import { padding } from "@mui/system";
 import "./Card.css";
 
@@ -36,40 +36,57 @@ function HastaDetay() {
         <h2 className="mainCardH2">
           {hastaDetay.ad} {hastaDetay.soyad}
         </h2>
-        <div>
-          <span className="detaySpan">ID:</span> {hastaDetay.id}
-        </div>
-        <div>
-          <span className="detaySpan">TcKimlikNo:</span> {hastaDetay.tcKimNo}
-        </div>
-        <div>
-          <span className="detaySpan">Ad:</span> {hastaDetay.ad}
-        </div>
-        <div>
-          <span className="detaySpan">SoyAd:</span> {hastaDetay.soyad}
-        </div>
-        <div>
-          <span className="detaySpan">Cinsiyet:</span> {hastaDetay.cinsiyet}
-        </div>
-        <div>
-          <span className="detaySpan">Doğum Tarihi:</span> {hastaDetay.dogumTarihi}
-        </div>
-        <div>
-          <span className="detaySpan">Sigortalı Türü:</span> {hastaDetay.sigortaliTuru}
-        </div>
-        <div>
-          <span className="detaySpan">Devredilen Kurum:</span> {hastaDetay.devredilenKurum}
-        </div>
-        <div>
-          <span className="detaySpan">Katılım Payından Muaf:</span> {hastaDetay.katilimPayindanMuaf}
-        </div>
-        <div>
-          <span className="detaySpan">Kapsam Adı:</span> {hastaDetay.kapsamAdi}
-        </div>
-        <div>
-          <span className="detaySpan">İlave Ücretten Muaf:</span> {hastaDetay.ilaveUcrettenMuaf}
-        </div>
-
+        <TableContainer component={Paper}>
+          <Table>
+            <TableBody>
+              <TableRow>
+                <TableCell>ID:</TableCell>
+                <TableCell>{hastaDetay.id}</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell>TcKimlikNo:</TableCell>
+                <TableCell>{hastaDetay.tcKimNo}</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell>Ad:</TableCell>
+                <TableCell>{hastaDetay.ad}</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell>SoyAd:</TableCell>
+                <TableCell>{hastaDetay.soyad}</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell>Cinsiyet:</TableCell>
+                <TableCell>{hastaDetay.cinsiyet}</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell>Doğum Tarihi:</TableCell>
+                <TableCell>{hastaDetay.dogumTarihi}</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell>Sigortali Türü:</TableCell>
+                <TableCell>{hastaDetay.sigortaliTuru}</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell>Devredilen Kurum:</TableCell>
+                <TableCell>{hastaDetay.devredilenKurum}</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell>Katılım Payından Muaf:</TableCell>
+                <TableCell>{hastaDetay.katilimPayindanMuaf}</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell>Kapsam Adı:</TableCell>
+                <TableCell>{hastaDetay.kapsamAdi}</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell>İlave Ücretten Muaf</TableCell>
+                <TableCell>{hastaDetay.ilaveUcrettenMuaf}</TableCell>
+              </TableRow>
+              
+            </TableBody>
+          </Table>
+        </TableContainer>
         <div className="backButton">
           <Button
             variant="contained"

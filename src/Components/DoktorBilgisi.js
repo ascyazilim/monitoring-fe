@@ -32,7 +32,7 @@ function DoktorBilgisi() {
               <div>Dr Soyadı: {doktor.drSoyadi}</div>
               <Link to={`/doktor-detay/${doktor.id}`}>
                 <Button variant="contained" color="primary">
-                  Detayları Görüntüle
+                  Detay
                 </Button>
               </Link>
             </Card>

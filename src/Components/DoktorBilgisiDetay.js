@@ -33,7 +33,7 @@ function DoktorBilgisiDetay() {
   return (
     <div className="mainDiv">
       <Card className="mainCard">
-        <h2 className="mainCardH2">Doktor Bilgisi Detay</h2>
+        <h2 className="mainCardH2">{doktorDetay.drAdi} {doktorDetay.drSoyadi}</h2>
 
         <div>ID: {doktorDetay.id}</div>
         <div>Dr Tescil No: {doktorDetay.drTescilNo}</div>

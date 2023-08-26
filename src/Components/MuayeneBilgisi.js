@@ -33,7 +33,7 @@ function MuayeneBilgisi() {
               <div>İşlem Sıra No: {muayene.islemSiraNo}</div>
               <Link to={`/muayene-detay/${muayene.id}`}>
                 <Button variant="contained" color="primary">
-                  Detayları Görüntüle
+                  Detay
                 </Button>
               </Link>
             </Card>

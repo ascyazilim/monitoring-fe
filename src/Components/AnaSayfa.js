@@ -8,11 +8,16 @@ import "./Card.css";
 const HomePage = () => {
   const [hastaBilgileri, setHastaBilgileri] = useState([]);
   const [taniBilgileri, setTaniBilgileri] = useState([]);
-  const maxDisplayItems = 2;
+  const [doktorBilgileri, setDoktorBilgileri] = useState([]);
+  const [muayeneBilgileri, setMuayeneBilgileri] = useState([]);
+
+  //const maxDisplayItems = 2;
 
   useEffect(() => {
     fetchHastaBilgileri();
     fetchTaniBilgileri();
+    fetchDoktorBilgileri();
+    fetchMuayeneBilgileri();
   }, []);
 
   const fetchHastaBilgileri = async () => {
@@ -20,6 +25,24 @@ const HomePage = () => {
       const response = await axios.get("http://localhost:8080/hasta/all");
       setHastaBilgileri(response.data);
     } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const fetchDoktorBilgileri = async () => {
+    try {
+      const response = await axios.get("http://localhost:8080/doktor-bilgisi");
+      setDoktorBilgileri(response.data);
+    }catch (error) {
+      console.error(error);
+    }
+  };
+
+  const fetchMuayeneBilgileri = async () => {
+    try{
+      const response = await axios.get("http://localhost:8080/muayene-bilgisi");
+      setMuayeneBilgileri(response.data);
+    }catch(error) {
       console.error(error);
     }
   };
@@ -34,7 +57,7 @@ const HomePage = () => {
   };
 
   return (
-    <div>
+    <div style={{ height: "650px", marginLeft: "50px"}}>
       <h2 style={{ textAlign: "center" }}>Ana Sayfa</h2>
       <Grid container spacing={3}>
         <Grid item xs={6}>
@@ -68,6 +91,49 @@ const HomePage = () => {
                     <Typography>ID: {tani.id}</Typography>
                     <Typography>İşlem Sıra No: {tani.islemSiraNo}</Typography>
                     <Link to={`/tani-detay/${tani.id}`}>
+                      <Button variant="contained" color="primary">
+                        Detay
+                      </Button>
+                    </Link>
+                  </div>
+                ))}
+              </div>
+            </CardContent>
+          </Card>
+        </Grid>
+        <Grid item xs={6}>
+          <Card className="mainCard" style={{width:"300px"}}>
+            <CardContent>
+              <h2>Doktor Bilgileri</h2>
+              <div className="scrollable-content">
+              
+                {doktorBilgileri.map((doktor) => (
+                  <div key={doktor.id}>
+                    {/* <Typography>ID: {doktor.id}</Typography> */}
+                    <Typography>Dr Adı: {doktor.drAdi}</Typography>
+                    <Typography>Dr SoyAdı: {doktor.drSoyadi}</Typography>
+                    <Link to={`/doktor-detay/${doktor.id}`}>
+                      <Button variant="contained" color="primary">
+                        Detay
+                      </Button>
+                    </Link>
+                  </div>
+                ))}
+              </div>
+            </CardContent>
+          </Card>
+        </Grid>
+        <Grid item xs={6}>
+          <Card className="mainCard" style={{width:"300px"}}>
+            <CardContent>
+              <h2>Muayene Bilgileri</h2>
+              <div className="scrollable-content">
+              
+                {muayeneBilgileri.map((muayene) => (
+                  <div key={muayene.id}>
+                    <Typography>ID: {muayene.id}</Typography>
+                    <Typography>İşlem Sıra No: {muayene.islemSiraNo}</Typography>
+                    <Link to={`/muayene-detay/${muayene.id}`}>
                       <Button variant="contained" color="primary">
                         Detay
                       </Button>

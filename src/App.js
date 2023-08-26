@@ -40,9 +40,10 @@ const App = () => {
     >
       {/* <h1 style={{ textAlign: "center" }}>Hasta Başı Monitör</h1> */}
       <Router>
-        <Navi />
+        
         <Grid container spacing={3}>
           <Grid item xs={3}>
+          <Navi />
           </Grid>
           <Grid item xs={9}>
             <Paper elevation={3} style={{ padding: "10px" }}>

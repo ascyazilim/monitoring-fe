@@ -31,7 +31,7 @@ const HastaBilgisi = () => {
               <div>SoyAd: {hasta.soyad}</div>
               <Link to={`/hasta-detay/${hasta.id}`}>
                 <Button variant="contained" color="primary">
-                    Detayı Görüntüle
+                    Detay
                 </Button>
               </Link>
             </Card>
