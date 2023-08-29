@@ -4,7 +4,7 @@ import * as FaIcons6 from 'react-icons/fa6';
 import * as IoIcons from 'react-icons/io';
 import * as MdIcons from 'react-icons/md';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faProcedures, faStethoscope } from '@fortawesome/free-solid-svg-icons';
+import { faCapsules, faProcedures, faStethoscope } from '@fortawesome/free-solid-svg-icons';
 
 export const SideBarData = [
     {
@@ -56,6 +56,18 @@ export const SideBarData = [
         icon: <IoIcons.IoMdPeople />,
         cName: 'nav-text'
     },
+    {
+        title: 'İlaç Bilgisi',
+        path: '/ilac-bilgisi',
+        icon: <FaIcons.FaCapsules/>,
+        cName: 'nav-text'
+    },
+    {
+        title: 'İlaç Listesi',
+        path: '/ilac-listesi',
+        icon: <FaIcons.FaPrescriptionBottle/>,
+        cName: 'nav-text'
+    }
 
 ]
 

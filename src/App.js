@@ -22,6 +22,10 @@ import TaniBilgisiDetay from "./Components/TaniBilgisiDetay";
 import DoktorBilgisi from "./Components/DoktorBilgisi";
 import DoktorBilgisiDetay from "./Components/DoktorBilgisiDetay";
 import DoktorList from "./Components/DoktorList";
+import IlacBilgisi from "./Components/IlacBilgisi";
+import IlacBilgisiDetay from "./Components/IlacBilgisiDetay";
+import IlacListesi from "./Components/IlacListesi";
+import IlacListesiDetay from "./Components/IlacListesiDetay";
 
 
 const MyStyledButton = styled(Button)({
@@ -130,6 +134,11 @@ const App = () => {
                   path="/muayene-detay/:id"
                   element={<MuayeneBilgisiDetay />}
                 />
+
+                <Route path="/ilac-bilgisi" element={<IlacBilgisi />} />
+                <Route path="/ilac-detay/:id" element={<IlacBilgisiDetay />} />
+                <Route path="/ilac-listesi" element={<IlacListesi />} />
+                <Route path="/ilac-list-detay/:id" element={<IlacListesiDetay />} />
               </Routes>
             </Paper>
           </Grid>
