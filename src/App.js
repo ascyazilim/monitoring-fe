@@ -1,10 +1,5 @@
 import React from "react";
-import {
-  Button,
-  Container,
-  Grid,
-  Paper,
-} from "@mui/material";
+import { Button, Container, Grid, Paper } from "@mui/material";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import TaniBilgisiList from "./Components/TaniBilgisiList";
 import CreateTaniBilgisi from "./Components/CreateTaniBilgisi";
@@ -27,7 +22,6 @@ import IlacBilgisiDetay from "./Components/IlacBilgisiDetay";
 import IlacListesi from "./Components/IlacListesi";
 import IlacListesiDetay from "./Components/IlacListesiDetay";
 
-
 const MyStyledButton = styled(Button)({
   fontSize: "6px",
   padding: "10px 20px",
@@ -36,18 +30,15 @@ const MyStyledButton = styled(Button)({
 });
 
 const App = () => {
-
-
   return (
     <Container
-      style={{ marginLeft: "10px", marginBottom: "10px", marginRight: "10px" }}
+      style={{ marginLeft: "0px", marginBottom: "10px", marginRight: "10px" }}
     >
       {/* <h1 style={{ textAlign: "center" }}>Hasta Başı Monitör</h1> */}
       <Router>
-        
         <Grid container spacing={3}>
           <Grid item xs={3}>
-          <Navi />
+            <Navi />
           </Grid>
           <Grid item xs={9}>
             <Paper elevation={3} style={{ padding: "10px" }}>
@@ -119,11 +110,14 @@ const App = () => {
                 <Route path="/" element={<AnaSayfa />} />
                 <Route path="/tani" element={<TaniBilgisiList />} />
                 <Route path="/tani-olustur" element={<CreateTaniBilgisi />} />
-                <Route path="/tani-detay/:id" element={<TaniBilgisiDetay/>}/>
+                <Route path="/tani-detay/:id" element={<TaniBilgisiDetay />} />
                 <Route path="/hasta" element={<HastaBilgisi />} />
                 <Route path="/hasta-detay/:id" element={<HastaDetay />} />
                 <Route path="/doktor" element={<DoktorBilgisi />} />
-                <Route path="/doktor-detay/:id" element={<DoktorBilgisiDetay />} />
+                <Route
+                  path="/doktor-detay/:id"
+                  element={<DoktorBilgisiDetay />}
+                />
                 <Route path="/doktor-list" element={<DoktorList />} />
                 <Route path="/muayene" element={<MuayeneBilgisi />} />
                 <Route
@@ -138,7 +132,10 @@ const App = () => {
                 <Route path="/ilac-bilgisi" element={<IlacBilgisi />} />
                 <Route path="/ilac-detay/:id" element={<IlacBilgisiDetay />} />
                 <Route path="/ilac-listesi" element={<IlacListesi />} />
-                <Route path="/ilac-list-detay/:id" element={<IlacListesiDetay />} />
+                <Route
+                  path="/ilac-list-detay/:id"
+                  element={<IlacListesiDetay />}
+                />
               </Routes>
             </Paper>
           </Grid>

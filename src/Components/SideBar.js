@@ -1,24 +1,24 @@
 import React from "react";
-import { styled } from "@mui/material/styles"; // styled eklemeyi unutmayın
+import { styled } from "@mui/material/styles"; 
 import Drawer from "@mui/material/Drawer";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import Divider from "@mui/material/Divider";
-import { GiHealthNormal } from "react-icons/gi";
-import { FaNotesMedical, FaStethoscope, FaListUl } from "react-icons/fa";
-import { ThemeProvider, createTheme } from "@mui/material/styles"; // ThemeProvider eklemeyi unutmayın
+import { ThemeProvider, createTheme } from "@mui/material/styles"; 
 import { Link } from "react-router-dom";
+import { SideBarData } from "./SideBarData";
 
 const drawerWidth = 240;
 
-const theme = createTheme(); // Tema nesnesini oluşturun
+const theme = createTheme(); 
 
 const StyledDrawer = styled(Drawer)(({ theme }) => ({
   // styled ile tema bilgisini alın
   width: drawerWidth,
   flexShrink: 0,
+  
 }));
 
 const StyledList = styled(List)(({ theme }) => ({
@@ -47,7 +47,15 @@ function Sidebar() {
         <div className="drawerHeader" />
         <Divider />
         <StyledList>
-          <StyledListItem button components={Link} to="/hasta">
+          {SideBarData.map((item, index) => (
+            <StyledListItem button component={Link} to={item.path} key={index}>
+            <ListItemIcon>
+              {item.icon}
+            </ListItemIcon>
+            <ListItemText primary={item.title} />
+          </StyledListItem>
+          ))}
+          {/* <StyledListItem button components={Link} to="/hasta">
             <ListItemIcon>
               <GiHealthNormal />
             </ListItemIcon>
@@ -70,7 +78,7 @@ function Sidebar() {
               <FaListUl />
             </ListItemIcon>
             <ListItemText primary="Tani Bilgisi Listesi" />
-          </StyledListItem>
+          </StyledListItem> */}
         </StyledList>
       </StyledDrawer>
     </ThemeProvider>

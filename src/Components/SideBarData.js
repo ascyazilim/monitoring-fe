@@ -6,6 +6,8 @@ import * as MdIcons from 'react-icons/md';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCapsules, faProcedures, faStethoscope } from '@fortawesome/free-solid-svg-icons';
 
+
+
 export const SideBarData = [
     {
         title: 'AnaSayfa',
@@ -67,7 +69,21 @@ export const SideBarData = [
         path: '/ilac-listesi',
         icon: <FaIcons.FaPrescriptionBottle/>,
         cName: 'nav-text'
-    }
+    },
+    {
+        title: 'Diabet takip Formu',
+        path: '/#',
+        icon: <FaIcons6.FaRectangleList/>,
+        cName: 'nav-text'
+    },
+    {
+        title: 'Ameliyat Girişim Bilgisi',
+        path: '/#',
+        icon: <FaIcons6.FaHeartPulse/>,
+        cName: 'nav-text'
+    },
+
+
 
 ]
 
