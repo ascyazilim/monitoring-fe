@@ -53,7 +53,9 @@ function Sidebar() {
               {item.icon}
             </ListItemIcon>
             <ListItemText primary={item.title} />
+            
           </StyledListItem>
+          
           ))}
           {/* <StyledListItem button components={Link} to="/hasta">
             <ListItemIcon>
