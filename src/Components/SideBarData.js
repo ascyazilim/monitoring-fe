@@ -78,7 +78,7 @@ export const SideBarData = [
     },
     {
         title: 'Ameliyat Girişim Bilgisi',
-        path: '/#',
+        path: '/hastaAra',
         icon: <FaIcons6.FaHeartPulse/>,
         cName: 'nav-text'
     },

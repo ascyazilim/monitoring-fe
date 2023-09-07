@@ -20,7 +20,7 @@ function MuayeneBilgisiDetay() {
 
   const navigate = useNavigate();
 
-  const [muayeneDetay, setMuayeneDetay] = useState(null);
+  const [muayeneDetay, setMuayeneDetay] = useState({});
 
   useEffect(() => {
     const fetchData = async () => {

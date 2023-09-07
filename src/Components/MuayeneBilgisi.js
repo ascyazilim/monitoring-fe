@@ -65,7 +65,9 @@ function MuayeneBilgisi() {
             position: "absolute",
             top: "15%",
             left: "30%",
+            borderRadius: "5px",
           }}
+          BackdropProps={{invisible: true}}
         >
           <Card className="mainCard">
             <h2 className="mainCardH2">Muayene Detayı</h2>
