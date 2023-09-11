@@ -28,7 +28,6 @@ function HastaAra() {
 
   return (
     <div>
-      <h4>Hasta Ara - Tc KimlikNo</h4>
       <div>
         <input
           type="text"
@@ -37,21 +36,6 @@ function HastaAra() {
           onChange={handleAramaAdiChange}
         />
         <button onClick={handleAra}>Ara</button>
-      </div>
-      <div>
-        <h3>Arama Sonuçları</h3>
-        {aramaSonuclari ? (
-            typeof aramaSonuclari === "string" ? (
-                <p>{aramaSonuclari}</p>
-            ): (
-                <ul>
-                    <li>
-                        Adı: {aramaSonuclari.ad}, Soyadı: {aramaSonuclari.soyad},
-                        Tc: {aramaSonuclari.tcKimNo}
-                    </li>
-                </ul>
-            )
-        ): null}
       </div>
     </div>
   );

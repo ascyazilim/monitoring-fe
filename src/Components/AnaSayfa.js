@@ -13,7 +13,13 @@ import {
   TableBody,
   Checkbox,
   DialogTitle,
-  IconButton
+  IconButton,
+  TextField,
+  Collapse,
+  FormControl,
+  InputLabel,
+  Select,
+  MenuItem,
 } from "@mui/material";
 import { Link } from "react-router-dom";
 import axios from "axios";
@@ -22,6 +28,8 @@ import "./Card.css";
 import { styled } from "@mui/system";
 import SettingsIcon from "@mui/icons-material/Settings";
 import CloseIcon from "@mui/icons-material/Close";
+import TaniBilgisiList from "./TaniBilgisiList";
+import DoktorList from "./DoktorList";
 
 const HomePage = () => {
   const [hastaBilgileri, setHastaBilgileri] = useState([]);
@@ -30,14 +38,47 @@ const HomePage = () => {
   const [muayeneBilgileri, setMuayeneBilgileri] = useState([]);
 
   const [isModalOpen, setIsModalopen] = useState(false);
+  const [isSecondModalOpen, setIsSecondModalOpen] = useState(false);
   const [selectedItems, setSelectedItems] = useState([]);
+
+  const [modalAc, setModalAc] = useState(false);
+
+  const [isModalDoktorOpen, setIsModalDoktorOpen] = useState(false);
 
   const openModal = () => {
     setIsModalopen(true);
   };
 
+  const openSecondModal = () => {
+    setIsSecondModalOpen(true);
+  };
+
+  const openDoktorList = () => {
+    setIsModalopen(true);
+  };
+
+  const openModalDoktor = () => {
+    setIsModalDoktorOpen(true);
+  };
+
+  const openMocalAc = () => {
+    setModalAc(true);
+  };
+
   const closeModal = () => {
     setIsModalopen(false);
+  };
+
+  const closeModalDoktor = () => {
+    setIsModalDoktorOpen(false);
+  };
+
+  const closeModalAc = () => {
+    setModalAc(false);
+  };
+
+  const closeSecondModal = () => {
+    setIsSecondModalOpen(false);
   };
 
   const handleCheckboxChange = (item) => {
@@ -115,10 +156,60 @@ const HomePage = () => {
               variant="contained"
               startIcon={<SettingsIcon />}
               color="primary"
-              href="/muayene"
+              onClick={openSecondModal}
             >
-              Tanı Ekle
+              Anamnez Ekle
             </MyStyledButton>
+            <Modal
+              open={isSecondModalOpen}
+              onClose={closeSecondModal}
+              style={{
+                position: "absolute",
+                top: "20%",
+                left: "20%",
+                borderRadius: "5px",
+              }}
+              BackdropProps={{ invisible: true }}
+            >
+              <Card
+                className="mainCard"
+                style={{ height: "340px", width: "600px" }}
+              >
+                <DialogTitle
+                  style={{ display: "flex", justifyContent: "flex-end" }}
+                >
+                  <h3 style={{ marginRight: "200px" }}>Anemnez </h3>
+                  <IconButton
+                    edge="end"
+                    color="inherit"
+                    onClick={closeSecondModal}
+                    aria-label="close"
+                  >
+                    <CloseIcon />
+                  </IconButton>
+                </DialogTitle>
+                <div>
+                  <TextField label="Şikayet" fullWidth />
+                </div>
+                <div>
+                  <TextField label="Hikaye" fullWidth />
+                </div>
+                <div>
+                  <TextField
+                    label="Tanı Listesi"
+                    fullWidth
+                    onClick={openModal}
+                  />
+                </div>
+                <Button
+                  variant="contained"
+                  color="primary"
+                  style={{ margin: "20px auto", display: "block" }}
+                >
+                  Ekle
+                </Button>
+              </Card>
+            </Modal>
             <MyStyledButton
               className="menuButton"
               variant="contained"
@@ -141,9 +232,16 @@ const HomePage = () => {
             >
               <Card
                 className="mainCard"
-                style={{ height: "400px", width: "400px" }}
+                style={{
+                  height: "350px",
+                  width: "400px",
+                  borderRadius: "20px",
+                }}
               >
-                <DialogTitle style={{ display: "flex", justifyContent: "flex-end" }}>
+                <DialogTitle
+                  style={{ display: "flex", justifyContent: "flex-end" }}
+                >
+                  <h3 style={{ marginRight: "70px" }}>İstem Formu</h3>
                   <IconButton
                     edge="end"
                     color="inherit"
@@ -154,35 +252,66 @@ const HomePage = () => {
                   </IconButton>
                 </DialogTitle>
                 <div>
-                  <Table>
-                    <TableHead>
-                      <TableRow>
-                        <TableCell>Hizmet Kodu</TableCell>
-                        <TableCell>İstem Adı</TableCell>
-                        <TableCell></TableCell>
-                      </TableRow>
-                    </TableHead>
-                    <TableBody>
-                      <TableRow>
-                        <TableCell>312</TableCell>
-                        <TableCell>Kan</TableCell>
-                        <TableCell>
-                          <Checkbox
+                  <table>
+                    <thead>
+                      <tr>
+                        <th></th>
+                        <th>Hizmet Kodu</th>
+                        <th>İstem Adı</th>
+                        <th>Sut Kodu</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>
+                          <input
+                            type="checkbox"
                             checked={selectedItems.includes(1)}
                             onChange={() => handleCheckboxChange(1)}
                           />
-                        </TableCell>
-                      </TableRow>
-                      <TableRow>
-                        <TableCell>3</TableCell>
-                        <TableCell>İdrar</TableCell>
-                        <Checkbox
-                          checked={selectedItems.includes(2)}
-                          onChange={() => handleCheckboxChange(2)}
-                        />
-                      </TableRow>
-                    </TableBody>
-                  </Table>
+                        </td>
+                        <td>312</td>
+                        <td>Kan</td>
+                        <td></td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <input
+                            type="checkbox"
+                            checked={selectedItems.includes(2)}
+                            onChange={() => handleCheckboxChange(2)}
+                          />
+                        </td>
+                        <td>3</td>
+                        <td>İdrar</td>
+                        <td></td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <input
+                            type="checkbox"
+                            checked={selectedItems.includes(3)}
+                            onChange={() => handleCheckboxChange(3)}
+                          />
+                        </td>
+                        <td>306</td>
+                        <td>Ultrason</td>
+                        <td></td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <input
+                            type="checkbox"
+                            checked={selectedItems.includes(4)}
+                            onChange={() => handleCheckboxChange(4)}
+                          />
+                        </td>
+                        <td>211</td>
+                        <td>Tomografi</td>
+                        <td></td>
+                      </tr>
+                    </tbody>
+                  </table>
                   <Button
                     variant="contained"
                     color="primary"
@@ -198,9 +327,33 @@ const HomePage = () => {
               variant="contained"
               startIcon={<SettingsIcon />}
               color="primary"
+              onClick={openDoktorList}
             >
               İlaç
             </MyStyledButton>
+            <Modal
+              open={isModalDoktorOpen}
+              onClose={() => setIsModalDoktorOpen(false)}
+              style={{
+                position: "absolute",
+                top: "20%",
+                left: "20%",
+                borderRadius: "5px",
+              }}
+              BackdropProps={{ invisible: true }}
+            >
+              <Card
+                className="mainCard"
+                style={{
+                  height: "350px",
+                  width: "400px",
+                  borderRadius: "20px",
+                }}
+              >
+                {/* DoktorList component'ini burada görüntüle */}
+                <DoktorList />
+              </Card>
+            </Modal>
             <MyStyledButton
               className="menuButton"
               variant="contained"

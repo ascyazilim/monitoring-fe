@@ -1,5 +1,16 @@
 import React, { useState } from "react";
-import { Button, Card, Container, Grid, Paper, Table, TableBody, TableCell, TableRow } from "@mui/material";
+import {
+  Button,
+  Card,
+  Container,
+  Grid,
+  Paper,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableRow,
+} from "@mui/material";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import TaniBilgisiList from "./Components/TaniBilgisiList";
 import CreateTaniBilgisi from "./Components/CreateTaniBilgisi";
@@ -33,7 +44,6 @@ const MyStyledButton = styled(Button)({
 });
 
 const App = () => {
-
   const [selectedMuayeneId, setSelectedMuayeneId] = useState(null);
 
   const handleMuayeneIdSelection = (id) => {
@@ -44,7 +54,6 @@ const App = () => {
     <Container
       style={{ marginLeft: "0px", marginBottom: "10px", marginRight: "10px" }}
     >
-      
       <Router>
         <Grid container spacing={3}>
           <Grid item xs={3}>
@@ -52,41 +61,79 @@ const App = () => {
           </Grid>
           <Grid item xs={9}>
             <Paper elevation={3} style={{ padding: "10px" }}>
-              <div style={{ display: "flex", justifyContent: "start"}}>
-                <Card style={{height:"100px", width: "200px", margin:"3px"}}>
-                <img style={{width:"125px"}} src={logo} alt="Birkil Logo" className="logo-image" />
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "start",
+                  height: "50px",
+                }}
+              >
+                <Card
+                  style={{
+                    width: "400px",
+                    color: "darkblue",
+                    marginRight: "10px",
+                  }}
+                >
+                  <h2 style={{ margin: "10px" }}>Hasta Başı Monitör</h2>
                 </Card>
-                <Card>
-                  <Table>
-                    <TableBody>
-                    <TableRow>
-                        <TableCell>Tc: </TableCell>
-                        <TableCell>10201108</TableCell>
-                      </TableRow>
-                      <TableRow>
-                        <TableCell>Adı: </TableCell>
-                        <TableCell>Ali</TableCell>
-                      </TableRow>
-                      <TableRow>
-                        <TableCell>Soyadı: </TableCell>
-                        <TableCell>Cebecioğlu</TableCell>
-                      </TableRow>
-                      <TableRow>
-                        <TableCell>Doğum Tarihi: </TableCell>
-                        <TableCell>22.05.1989</TableCell>
-                      </TableRow>
-                    </TableBody>
-                  </Table>
-                </Card>
-                <Card style={{width:"200px"}}>
+                <Card style={{ width: "200px" }}>
                   <HastaAra />
                 </Card>
-                <Card style={{width:"200px"}}>
-                  <MuayeneBilgisiDetayArama onAramaSubmit={handleMuayeneIdSelection} />
-                  <MuayeneBilgisiDetay id={selectedMuayeneId}/>
+              </div>
+              <div style={{ display: "flex", justifyContent: "start" }}>
+                <Card style={{ width: "125px", height: "80px", margin: "5px" }}>
+                  <div>
+                    <img
+                      src={logo}
+                      alt="Profil Fotosu"
+                      className="logo-image"
+                      style={{ width: "125px" }}
+                    />
+                  </div>
+                </Card>
+                <Card
+                  style={{
+                    width: "200px",
+                    height: "80px",
+                    margin: "5px",
+                    textAlign: "center",
+                  }}
+                >
+                  <div style={{ marginTop: "10px" }}>
+                    <h3>Ali Cebecioğlu</h3>
+                  </div>
+                  <div>12345678912</div>
+                  <div>34, Erkek, 0(RH -)</div>
+                </Card>
+                <Card
+                  style={{
+                    width: "200px",
+                    height: "80px",
+                    margin: "5px",
+                    textAlign: "center",
+                  }}
+                >
+                  <div style={{marginTop: "10px"}}>
+                    <h4>Giriş Bilgileri</h4>
+                    <div></div>
+                  </div>
+                </Card>
+                <Card
+                  style={{
+                    width: "200px",
+                    height: "80px",
+                    margin: "5px",
+                    textAlign: "center",
+                  }}
+                >
+                  <div style={{ marginTop: "10px" }}>
+                    <h4>Dr. Fırat Aksun</h4>
+                    <div>Uzm. Diş doktoru</div>
+                  </div>
                 </Card>
               </div>
-              
+
               <div
                 style={{ borderBottom: "1px solid #ccc", marginBottom: "10px" }}
               ></div>

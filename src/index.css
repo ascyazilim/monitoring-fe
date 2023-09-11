@@ -11,3 +11,43 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+/*Tablet için*/
+@media (max-width: 768px){
+  body {
+    font-size: 16px; /* Yazı tipi boyutunu tabletler için artırabilirsiniz */
+  }
+  
+  .header {
+    padding: 10px; /* Başlık alanındaki içeriği daha kompakt hale getirin */
+  }
+  
+  .navbar {
+    display: none; /* Tabletler için gezinme menüsünü gizleyebilirsiniz */
+  }
+  
+  .card {
+    width: 80%; /* Kartların genişliğini ayarlayın */
+    margin: 0 auto; /* Kartları ortalamak için kullanabilirsiniz */
+  }
+}
+
+/*Mobil cihazlar icin*/
+@media (max-width: 480px){
+  body {
+    font-size: 14px; /* Yazı tipi boyutunu mobil cihazlar için azaltabilirsiniz */
+  }
+  
+  .header {
+    padding: 5px; /* Başlık alanındaki içeriği daha kompakt hale getirin */
+  }
+  
+  .navbar {
+    display: none; /* Mobil cihazlar için gezinme menüsünü gizleyebilirsiniz */
+  }
+  
+  .card {
+    width: 90%; /* Kartların genişliğini ayarlayın */
+    margin: 0 auto; /* Kartları ortalamak için kullanabilirsiniz */
+  }
+}
