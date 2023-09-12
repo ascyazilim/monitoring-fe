@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Card, Button} from "@mui/material";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import "./Card.css"
+import "./Card.css";
 
 const HastaBilgisi = () => {
   const [hastaBilgileri, setHastaBilgileri] = useState([]);

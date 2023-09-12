@@ -12,10 +12,10 @@ function HastaAra() {
   const handleAra = async () => {
     try {
       const response = await axios.get(
-        `http://localhost:8080/hasta/all?adi=${aramaAdi}`
+        `http://localhost:8080/hasta/${aramaAdi}`
       );
-      if(response.data.length > 0){
-        const hasta = response.data[0];
+      if(response.status === 200){
+        const hasta = response.data;
         setAramaSonuclari(hasta);
       }else{
         setAramaSonuclari("Aranan hasta bulunamadı.");

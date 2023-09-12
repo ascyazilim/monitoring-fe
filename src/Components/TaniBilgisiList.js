@@ -74,9 +74,9 @@ const TaniBilgisiList = () => {
                     <Button
                       variant="contained"
                       color="error"
-                      onClick={() => handleDelete(tani.id)}
+                      // onClick={() => handleDelete(tani.id)}
                     >
-                      Sil
+                      Ekle
                     </Button>
                   </div>
                 </TableCell>

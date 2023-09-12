@@ -30,6 +30,9 @@ import SettingsIcon from "@mui/icons-material/Settings";
 import CloseIcon from "@mui/icons-material/Close";
 import TaniBilgisiList from "./TaniBilgisiList";
 import DoktorList from "./DoktorList";
+import IlacListesi from "./IlacListesi";
+import IlacListesiDetay from "./IlacListesiDetay";
+import TaniListesi from "./TaniListesi";
 
 const HomePage = () => {
   const [hastaBilgileri, setHastaBilgileri] = useState([]);
@@ -41,12 +44,15 @@ const HomePage = () => {
   const [isSecondModalOpen, setIsSecondModalOpen] = useState(false);
   const [selectedItems, setSelectedItems] = useState([]);
 
-  const [modalAc, setModalAc] = useState(false);
-
+  const [isTaniOpen, setIsTaniOpen] = useState(false);
   const [isModalDoktorOpen, setIsModalDoktorOpen] = useState(false);
 
   const openModal = () => {
     setIsModalopen(true);
+  };
+
+  const openTani = () => {
+    setIsTaniOpen(true);
   };
 
   const openSecondModal = () => {
@@ -54,27 +60,19 @@ const HomePage = () => {
   };
 
   const openDoktorList = () => {
-    setIsModalopen(true);
-  };
-
-  const openModalDoktor = () => {
     setIsModalDoktorOpen(true);
-  };
-
-  const openMocalAc = () => {
-    setModalAc(true);
   };
 
   const closeModal = () => {
     setIsModalopen(false);
   };
 
-  const closeModalDoktor = () => {
-    setIsModalDoktorOpen(false);
+  const closeTani = () => {
+    setIsTaniOpen(false);
   };
 
-  const closeModalAc = () => {
-    setModalAc(false);
+  const closeDoktorList = () => {
+    setIsModalDoktorOpen(false);
   };
 
   const closeSecondModal = () => {
@@ -178,7 +176,7 @@ const HomePage = () => {
                 <DialogTitle
                   style={{ display: "flex", justifyContent: "flex-end" }}
                 >
-                  <h3 style={{ marginRight: "200px" }}>Anemnez </h3>
+                  <h3 style={{ marginRight: "200px" }}>Anamnez </h3>
                   <IconButton
                     edge="end"
                     color="inherit"
@@ -198,9 +196,32 @@ const HomePage = () => {
                   <TextField
                     label="Tanı Listesi"
                     fullWidth
-                    onClick={openModal}
+                    onClick={openTani}
                   />
                 </div>
+                <Modal
+                  open={isTaniOpen} // Modal, isTaniOpen durumuna bağlı olarak açılıp kapanacak
+                  onClose={closeTani} // Modal'ı kapatmak için closeTani işlemini kullan
+                  style={{
+                    position: "absolute",
+                    top: "20%",
+                    left: "20%",
+                    borderRadius: "5px",
+                  }}
+                  BackdropProps={{ invisible: true }}
+                >
+                  <Card
+                    className="mainCard"
+                    style={{
+                      height: "420px",
+                      width: 620,
+                      borderRadius: "20px",
+                    }}
+                  >
+                    {/* TaniBilgisiList bileşenini burada görüntüle */}
+                    <TaniListesi />
+                  </Card>
+                </Modal>
                 <Button
                   variant="contained"
                   color="primary"
@@ -333,7 +354,7 @@ const HomePage = () => {
             </MyStyledButton>
             <Modal
               open={isModalDoktorOpen}
-              onClose={() => setIsModalDoktorOpen(false)}
+              onClose={closeDoktorList}
               style={{
                 position: "absolute",
                 top: "20%",
@@ -351,7 +372,7 @@ const HomePage = () => {
                 }}
               >
                 {/* DoktorList component'ini burada görüntüle */}
-                <DoktorList />
+                <IlacListesi />
               </Card>
             </Modal>
             <MyStyledButton
