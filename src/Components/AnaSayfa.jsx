@@ -40,12 +40,28 @@ const HomePage = () => {
   const [doktorBilgileri, setDoktorBilgileri] = useState([]);
   const [muayeneBilgileri, setMuayeneBilgileri] = useState([]);
 
+  const [tableData, setTableData] = useState([]);
+
+  const [inputText, setInputText] = useState("");
+  const [cardTextList, setCardTextList] = useState([]);
+
+  const [selectedTaniList, setSelectedTaniList] = useState([]);
+
+  const [taniList, setTaniList] = useState([]);
+  const [list, setList] = useState([]);
+
   const [isModalOpen, setIsModalopen] = useState(false);
   const [isSecondModalOpen, setIsSecondModalOpen] = useState(false);
   const [selectedItems, setSelectedItems] = useState([]);
 
+  const [isInputModalOpen, setIsInputModalOpen] = useState(false);
+
   const [isTaniOpen, setIsTaniOpen] = useState(false);
   const [isModalDoktorOpen, setIsModalDoktorOpen] = useState(false);
+
+  const addToTable = (selectedOption) => {
+    setTableData([...tableData, selectedOption]);
+  };
 
   const openModal = () => {
     setIsModalopen(true);
@@ -79,6 +95,22 @@ const HomePage = () => {
     setIsSecondModalOpen(false);
   };
 
+  const handleInputChange = (e) => {
+    setInputText(e.target.value);
+  };
+
+  const handleTaniSelect = (selectedItems) => {
+    setSelectedTaniList(selectedItems);
+  };
+
+  const openInputModal = () => {
+    setIsInputModalOpen(true);
+  };
+
+  const closeInputModal = () => {
+    setIsInputModalOpen(false);
+  };
+
   const handleCheckboxChange = (item) => {
     if (selectedItems.includes(item)) {
       setSelectedItems(selectedItems.filter((selected) => selected !== item));
@@ -87,8 +119,23 @@ const HomePage = () => {
     }
   };
 
+  const handleAddTextToCard = () => {
+    setCardTextList([...cardTextList, inputText]);
+    setInputText(""); // input alanını temizleyelim
+    closeInputModal(); // Modal'ı kapat
+  };
+
   const handleAddButtonClick = () => {
-    console.log("Seçilen ögeler: ", selectedItems);
+    const selectedTaniList = taniList.filter((item) =>
+      selectedItems.includes(item.id)
+    );
+
+    const selectedTaniListAdi = selectedTaniList.map((item) => item.taniAdi);
+
+    const updatedList = list.concat(selectedTaniListAdi);
+
+    setList(updatedList);
+    setSelectedItems([]);
   };
 
   const MyStyledButton = styled(Button)({
@@ -105,6 +152,7 @@ const HomePage = () => {
     fetchTaniBilgileri();
     fetchDoktorBilgileri();
     fetchMuayeneBilgileri();
+    setTaniList([]);
   }, []);
 
   const fetchHastaBilgileri = async () => {
@@ -187,7 +235,12 @@ const HomePage = () => {
                   </IconButton>
                 </DialogTitle>
                 <div>
-                  <TextField label="Şikayet" fullWidth />
+                  <TextField
+                    label="Şikayet"
+                    fullWidth
+                    value={inputText}
+                    onChange={handleInputChange}
+                  />
                 </div>
                 <div>
                   <TextField label="Hikaye" fullWidth />
@@ -196,12 +249,16 @@ const HomePage = () => {
                   <TextField
                     label="Tanı Listesi"
                     fullWidth
+                    value={selectedTaniList.join(", ")}
+                    onChange={(e) =>
+                      setSelectedTaniList(e.target.value.split(", "))
+                    }
                     onClick={openTani}
                   />
                 </div>
                 <Modal
                   open={isTaniOpen} // Modal, isTaniOpen durumuna bağlı olarak açılıp kapanacak
-                  onClose={closeTani} // Modal'ı kapatmak için closeTani işlemini kullan
+                  onClose={closeTani} // Modal'ı kapatmak için closeTani işlemini kulla
                   style={{
                     position: "absolute",
                     top: "20%",
@@ -214,17 +271,18 @@ const HomePage = () => {
                     className="mainCard"
                     style={{
                       height: "420px",
-                      width: 620,
+                      width: 430,
                       borderRadius: "20px",
                     }}
                   >
                     {/* TaniBilgisiList bileşenini burada görüntüle */}
-                    <TaniListesi />
+                    <TaniListesi addToTable={addToTable} />
                   </Card>
                 </Modal>
                 <Button
                   variant="contained"
                   color="primary"
+                  onClick={handleAddTextToCard}
                   style={{ margin: "20px auto", display: "block" }}
                 >
                   Ekle
@@ -409,89 +467,58 @@ const HomePage = () => {
             </MyStyledButton>
           </div>
         </div>
-        <Grid item xs={6}>
-          <Card className="mainCard" style={{ width: "300px" }}>
-            <CardContent>
-              <h2>Hasta Bilgileri</h2>
-              <div className="scrollable-content">
-                {hastaBilgileri.map((hasta) => (
-                  <div key={hasta.id}>
-                    <Typography>ID: {hasta.id}</Typography>
-                    <Typography>TC Kimlik No: {hasta.tcKimNo}</Typography>
-                    <Link to={`/hasta-detay/${hasta.id}`}>
-                      <Button variant="contained" color="primary">
-                        Detay
-                      </Button>
-                    </Link>
-                  </div>
-                ))}
-              </div>
-            </CardContent>
-          </Card>
-        </Grid>
-        <Grid item xs={6}>
-          <Card className="mainCard" style={{ width: "300px" }}>
-            <CardContent>
-              <h2>Tanı Bilgileri</h2>
-              <div className="scrollable-content">
-                {taniBilgileri.map((tani) => (
-                  <div key={tani.id}>
-                    <Typography>ID: {tani.id}</Typography>
-                    <Typography>İşlem Sıra No: {tani.islemSiraNo}</Typography>
-                    <Link to={`/tani-detay/${tani.id}`}>
-                      <Button variant="contained" color="primary">
-                        Detay
-                      </Button>
-                    </Link>
-                  </div>
-                ))}
-              </div>
-            </CardContent>
-          </Card>
-        </Grid>
-        <Grid item xs={6}>
-          <Card className="mainCard" style={{ width: "300px" }}>
-            <CardContent>
-              <h2>Doktor Bilgileri</h2>
-              <div className="scrollable-content">
-                {doktorBilgileri.map((doktor) => (
-                  <div key={doktor.id}>
-                    {/* <Typography>ID: {doktor.id}</Typography> */}
-                    <Typography>Dr Adı: {doktor.drAdi}</Typography>
-                    <Typography>Dr SoyAdı: {doktor.drSoyadi}</Typography>
-                    <Link to={`/doktor-detay/${doktor.id}`}>
-                      <Button variant="contained" color="primary">
-                        Detay
-                      </Button>
-                    </Link>
-                  </div>
-                ))}
-              </div>
-            </CardContent>
-          </Card>
-        </Grid>
-        <Grid item xs={6}>
-          <Card className="mainCard" style={{ width: "300px" }}>
-            <CardContent>
-              <h2>Muayene Bilgileri</h2>
-              <div className="scrollable-content">
-                {muayeneBilgileri.map((muayene) => (
-                  <div key={muayene.id}>
-                    <Typography>ID: {muayene.id}</Typography>
-                    <Typography>
-                      İşlem Sıra No: {muayene.islemSiraNo}
-                    </Typography>
-                    <Link to={`/muayene-detay/${muayene.id}`}>
-                      <Button variant="contained" color="primary">
-                        Detay
-                      </Button>
-                    </Link>
-                  </div>
-                ))}
-              </div>
-            </CardContent>
-          </Card>
-        </Grid>
+
+        <Card className="mainCard" style={{ height: "140px", width: "700px" }}>
+          <table>
+            <thead>
+              <tr>
+                <th style={{textAlign:"center"}}>Hasta Şikayeti</th>
+              </tr>
+            </thead>
+            <tbody>
+              {cardTextList.map((text, index) => (
+                <tr key={index}>
+                  <td style={{textAlign:"center"}}>{text}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </Card>
+
+        <Card className="mainCard" style={{ height: "120px", width: "300px"}}>
+          <table>
+            <thead>
+              <tr>
+                <th style={{textAlign:"center"}}>Tanı Listesi</th>
+              </tr>
+            </thead>
+            <tbody>
+              {tableData.map((item, index) => (
+                <tr key={index}>
+                  <td style={{textAlign:"center"}}>{item}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </Card>
+
+        <Card className="mainCard" style={{ height: "120px", width: "300px", marginLeft:"80px" }}>
+          <table>
+            <thead>
+              <tr>
+                <th style={{textAlign:"center"}}>Hizmet - İstem</th>
+              </tr>
+            </thead>
+            <tbody>
+              {tableData.map((item, index) => (
+                <tr key={index}>
+                  <td style={{textAlign:"center"}}>{item}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </Card>
+
       </Grid>
     </div>
   );

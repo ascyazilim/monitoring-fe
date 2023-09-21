@@ -8,7 +8,7 @@ function HastaAra() {
   const handleAramaAdiChange = (e) => {
     setAramaAdi(e.target.value);
   };
-
+  
   const handleAra = async () => {
     try {
       const response = await axios.get(
@@ -28,7 +28,7 @@ function HastaAra() {
 
   return (
     <div>
-      <div>
+      <div style={{margin:"3px"}}>
         <input
           type="text"
           placeholder="Hasta Adı"
