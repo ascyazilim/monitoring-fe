@@ -33,6 +33,7 @@ import DoktorList from "./DoktorList";
 import IlacListesi from "./IlacListesi";
 import IlacListesiDetay from "./IlacListesiDetay";
 import TaniListesi from "./TaniListesi";
+import IstemListesi from "./IstemListesi";
 
 const HomePage = () => {
   const [hastaBilgileri, setHastaBilgileri] = useState([]);
@@ -42,13 +43,19 @@ const HomePage = () => {
 
   const [tableData, setTableData] = useState([]);
 
+  const [tableIstemData, setTableIstemData] = useState([]);
+
   const [inputText, setInputText] = useState("");
   const [cardTextList, setCardTextList] = useState([]);
 
   const [selectedTaniList, setSelectedTaniList] = useState([]);
+  const [selectedIstemList, setSelectedIstemList] = useState([]);
 
   const [taniList, setTaniList] = useState([]);
   const [list, setList] = useState([]);
+
+  const [IstemList, setIstemList] = useState([]);
+  const [listIstem, setListIstem] = useState([]);
 
   const [isModalOpen, setIsModalopen] = useState(false);
   const [isSecondModalOpen, setIsSecondModalOpen] = useState(false);
@@ -61,6 +68,10 @@ const HomePage = () => {
 
   const addToTable = (selectedOption) => {
     setTableData([...tableData, selectedOption]);
+  };
+
+  const addToTableIstem = (selectedOption) => {
+    setTableIstemData([...tableIstemData, selectedOption]);
   };
 
   const openModal = () => {
@@ -97,6 +108,14 @@ const HomePage = () => {
 
   const handleInputChange = (e) => {
     setInputText(e.target.value);
+  };
+
+  const handleSelectedIstemListChange = (selectedItems) => {
+    setSelectedIstemList(selectedItems);
+  };
+
+  const handleSelectedTaniListChange = (selectedItems) => {
+    setSelectedTaniList(selectedItems);
   };
 
   const handleTaniSelect = (selectedItems) => {
@@ -276,7 +295,10 @@ const HomePage = () => {
                     }}
                   >
                     {/* TaniBilgisiList bileşenini burada görüntüle */}
-                    <TaniListesi addToTable={addToTable} />
+                    <TaniListesi
+                      addToTable={addToTable}
+                      onSelectedItemsChange={handleSelectedTaniListChange}
+                    />
                   </Card>
                 </Modal>
                 <Button
@@ -312,93 +334,15 @@ const HomePage = () => {
               <Card
                 className="mainCard"
                 style={{
-                  height: "350px",
-                  width: "400px",
+                  height: "420px",
+                  width: 430,
                   borderRadius: "20px",
                 }}
               >
-                <DialogTitle
-                  style={{ display: "flex", justifyContent: "flex-end" }}
-                >
-                  <h3 style={{ marginRight: "70px" }}>İstem Formu</h3>
-                  <IconButton
-                    edge="end"
-                    color="inherit"
-                    onClick={closeModal}
-                    aria-label="close"
-                  >
-                    <CloseIcon />
-                  </IconButton>
-                </DialogTitle>
-                <div>
-                  <table>
-                    <thead>
-                      <tr>
-                        <th></th>
-                        <th>Hizmet Kodu</th>
-                        <th>İstem Adı</th>
-                        <th>Sut Kodu</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td>
-                          <input
-                            type="checkbox"
-                            checked={selectedItems.includes(1)}
-                            onChange={() => handleCheckboxChange(1)}
-                          />
-                        </td>
-                        <td>312</td>
-                        <td>Kan</td>
-                        <td></td>
-                      </tr>
-                      <tr>
-                        <td>
-                          <input
-                            type="checkbox"
-                            checked={selectedItems.includes(2)}
-                            onChange={() => handleCheckboxChange(2)}
-                          />
-                        </td>
-                        <td>3</td>
-                        <td>İdrar</td>
-                        <td></td>
-                      </tr>
-                      <tr>
-                        <td>
-                          <input
-                            type="checkbox"
-                            checked={selectedItems.includes(3)}
-                            onChange={() => handleCheckboxChange(3)}
-                          />
-                        </td>
-                        <td>306</td>
-                        <td>Ultrason</td>
-                        <td></td>
-                      </tr>
-                      <tr>
-                        <td>
-                          <input
-                            type="checkbox"
-                            checked={selectedItems.includes(4)}
-                            onChange={() => handleCheckboxChange(4)}
-                          />
-                        </td>
-                        <td>211</td>
-                        <td>Tomografi</td>
-                        <td></td>
-                      </tr>
-                    </tbody>
-                  </table>
-                  <Button
-                    variant="contained"
-                    color="primary"
-                    style={{ margin: "20px auto", display: "block" }}
-                  >
-                    Ekle
-                  </Button>
-                </div>
+                <IstemListesi
+                  addToTableIstem={addToTableIstem}
+                  onSelectedItemsChange={handleSelectedIstemListChange}
+                />
               </Card>
             </Modal>
             <MyStyledButton
@@ -472,53 +416,55 @@ const HomePage = () => {
           <table>
             <thead>
               <tr>
-                <th style={{textAlign:"center"}}>Hasta Şikayeti</th>
+                <th style={{ textAlign: "center" }}>Hasta Şikayeti</th>
               </tr>
             </thead>
             <tbody>
               {cardTextList.map((text, index) => (
                 <tr key={index}>
-                  <td style={{textAlign:"center"}}>{text}</td>
+                  <td style={{ textAlign: "center" }}>{text}</td>
                 </tr>
               ))}
             </tbody>
           </table>
         </Card>
 
-        <Card className="mainCard" style={{ height: "120px", width: "300px"}}>
+        <Card className="mainCard" style={{ height: "120px", width: "300px" }}>
           <table>
             <thead>
               <tr>
-                <th style={{textAlign:"center"}}>Tanı Listesi</th>
+                <th style={{ textAlign: "center" }}>Tanı Listesi</th>
               </tr>
             </thead>
             <tbody>
-              {tableData.map((item, index) => (
+              {selectedTaniList.map((item, index) => (
                 <tr key={index}>
-                  <td style={{textAlign:"center"}}>{item}</td>
+                  <td style={{ textAlign: "center" }}>{item}</td>
                 </tr>
               ))}
             </tbody>
           </table>
         </Card>
 
-        <Card className="mainCard" style={{ height: "120px", width: "300px", marginLeft:"80px" }}>
+        <Card
+          className="mainCard"
+          style={{ height: "120px", width: "300px", marginLeft: "80px" }}
+        >
           <table>
             <thead>
               <tr>
-                <th style={{textAlign:"center"}}>Hizmet - İstem</th>
+                <th style={{ textAlign: "center" }}>Hizmet - İstem</th>
               </tr>
             </thead>
             <tbody>
-              {tableData.map((item, index) => (
+              {selectedIstemList.map((item, index) => (
                 <tr key={index}>
-                  <td style={{textAlign:"center"}}>{item}</td>
+                  <td style={{ textAlign: "center" }}>{item}</td>
                 </tr>
               ))}
             </tbody>
           </table>
         </Card>
-
       </Grid>
     </div>
   );

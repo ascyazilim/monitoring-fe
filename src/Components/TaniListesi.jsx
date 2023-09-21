@@ -5,12 +5,14 @@ import "./Card.css";
 import { Button } from "@mui/material";
 import "./TaniList.css";
 
-const TaniListesi = ({addToTable}) => {
+const TaniListesi = ({addToTable, onSelectedItemsChange}) => {
   const [taniList, setTaniList] = useState([]);
   const [loading, setLoading] = useState(true);
   const [selectedOption, setSelectedOption] = useState("");
 
   const [isModalOpen, setIsModalopen] = useState(false);
+
+  const [selectedTaniList, setSelectedTaniList] = useState([]);
 
 
   useEffect(() => {
@@ -30,6 +32,8 @@ const TaniListesi = ({addToTable}) => {
   const handleAddOption = () => {
     if (selectedOption.trim() !== '') {
       addToTable(selectedOption);
+
+      onSelectedItemsChange([...selectedTaniList, selectedOption]);
       setSelectedOption("");
       setIsModalopen(false);
     }
