@@ -1,7 +1,15 @@
 import React, { useState, useEffect } from "react";
-import { Card, Button } from "@mui/material";
+import {
+  Card,
+  Button,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+} from "@mui/material";
 import axios from "axios";
-import { Link } from "react-router-dom";
 import "./Card.css";
 import "./TaniList.css";
 
@@ -36,39 +44,45 @@ const IlacListesi = ({ addToTableIlac, onSelectedItemsChange }) => {
   };
 
   return (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        height: 400,
-        width: 600,
-      }}
-    >
-      <h2 style={{marginLeft:"80px"}}>İlaç Listesi</h2>
-      <div className="checkbox-container" style={{width:"300px"}}>
-        <div className="scrollable-container">
-          {ilacList.map((ilac) => (
-            <label key={ilac.id} className="checkbox-item">
-              <input
-                type="checkbox"
-                name="option"
-                value={ilac.ilacAdi}
-                checked={selectedOption === ilac.ilacAdi}
-                onChange={() => setSelectedOption(ilac.ilacAdi)}
-                className="checkbox-input"
-              />
-              {ilac.ilacAdi}
-            </label>
-          ))}
-        </div>
-        <div
-          // style={{
-          //   display: "flex",
-          //   justifyContent: "flex-end",
-          //   marginRight: "10px",
-          //   marginTop: "5px",
-          // }}
-        >
+    <div>
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          height: 350,
+          width: 500,
+        }}
+      >
+        <h2 style={{ marginLeft: "80px" }}>İlaç Listesi</h2>
+        <TableContainer>
+          <Table>
+            <TableHead>
+              <TableRow>
+                <TableCell>Seç</TableCell>
+                <TableCell>İlac Adı</TableCell>
+                <TableCell>Doz</TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {ilacList.map((ilac) => (
+                <TableRow key={ilac.id}>
+                  <TableCell>
+                    <input
+                      type="checkbox"
+                      name="option"
+                      value={ilac.ilacAdi}
+                      checked={selectedOption === ilac.ilacAdi}
+                      onChange={() => setSelectedOption(ilac.ilacAdi)}
+                    />
+                  </TableCell>
+                  <TableCell>{ilac.ilacAdi}</TableCell>
+                  <TableCell>{ilac.doz}</TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </TableContainer>
+        <div>
           <Button
             variant="contained"
             color="primary"

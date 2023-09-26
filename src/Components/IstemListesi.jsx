@@ -7,10 +7,7 @@ import { Button } from "@mui/material";
 const IstemListesi = ({ addToTableIstem, onSelectedItemsChange }) => {
   const [istemList, setIstemList] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [selectedOption, setSelectedOption] = useState("");
-
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
+  const [selectedOptions, setSelectedOptions] = useState([]);
   const [selectedIstemList, setSelectedIstemList] = useState([]);
 
   useEffect(() => {
@@ -28,15 +25,26 @@ const IstemListesi = ({ addToTableIstem, onSelectedItemsChange }) => {
     fetchIstemListesi();
   }, []);
 
-  const handleAddOption = () => {
-    if (selectedOption.trim() !== "") {
-      addToTableIstem(selectedOption);
-
-      onSelectedItemsChange([...selectedIstemList, selectedOption]);
-      setSelectedOption("");
-      setIsModalOpen(false);
+  const handleOptionChange = (option) => {
+    const index = selectedOptions.indexOf(option);
+    if (index === -1) {
+      // Eğer seçili değilse, ekleyin
+      setSelectedOptions([...selectedOptions, option]);
+    } else {
+      // Eğer seçili ise, kaldırın
+      setSelectedOptions(selectedOptions.filter((item) => item !== option));
     }
   };
+
+  const handleAddOption = () => {
+    if (selectedOptions.length > 0) {
+      addToTableIstem(selectedOptions);
+
+      onSelectedItemsChange([...selectedIstemList, ...selectedOptions]);
+      setSelectedOptions([]);
+    }
+  };
+
   return (
     <div
       style={{
@@ -46,7 +54,7 @@ const IstemListesi = ({ addToTableIstem, onSelectedItemsChange }) => {
         width: 620,
       }}
     >
-      <h2 style={{marginLeft:"80px"}}>Hizmet - İstem Listesi</h2>
+      <h2 style={{ marginLeft: "80px" }}>Hizmet - İstem Listesi</h2>
       <div className="checkbox-container">
         <div className="scrollable-container">
           {istemList.map((istem) => (
@@ -55,8 +63,8 @@ const IstemListesi = ({ addToTableIstem, onSelectedItemsChange }) => {
                 type="checkbox"
                 name="option"
                 value={istem.istemAdi}
-                checked={selectedOption === istem.istemAdi}
-                onChange={() => setSelectedOption(istem.istemAdi)}
+                checked={selectedOptions.includes(istem.istemAdi)}
+                onChange={() => handleOptionChange(istem.istemAdi)}
                 className="checkbox-input"
               />
               {istem.istemAdi}

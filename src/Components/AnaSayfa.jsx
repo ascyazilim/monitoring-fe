@@ -21,10 +21,12 @@ import {
   Select,
   MenuItem,
 } from "@mui/material";
+
 import { Link } from "react-router-dom";
 import axios from "axios";
 import "../App.css";
 import "./Card.css";
+import "./TaniList.css";
 import { styled } from "@mui/system";
 import SettingsIcon from "@mui/icons-material/Settings";
 import CloseIcon from "@mui/icons-material/Close";
@@ -382,8 +384,8 @@ const HomePage = () => {
               <Card
                 className="mainCard"
                 style={{
-                  height: "250px",
-                  width: "320px",
+                  height: "350px",
+                  width: "520px",
                   borderRadius: "20px",
                 }}
               >
@@ -428,7 +430,11 @@ const HomePage = () => {
           </div>
         </div>
 
-        <Card className="mainCard" style={{ height: "140px", width: "700px" }}>
+        <Card
+          elevation={3}
+          className="mainCard"
+          style={{ height: "140px", width: "690px" }}
+        >
           <table>
             <thead>
               <tr>
@@ -445,7 +451,11 @@ const HomePage = () => {
           </table>
         </Card>
 
-        <Card className="mainCard" style={{ height: "120px", width: "300px" }}>
+        <Card
+          elevation={3}
+          className="mainCard"
+          style={{ height: "120px", width: "300px" }}
+        >
           <table>
             <thead>
               <tr>
@@ -463,8 +473,10 @@ const HomePage = () => {
         </Card>
 
         <Card
+        
+          elevation={3}
           className="mainCard"
-          style={{ height: "120px", width: "300px", marginLeft: "80px" }}
+          style={{ height: "220px", width: "300px", marginLeft: "80px" }}
         >
           <table>
             <thead>
@@ -482,7 +494,12 @@ const HomePage = () => {
           </table>
         </Card>
 
-        <Card className="mainCard" style={{ height: "120px", width: "300px" }}>
+        <Card
+          sx={{ borderRadius: "1rem" }}
+          elevation={3}
+          className="mainCard"
+          style={{ height: "120px", width: "300px" }}
+        >
           <table>
             <thead>
               <tr>
