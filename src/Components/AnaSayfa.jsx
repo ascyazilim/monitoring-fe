@@ -44,12 +44,14 @@ const HomePage = () => {
   const [tableData, setTableData] = useState([]);
 
   const [tableIstemData, setTableIstemData] = useState([]);
+  const [tableIlacData, setTableIlacData] = useState([]);
 
   const [inputText, setInputText] = useState("");
   const [cardTextList, setCardTextList] = useState([]);
 
   const [selectedTaniList, setSelectedTaniList] = useState([]);
   const [selectedIstemList, setSelectedIstemList] = useState([]);
+  const [selectedIlacList, setSelectedIlacList] = useState([]);
 
   const [taniList, setTaniList] = useState([]);
   const [list, setList] = useState([]);
@@ -72,6 +74,10 @@ const HomePage = () => {
 
   const addToTableIstem = (selectedOption) => {
     setTableIstemData([...tableIstemData, selectedOption]);
+  };
+
+  const addToTableIlac = (selectedOption) => {
+    setTableIlacData([...tableIlacData, selectedOption]);
   };
 
   const openModal = () => {
@@ -116,6 +122,10 @@ const HomePage = () => {
 
   const handleSelectedTaniListChange = (selectedItems) => {
     setSelectedTaniList(selectedItems);
+  };
+
+  const handleSelectedIlacListChange = (selectedItems) => {
+    setSelectedIlacList(selectedItems);
   };
 
   const handleTaniSelect = (selectedItems) => {
@@ -238,7 +248,11 @@ const HomePage = () => {
             >
               <Card
                 className="mainCard"
-                style={{ height: "340px", width: "600px" }}
+                style={{
+                  height: "280px",
+                  width: "400px",
+                  borderRadius: "15px",
+                }}
               >
                 <DialogTitle
                   style={{ display: "flex", justifyContent: "flex-end" }}
@@ -261,9 +275,9 @@ const HomePage = () => {
                     onChange={handleInputChange}
                   />
                 </div>
-                <div>
+                {/* <div>
                   <TextField label="Hikaye" fullWidth />
-                </div>
+                </div> */}
                 <div>
                   <TextField
                     label="Tanı Listesi"
@@ -368,13 +382,15 @@ const HomePage = () => {
               <Card
                 className="mainCard"
                 style={{
-                  height: "350px",
-                  width: "400px",
+                  height: "250px",
+                  width: "320px",
                   borderRadius: "20px",
                 }}
               >
-                {/* DoktorList component'ini burada görüntüle */}
-                <IlacListesi />
+                <IlacListesi
+                  addToTableIlac={addToTableIlac}
+                  onSelectedItemsChange={handleSelectedIlacListChange}
+                />
               </Card>
             </Modal>
             <MyStyledButton
@@ -458,6 +474,23 @@ const HomePage = () => {
             </thead>
             <tbody>
               {selectedIstemList.map((item, index) => (
+                <tr key={index}>
+                  <td style={{ textAlign: "center" }}>{item}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </Card>
+
+        <Card className="mainCard" style={{ height: "120px", width: "300px" }}>
+          <table>
+            <thead>
+              <tr>
+                <th style={{ textAlign: "center" }}>İlaç</th>
+              </tr>
+            </thead>
+            <tbody>
+              {selectedIlacList.map((item, index) => (
                 <tr key={index}>
                   <td style={{ textAlign: "center" }}>{item}</td>
                 </tr>
