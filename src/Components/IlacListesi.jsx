@@ -50,11 +50,13 @@ const IlacListesi = ({ addToTableIlac, onSelectedItemsChange }) => {
           display: "flex",
           flexDirection: "column",
           height: 350,
-          width: 500,
+          width: "100%",
+          
         }}
+        
       >
         <h2 style={{ marginLeft: "80px" }}>İlaç Listesi</h2>
-        <TableContainer>
+        <TableContainer className="scrollable-container">
           <Table>
             <TableHead>
               <TableRow>

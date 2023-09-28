@@ -384,8 +384,8 @@ const HomePage = () => {
               <Card
                 className="mainCard"
                 style={{
-                  height: "350px",
-                  width: "520px",
+                  height: "340px",
+                  width: "280px",
                   borderRadius: "20px",
                 }}
               >
@@ -476,7 +476,7 @@ const HomePage = () => {
         
           elevation={3}
           className="mainCard"
-          style={{ height: "220px", width: "300px", marginLeft: "80px" }}
+          style={{ height: "150px", width: "300px", marginLeft: "80px" }}
         >
           <table>
             <thead>
