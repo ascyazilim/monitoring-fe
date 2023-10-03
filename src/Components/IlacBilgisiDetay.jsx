@@ -36,7 +36,9 @@ function IlacBilgisiDetay() {
         <h2 className="mainCardH2">İlaç Bilgisi Detay</h2>
 
         <div>ID: {ilacDetay.id}</div>
+
         <div>Açıklama: {ilacDetay.aciklama}</div>
+        <div>Ad: {ilacDetay.ad}</div>
         <div>Adet: {ilacDetay.adet}</div>
         <div>Barkod: {ilacDetay.barkod}</div>
         <div>Hizmet Sunucu RefNo: {ilacDetay.hizmetSunucuRefNo}</div>

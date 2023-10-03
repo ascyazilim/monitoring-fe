@@ -20,6 +20,8 @@ import {
   InputLabel,
   Select,
   MenuItem,
+  TableContainer,
+  Paper,
 } from "@mui/material";
 
 import { Link } from "react-router-dom";
@@ -45,11 +47,15 @@ const HomePage = () => {
 
   const [tableData, setTableData] = useState([]);
 
+  const [selectedData, setSelectedData] = useState([]);
+
   const [tableIstemData, setTableIstemData] = useState([]);
   const [tableIlacData, setTableIlacData] = useState([]);
 
   const [inputText, setInputText] = useState("");
   const [cardTextList, setCardTextList] = useState([]);
+
+  const [selectedContent, setSelectedContent] = useState("");
 
   const [selectedTaniList, setSelectedTaniList] = useState([]);
   const [selectedIstemList, setSelectedIstemList] = useState([]);
@@ -150,10 +156,33 @@ const HomePage = () => {
     }
   };
 
+  const handleAddToTable = () => {
+    const newData = {
+      sikayet: inputText,
+      tani: selectedTaniList,
+      istem: selectedIstemList,
+      ilac: selectedIlacList
+      
+    };
+    setSelectedData([...selectedData, newData]);
+  };
+
   const handleAddTextToCard = () => {
     setCardTextList([...cardTextList, inputText]);
+    setSelectedContent(
+      'Şikayet: ${inputText}, Tanı Listesi: ${selectedTaniList.join(",")}'
+    );
     setInputText(""); // input alanını temizleyelim
     closeInputModal(); // Modal'ı kapat
+    handleAddToTable();
+  };
+
+  const handleAddIstemToCard = () => {
+    setSelectedContent('Seçilen İstemler: ${selectedIstemList.join(",")}');
+  };
+
+  const handleAddIlacToCard = () => {
+    setSelectedContent('Seçilen İlaçlar: ${selectedIlacList.join(",")}');
   };
 
   const handleAddButtonClick = () => {
@@ -169,12 +198,15 @@ const HomePage = () => {
     setSelectedItems([]);
   };
 
-  const MyStyledButton = styled(Button)({
-    fontSize: "6px",
-    padding: "10px 20px",
-    backgroundColor: "skyblue",
-    color: "black",
-  });
+  const MyStyledButton = ({ onClick, label }) => {
+    return (
+      <li>
+        <a href="#" onClick={onClick}>
+          <span>{label}</span>
+        </a>
+      </li>
+    );
+  };
 
   //const maxDisplayItems = 2;
 
@@ -224,76 +256,99 @@ const HomePage = () => {
 
   return (
     <div style={{ height: "650px", marginLeft: "50px" }}>
-      <h2 style={{ textAlign: "center" }}>Ana Sayfa</h2>
+      <h2 style={{ textAlign: "center"}}>Ana Sayfa</h2>
       <Grid container spacing={3}>
         <div style={{ marginBottom: "10px" }}>
           <div style={{ display: "flex", justifyContent: "start" }}>
-            <MyStyledButton
-              className="menuButton"
-              variant="contained"
-              startIcon={<SettingsIcon />}
-              color="primary"
-              onClick={openSecondModal}
-            >
-              Anamnez Ekle
-            </MyStyledButton>
-            <Modal
-              open={isSecondModalOpen}
-              onClose={closeSecondModal}
-              style={{
-                position: "absolute",
-                top: "20%",
-                left: "20%",
-                borderRadius: "5px",
-              }}
-              BackdropProps={{ invisible: true }}
-            >
-              <Card
-                className="mainCard"
-                style={{
-                  height: "280px",
-                  width: "400px",
-                  borderRadius: "15px",
-                }}
-              >
-                <DialogTitle
-                  style={{ display: "flex", justifyContent: "flex-end" }}
+            <div id="tabs">
+              <ul>
+                <MyStyledButton onClick={openSecondModal} label={"Anamnez Ekle"}/>
+                <Modal
+                  open={isSecondModalOpen}
+                  onClose={closeSecondModal}
+                  style={{
+                    position: "absolute",
+                    top: "20%",
+                    left: "20%",
+                    borderRadius: "5px",
+                  }}
+                  BackdropProps={{ invisible: true }}
                 >
-                  <h3 style={{ marginRight: "200px" }}>Anamnez </h3>
-                  <IconButton
-                    edge="end"
-                    color="inherit"
-                    onClick={closeSecondModal}
-                    aria-label="close"
+                  <Card
+                    className="mainCard"
+                    style={{
+                      height: "280px",
+                      width: "400px",
+                      borderRadius: "15px",
+                    }}
                   >
-                    <CloseIcon />
-                  </IconButton>
-                </DialogTitle>
-                <div>
-                  <TextField
-                    label="Şikayet"
-                    fullWidth
-                    value={inputText}
-                    onChange={handleInputChange}
-                  />
-                </div>
-                {/* <div>
+                    <DialogTitle
+                      style={{ display: "flex", justifyContent: "flex-end" }}
+                    >
+                      <h3 style={{ marginRight: "135px" }}>Anamnez </h3>
+                    </DialogTitle>
+                    <div>
+                      <TextField
+                        label="Şikayet"
+                        fullWidth
+                        value={inputText}
+                        onChange={handleInputChange}
+                      />
+                    </div>
+                    {/* <div>
                   <TextField label="Hikaye" fullWidth />
                 </div> */}
-                <div>
-                  <TextField
-                    label="Tanı Listesi"
-                    fullWidth
-                    value={selectedTaniList.join(", ")}
-                    onChange={(e) =>
-                      setSelectedTaniList(e.target.value.split(", "))
-                    }
-                    onClick={openTani}
-                  />
-                </div>
+                    <div>
+                      <TextField
+                        label="Tanı Listesi"
+                        fullWidth
+                        value={selectedTaniList.join(", ")}
+                        onChange={(e) =>
+                          setSelectedTaniList(e.target.value.split(", "))
+                        }
+                        onClick={openTani}
+                      />
+                    </div>
+                    <Modal
+                      open={isTaniOpen} // Modal, isTaniOpen durumuna bağlı olarak açılıp kapanacak
+                      onClose={closeTani} // Modal'ı kapatmak için closeTani işlemini kulla
+                      style={{
+                        position: "absolute",
+                        top: "20%",
+                        left: "20%",
+                        borderRadius: "5px",
+                      }}
+                      BackdropProps={{ invisible: true }}
+                    >
+                      <Card
+                        className="mainCard"
+                        style={{
+                          height: "420px",
+                          width: 430,
+                          borderRadius: "20px",
+                        }}
+                      >
+                        {/* TaniBilgisiList bileşenini burada görüntüle */}
+                        <TaniListesi
+                          addToTable={addToTable}
+                          onSelectedItemsChange={handleSelectedTaniListChange}
+                        />
+                      </Card>
+                    </Modal>
+                    <Button
+                      variant="contained"
+                      color="primary"
+                      onClick={handleAddTextToCard}
+                      style={{ margin: "20px auto", display: "block" }}
+                    >
+                      Ekle
+                    </Button>
+                  </Card>
+                </Modal>
+                <MyStyledButton onClick={openModal} label={"Hizmet-istem"} />
                 <Modal
-                  open={isTaniOpen} // Modal, isTaniOpen durumuna bağlı olarak açılıp kapanacak
-                  onClose={closeTani} // Modal'ı kapatmak için closeTani işlemini kulla
+                  open={isModalOpen}
+                  onClose={closeModal}
                   style={{
                     position: "absolute",
                     top: "20%",
@@ -310,214 +365,72 @@ const HomePage = () => {
                       borderRadius: "20px",
                     }}
                   >
-                    {/* TaniBilgisiList bileşenini burada görüntüle */}
-                    <TaniListesi
-                      addToTable={addToTable}
-                      onSelectedItemsChange={handleSelectedTaniListChange}
+                    <IstemListesi
+                      addToTableIstem={addToTableIstem}
+                      onSelectedItemsChange={handleSelectedIstemListChange}
                     />
                   </Card>
                 </Modal>
-                <Button
-                  variant="contained"
-                  color="primary"
-                  onClick={handleAddTextToCard}
-                  style={{ margin: "20px auto", display: "block" }}
+                <MyStyledButton onClick={openDoktorList} label={"İlaç"} />
+                <Modal
+                  open={isModalDoktorOpen}
+                  onClose={closeDoktorList}
+                  style={{
+                    position: "absolute",
+                    top: "20%",
+                    left: "20%",
+                    borderRadius: "5px",
+                  }}
+                  BackdropProps={{ invisible: true }}
                 >
-                  Ekle
-                </Button>
-              </Card>
-            </Modal>
-            <MyStyledButton
-              className="menuButton"
-              variant="contained"
-              startIcon={<SettingsIcon />}
-              color="primary"
-              onClick={openModal}
-            >
-              Hizmet-İstem
-            </MyStyledButton>
-            <Modal
-              open={isModalOpen}
-              onClose={closeModal}
-              style={{
-                position: "absolute",
-                top: "20%",
-                left: "20%",
-                borderRadius: "5px",
-              }}
-              BackdropProps={{ invisible: true }}
-            >
-              <Card
-                className="mainCard"
-                style={{
-                  height: "420px",
-                  width: 430,
-                  borderRadius: "20px",
-                }}
-              >
-                <IstemListesi
-                  addToTableIstem={addToTableIstem}
-                  onSelectedItemsChange={handleSelectedIstemListChange}
-                />
-              </Card>
-            </Modal>
-            <MyStyledButton
-              className="menuButton"
-              variant="contained"
-              startIcon={<SettingsIcon />}
-              color="primary"
-              onClick={openDoktorList}
-            >
-              İlaç
-            </MyStyledButton>
-            <Modal
-              open={isModalDoktorOpen}
-              onClose={closeDoktorList}
-              style={{
-                position: "absolute",
-                top: "20%",
-                left: "20%",
-                borderRadius: "5px",
-              }}
-              BackdropProps={{ invisible: true }}
-            >
-              <Card
-                className="mainCard"
-                style={{
-                  height: "340px",
-                  width: "280px",
-                  borderRadius: "20px",
-                }}
-              >
-                <IlacListesi
-                  addToTableIlac={addToTableIlac}
-                  onSelectedItemsChange={handleSelectedIlacListChange}
-                />
-              </Card>
-            </Modal>
-            <MyStyledButton
-              className="menuButton"
-              variant="contained"
-              startIcon={<SettingsIcon />}
-              color="primary"
-            >
-              Reçete
-            </MyStyledButton>
-            <MyStyledButton
-              className="menuButton"
-              variant="contained"
-              startIcon={<SettingsIcon />}
-              color="primary"
-            >
-              Tedavi Planlama
-            </MyStyledButton>
-            <MyStyledButton
-              className="menuButton"
-              variant="contained"
-              startIcon={<SettingsIcon />}
-              color="primary"
-            >
-              Formlar
-            </MyStyledButton>
-            <MyStyledButton
-              className="menuButton"
-              variant="contained"
-              startIcon={<SettingsIcon />}
-              color="primary"
-            >
-              Karar-Taburcu
-            </MyStyledButton>
+                  <Card
+                    className="mainCard"
+                    style={{
+                      height: "345px",
+                      width: "380px",
+                      borderRadius: "20px",
+                    }}
+                  >
+                    <IlacListesi
+                      addToTableIlac={addToTableIlac}
+                      onSelectedItemsChange={handleSelectedIlacListChange}
+                    />
+                  </Card>
+                </Modal>
+                <MyStyledButton label={"Reçete"} />
+                <MyStyledButton label={"Tedavi Planlama"} />
+                <MyStyledButton label={"Formlar"} />
+                <MyStyledButton label={"Karar-Taburcu"} />
+              </ul>
+            </div>
           </div>
         </div>
 
-        <Card
-          elevation={3}
-          className="mainCard"
-          style={{ height: "140px", width: "690px" }}
-        >
-          <table>
-            <thead>
-              <tr>
-                <th style={{ textAlign: "center" }}>Hasta Şikayeti</th>
-              </tr>
-            </thead>
-            <tbody>
-              {cardTextList.map((text, index) => (
-                <tr key={index}>
-                  <td style={{ textAlign: "center" }}>{text}</td>
-                </tr>
+        <TableContainer component={Paper}>
+          <Table>
+            <TableHead>
+              <TableRow>
+                <TableCell>Şikayet</TableCell>
+                <TableCell>Tanı</TableCell>
+                <TableCell>Hizmet-İstem</TableCell>
+                <TableCell>İlaç</TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {selectedData.map((row, index) => (
+                <TableRow key={index}>
+                  <TableCell>{row.sikayet}</TableCell>
+                  <TableCell>{row.tani.join(", ")}</TableCell>
+                  <TableCell>{row.istem}</TableCell>
+                  <TableCell>{row.ilac}</TableCell>
+                </TableRow>
               ))}
-            </tbody>
-          </table>
-        </Card>
-
-        <Card
-          elevation={3}
-          className="mainCard"
-          style={{ height: "120px", width: "300px" }}
-        >
-          <table>
-            <thead>
-              <tr>
-                <th style={{ textAlign: "center" }}>Tanı Listesi</th>
-              </tr>
-            </thead>
-            <tbody>
-              {selectedTaniList.map((item, index) => (
-                <tr key={index}>
-                  <td style={{ textAlign: "center" }}>{item}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </Card>
-
-        <Card
+            </TableBody>
+          </Table>
+        </TableContainer>
         
-          elevation={3}
-          className="mainCard"
-          style={{ height: "150px", width: "300px", marginLeft: "80px" }}
-        >
-          <table>
-            <thead>
-              <tr>
-                <th style={{ textAlign: "center" }}>Hizmet - İstem</th>
-              </tr>
-            </thead>
-            <tbody>
-              {selectedIstemList.map((item, index) => (
-                <tr key={index}>
-                  <td style={{ textAlign: "center" }}>{item}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </Card>
-
-        <Card
-          sx={{ borderRadius: "1rem" }}
-          elevation={3}
-          className="mainCard"
-          style={{ height: "120px", width: "300px" }}
-        >
-          <table>
-            <thead>
-              <tr>
-                <th style={{ textAlign: "center" }}>İlaç</th>
-              </tr>
-            </thead>
-            <tbody>
-              {selectedIlacList.map((item, index) => (
-                <tr key={index}>
-                  <td style={{ textAlign: "center" }}>{item}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </Card>
       </Grid>
     </div>
   );
 };
-
 export default HomePage;

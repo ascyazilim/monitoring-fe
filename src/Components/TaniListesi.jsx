@@ -48,7 +48,7 @@ const TaniListesi = ({addToTable, onSelectedItemsChange}) => {
         width: 620,
       }}
     >
-      <h2>Tanı Listesi</h2>
+      <h2 style={{marginLeft: "135px"}}>Tanı Listesi</h2>
       <div className="checkbox-container">
         <div className="scrollable-container">
           {taniList.map((tani) => (

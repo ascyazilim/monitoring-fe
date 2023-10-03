@@ -55,7 +55,7 @@ const IlacListesi = ({ addToTableIlac, onSelectedItemsChange }) => {
         }}
         
       >
-        <h2 style={{ marginLeft: "80px" }}>İlaç Listesi</h2>
+        <h2 style={{textAlign:"center"}}>İlaç Listesi</h2>
         <TableContainer className="scrollable-container">
           <Table>
             <TableHead>
