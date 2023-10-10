@@ -74,16 +74,17 @@ const App = () => {
                     width: "400px",
                     color: "darkblue",
                     marginRight: "10px",
+                    border:"1px solid #1976d2"
                   }}
                 >
                   <h2 style={{ margin: "10px" }}>Hasta Başı Monitör</h2>
                 </Card>
-                <Card style={{ width: "200px" }}>
+                <Card style={{ width: "200px", border:"1px solid #1976d2"  }}>
                   <HastaAra />
                 </Card>
               </div>
               <div style={{ display: "flex", justifyContent: "start" }}>
-                <Card style={{ width: "125px", height: "80px", margin: "5px" }}>
+                <Card style={{ width: "125px", height: "80px", margin: "5px", border:"1px solid #1976d2" }}>
                   <div>
                     <img
                       src={logo}
@@ -99,6 +100,7 @@ const App = () => {
                     height: "80px",
                     margin: "5px",
                     textAlign: "center",
+                    border:"1px solid #1976d2"
                   }}
                 >
                   <div style={{ marginTop: "10px" }}>
@@ -113,6 +115,7 @@ const App = () => {
                     height: "80px",
                     margin: "5px",
                     textAlign: "center",
+                    border:"1px solid #1976d2"
                   }}
                 >
                   <div style={{marginTop: "10px"}}>
@@ -126,6 +129,7 @@ const App = () => {
                     height: "80px",
                     margin: "5px",
                     textAlign: "center",
+                    border:"1px solid #1976d2"
                   }}
                 >
                   <div style={{ marginTop: "10px" }}>
@@ -136,7 +140,7 @@ const App = () => {
               </div>
 
               <div
-                style={{ borderBottom: "1px solid #ccc", marginBottom: "10px" }}
+                style={{ borderBottom: "1px solid #1976d2", marginBottom: "10px" }}
               ></div>
               <Routes>
                 <Route path="/" element={<AnaSayfa />} />

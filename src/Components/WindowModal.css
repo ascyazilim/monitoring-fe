@@ -1,0 +1,47 @@
+.window-modal {
+    width: 400px;
+    height: 300px;
+    background-color: white;
+    border: 1px solid #ccc;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.window-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px;
+    background-color: #0078d4;
+    color: white;
+    cursor: pointer;
+}
+
+.window-title {
+    margin: 0;
+}
+
+.window-actions {
+    display: flex;
+    gap: 4px;
+}
+
+.window-actions button {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 12px;
+    cursor: pointer;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.window-content {
+    padding: 16px;
+}

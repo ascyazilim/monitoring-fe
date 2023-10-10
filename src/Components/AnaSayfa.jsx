@@ -161,20 +161,24 @@ const HomePage = () => {
       sikayet: inputText,
       tani: selectedTaniList,
       istem: selectedIstemList,
-      ilac: selectedIlacList
-      
+      ilac: selectedIlacList,
     };
     setSelectedData([...selectedData, newData]);
   };
 
   const handleAddTextToCard = () => {
-    setCardTextList([...cardTextList, inputText]);
+    const newData = {
+      sikayet: inputText,
+      tani: selectedTaniList.join(", "),
+      istem: selectedIstemList.join(", "),
+      ilac: selectedIlacList.join(", "),
+    };
+    setSelectedData([...selectedData, newData]);
     setSelectedContent(
-      'Şikayet: ${inputText}, Tanı Listesi: ${selectedTaniList.join(",")}'
+      `Şikayet: ${inputText}, Tanı Listesi: ${selectedTaniList.join(",")}`
     );
-    setInputText(""); // input alanını temizleyelim
-    closeInputModal(); // Modal'ı kapat
-    handleAddToTable();
+    setInputText("");
+    closeInputModal();
   };
 
   const handleAddIstemToCard = () => {
@@ -256,13 +260,16 @@ const HomePage = () => {
 
   return (
     <div style={{ height: "650px", marginLeft: "50px" }}>
-      <h2 style={{ textAlign: "center"}}>Ana Sayfa</h2>
+      <h2 style={{ textAlign: "center", marginBottom: "5px" }}>Ana Sayfa</h2>
       <Grid container spacing={3}>
         <div style={{ marginBottom: "10px" }}>
           <div style={{ display: "flex", justifyContent: "start" }}>
-            <div id="tabs">
+            <Card id="tabs">
               <ul>
-                <MyStyledButton onClick={openSecondModal} label={"Anamnez Ekle"}/>
+                <MyStyledButton
+                  onClick={openSecondModal}
+                  label={"Anamnez Ekle"}
+                />
                 <Modal
                   open={isSecondModalOpen}
                   onClose={closeSecondModal}
@@ -272,7 +279,7 @@ const HomePage = () => {
                     left: "20%",
                     borderRadius: "5px",
                   }}
-                  BackdropProps={{ invisible: true }}
+                  BackdropProps={{ invisible: false }}
                 >
                   <Card
                     className="mainCard"
@@ -318,13 +325,13 @@ const HomePage = () => {
                         left: "20%",
                         borderRadius: "5px",
                       }}
-                      BackdropProps={{ invisible: true }}
+                      BackdropProps={{ invisible: false }}
                     >
                       <Card
                         className="mainCard"
                         style={{
-                          height: "420px",
-                          width: 430,
+                          height: "500px",
+                          width: 600,
                           borderRadius: "20px",
                         }}
                       >
@@ -355,7 +362,7 @@ const HomePage = () => {
                     left: "20%",
                     borderRadius: "5px",
                   }}
-                  BackdropProps={{ invisible: true }}
+                  BackdropProps={{ invisible: false }}
                 >
                   <Card
                     className="mainCard"
@@ -381,7 +388,7 @@ const HomePage = () => {
                     left: "20%",
                     borderRadius: "5px",
                   }}
-                  BackdropProps={{ invisible: true }}
+                  BackdropProps={{ invisible: false }}
                 >
                   <Card
                     className="mainCard"
@@ -402,7 +409,7 @@ const HomePage = () => {
                 <MyStyledButton label={"Formlar"} />
                 <MyStyledButton label={"Karar-Taburcu"} />
               </ul>
-            </div>
+            </Card>
           </div>
         </div>
 
@@ -420,7 +427,9 @@ const HomePage = () => {
               {selectedData.map((row, index) => (
                 <TableRow key={index}>
                   <TableCell>{row.sikayet}</TableCell>
-                  <TableCell>{row.tani.join(", ")}</TableCell>
+                  <TableCell>
+                    {Array.isArray(row.tani) ? row.tani.join(", ") : row.tani}
+                  </TableCell>
                   <TableCell>{row.istem}</TableCell>
                   <TableCell>{row.ilac}</TableCell>
                 </TableRow>
@@ -428,7 +437,19 @@ const HomePage = () => {
             </TableBody>
           </Table>
         </TableContainer>
-        
+
+        <table style={{width: "270px"}}>
+          <thead>
+            <tr>
+              <th>ICD Kodu</th>
+              <th>Tanı Adı</th>
+            </tr>
+          </thead>
+          <tbody>
+            <td>12315</td>
+            <td>Kızamık</td>
+          </tbody>
+        </table>
       </Grid>
     </div>
   );

@@ -70,7 +70,7 @@ input[type="checkbox"] {
   float: left;
   width: 100%;
   font-size: 93%;
-  /* border-bottom: 1px solid #2763A5; */
+  border-bottom: 2px solid #1976d2; 
   line-height: normal;
 }
 
