@@ -38,6 +38,7 @@ import IlacListesi from "./IlacListesi";
 import IlacListesiDetay from "./IlacListesiDetay";
 import TaniListesi from "./TaniListesi";
 import IstemListesi from "./IstemListesi";
+import WindowModal from "./WindowModal";
 
 const HomePage = () => {
   const [hastaBilgileri, setHastaBilgileri] = useState([]);
@@ -270,31 +271,15 @@ const HomePage = () => {
                   onClick={openSecondModal}
                   label={"Anamnez Ekle"}
                 />
-                <Modal
-                  open={isSecondModalOpen}
+                <WindowModal
+                  isOpen={isSecondModalOpen}
                   onClose={closeSecondModal}
-                  style={{
-                    position: "absolute",
-                    top: "20%",
-                    left: "20%",
-                    borderRadius: "5px",
-                  }}
+                  
                   BackdropProps={{ invisible: false }}
                 >
-                  <Card
-                    className="mainCard"
-                    style={{
-                      height: "280px",
-                      width: "400px",
-                      borderRadius: "15px",
-                    }}
-                  >
-                    <DialogTitle
-                      style={{ display: "flex", justifyContent: "flex-end" }}
-                    >
-                      <h3 style={{ marginRight: "135px" }}>Anamnez </h3>
-                    </DialogTitle>
-                    <div>
+                  
+                    
+                    <div style={{marginBottom:"10px"}}>
                       <TextField
                         label="Şikayet"
                         fullWidth
@@ -330,8 +315,8 @@ const HomePage = () => {
                       <Card
                         className="mainCard"
                         style={{
-                          height: "500px",
-                          width: 600,
+                          height: "400px",
+                          width: "420px",
                           borderRadius: "20px",
                         }}
                       >
@@ -350,8 +335,8 @@ const HomePage = () => {
                     >
                       Ekle
                     </Button>
-                  </Card>
-                </Modal>
+                  
+                </WindowModal>
                 <MyStyledButton onClick={openModal} label={"Hizmet-istem"} />
                 <Modal
                   open={isModalOpen}
@@ -414,42 +399,31 @@ const HomePage = () => {
         </div>
 
         <TableContainer component={Paper}>
-          <Table>
-            <TableHead>
-              <TableRow>
-                <TableCell>Şikayet</TableCell>
-                <TableCell>Tanı</TableCell>
-                <TableCell>Hizmet-İstem</TableCell>
-                <TableCell>İlaç</TableCell>
-              </TableRow>
-            </TableHead>
-            <TableBody>
+          <table>
+            <thead>
+              <tr>
+                <th>Şikayet</th>
+                <th>Tanı</th>
+                <th>Hizmet-İstem</th>
+                <th>İlaç</th>
+              </tr>
+            </thead>
+            <tbody>
               {selectedData.map((row, index) => (
-                <TableRow key={index}>
-                  <TableCell>{row.sikayet}</TableCell>
-                  <TableCell>
+                <tr key={index}>
+                  <td style={{width: "20%"}}>{row.sikayet}</td>
+                  <td style={{width: "20%"}}>
                     {Array.isArray(row.tani) ? row.tani.join(", ") : row.tani}
-                  </TableCell>
-                  <TableCell>{row.istem}</TableCell>
-                  <TableCell>{row.ilac}</TableCell>
-                </TableRow>
+                  </td>
+                  <td style={{width: "50%"}}>{row.istem}</td>
+                  <td style={{width: "20%"}}>{row.ilac}</td>
+                </tr>
               ))}
-            </TableBody>
-          </Table>
+            </tbody>
+          </table>
         </TableContainer>
 
-        <table style={{width: "270px"}}>
-          <thead>
-            <tr>
-              <th>ICD Kodu</th>
-              <th>Tanı Adı</th>
-            </tr>
-          </thead>
-          <tbody>
-            <td>12315</td>
-            <td>Kızamık</td>
-          </tbody>
-        </table>
+        
       </Grid>
     </div>
   );

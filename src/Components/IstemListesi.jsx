@@ -67,7 +67,8 @@ const IstemListesi = ({ addToTableIstem, onSelectedItemsChange }) => {
                 onChange={() => handleOptionChange(istem.istemAdi)}
                 className="checkbox-input"
               />
-              {istem.istemAdi}
+              {`${istem.hizmetKodu} - ${istem.istemAdi}`}
+              
             </label>
           ))}
         </div>
