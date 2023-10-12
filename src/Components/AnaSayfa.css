@@ -1,0 +1,30 @@
+.tableHomePage {
+    display: block;
+    overflow: hidden;
+    border-collapse: collapse;
+    box-shadow: 0px 10px 10px #ccc;
+    border-radius: 10px;
+    margin: auto;
+}
+
+
+
+.tableHomePage thead {
+    background-color: #ccc;
+    color: #222;
+}
+
+.tableHomePage th, .tableHomePage td {
+    padding: 0.4rem;
+}
+
+.tableHomePage tbody tr:hover {
+    background-color: #a1cdf1;
+}
+
+.tableHomePage td {
+    border-top: 0.5px solid #ddd;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    /* background-color: white; */
+}

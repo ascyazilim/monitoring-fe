@@ -36,6 +36,7 @@ import logo from "./img/birkil.jpg";
 import HastaAra from "./Components/HastaAra";
 import MuayeneBilgisiDetayArama from "./Components/MuayeneBilgisiDetayArama";
 import Login from "./Components/Login";
+import AmeliyatGiris from "./Components/AmeliyatGiris";
 
 const MyStyledButton = styled(Button)({
   fontSize: "6px",
@@ -169,6 +170,7 @@ const App = () => {
                 <Route path="/login" element={<Login />} />
                 <Route path="/ilac-detay/:id" element={<IlacBilgisiDetay />} />
                 <Route path="/ilac-listesi" element={<IlacListesi />} />
+                <Route path="/ameliyat-giris" element={<AmeliyatGiris />} />
                 <Route
                   path="/ilac-list-detay/:id"
                   element={<IlacListesiDetay />}

@@ -29,6 +29,7 @@ import axios from "axios";
 import "../App.css";
 import "./Card.css";
 import "./TaniList.css";
+import "./AnaSayfa.css";
 import { styled } from "@mui/system";
 import SettingsIcon from "@mui/icons-material/Settings";
 import CloseIcon from "@mui/icons-material/Close";
@@ -364,31 +365,20 @@ const HomePage = () => {
                   </Card>
                 </Modal>
                 <MyStyledButton onClick={openDoktorList} label={"İlaç"} />
-                <Modal
-                  open={isModalDoktorOpen}
+                <WindowModal
+                  
+                  isOpen={isModalDoktorOpen}
                   onClose={closeDoktorList}
-                  style={{
-                    position: "absolute",
-                    top: "20%",
-                    left: "20%",
-                    borderRadius: "5px",
-                  }}
+                  
                   BackdropProps={{ invisible: false }}
                 >
-                  <Card
-                    className="mainCard"
-                    style={{
-                      height: "345px",
-                      width: "380px",
-                      borderRadius: "20px",
-                    }}
-                  >
+                  
                     <IlacListesi
                       addToTableIlac={addToTableIlac}
                       onSelectedItemsChange={handleSelectedIlacListChange}
                     />
-                  </Card>
-                </Modal>
+                  
+                </WindowModal>
                 <MyStyledButton label={"Reçete"} />
                 <MyStyledButton label={"Tedavi Planlama"} />
                 <MyStyledButton label={"Formlar"} />
@@ -398,8 +388,8 @@ const HomePage = () => {
           </div>
         </div>
 
-        <TableContainer component={Paper}>
-          <table>
+        {/* <TableContainer component={Paper}> */}
+          <table className="tableHomePage">
             <thead>
               <tr>
                 <th>Şikayet</th>
@@ -411,17 +401,17 @@ const HomePage = () => {
             <tbody>
               {selectedData.map((row, index) => (
                 <tr key={index}>
-                  <td style={{width: "20%"}}>{row.sikayet}</td>
-                  <td style={{width: "20%"}}>
+                  <td style={{width: "10%"}}>{row.sikayet}</td>
+                  <td style={{width: "40%"}}>
                     {Array.isArray(row.tani) ? row.tani.join(", ") : row.tani}
                   </td>
-                  <td style={{width: "50%"}}>{row.istem}</td>
-                  <td style={{width: "20%"}}>{row.ilac}</td>
+                  <td style={{width: "40%"}}>{row.istem}</td>
+                  <td style={{width: "10%"}}>{row.ilac}</td>
                 </tr>
               ))}
             </tbody>
           </table>
-        </TableContainer>
+        {/* </TableContainer> */}
 
         
       </Grid>

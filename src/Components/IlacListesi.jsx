@@ -45,16 +45,9 @@ const IlacListesi = ({ addToTableIlac, onSelectedItemsChange }) => {
 
   return (
     <div>
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          height: 350,
-          width: "100%",
-          
-        }}
+      
         
-      >
+      
         <h2 style={{textAlign:"center"}}>İlaç Listesi</h2>
         <TableContainer className="scrollable-container">
           <Table>
@@ -94,7 +87,7 @@ const IlacListesi = ({ addToTableIlac, onSelectedItemsChange }) => {
             Ekle
           </Button>
         </div>
-      </div>
+      
     </div>
   );
 };
