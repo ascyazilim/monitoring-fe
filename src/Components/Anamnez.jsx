@@ -7,25 +7,19 @@ import TaniEkle from './TaniEkle';
 function Anamnez() {
 
     const [isModalOpenTani, setModalOpenTani] = useState(false);
-    const [tableData, setTableData] = useState([]);
-    const [selectedItems, setSelectedItems] = useState([]);
-    const [selectedIstemList, setSelectedItemList] = useState([]);
+    const [selectedTaniList, setSelectedTaniList] = useState([]);
+
 
     const handleOpenModalTani = () => {
         setModalOpenTani(true);
     }
-
     const handleCloseModalTani = () => {
         setModalOpenTani(false);
     }
-
-    const addToTable = (selectedOption) => {
-        setTableData([...tableData, selectedOption]);
-      };
-
     const handleSelectedTaniListChange = (selectedItems) => {
-        setSelectedItemList(selectedItems);
+        setSelectedTaniList(selectedItems);
     };
+
 
 
   return (
@@ -116,9 +110,9 @@ function Anamnez() {
 
         <div className='sigara'>
             <label for="sigara" id="sigara-baslik">Sigara:</label>          
-            <input type="checkbox" />
+            <input type="radio" name='sigara' value="yok"/>
             <label for="yok">Yok</label>
-            <input type="checkbox" />
+            <input type="radio" name='sigara' value="var"/>
             <label for="var">Var</label>
             <label for="aciklama">Açıklama</label>
             <textarea name="aciklama" id="aciklama" cols="79" rows="2"></textarea>
@@ -126,24 +120,25 @@ function Anamnez() {
 
         <div className='grip-asisi'>
             <label for="girp-asisi" id="grip-baslik">Grip Aşısı:</label>          
-            <input type="checkbox" />
+            <input type="radio" name='grip' value="yok"/>
             <label for="yok">Yok</label>
-            <input type="checkbox" />
+            <input type="radio" name='grip' value="var"/>
             <label for="var">Var</label>
             <label for="aciklama">Açıklama</label>
             <textarea name="aciklama" id="aciklama" cols="79" rows="2"></textarea>
         </div>
         <div className='tani-ekle'>
             <label for="tani">Tanı: </label>
-            <input onClick={handleOpenModalTani} type="text" value={selectedIstemList.join(', ')}/>
+            <input onClick={handleOpenModalTani} type="text" value={selectedTaniList.join(', ')}/>
         </div>
+
 
         <div className='alt-menu'>
             <button>Anamnez Ekle</button>
             <button>Anamnez Notları</button>
             <button>Hasta Sonuçları</button>
             <button onClick={handleOpenModalTani}>Tanı<br/> Ekle</button>
-            {isModalOpenTani && <TaniEkle onClose={handleCloseModalTani} addToTable={addToTable} onSelectedItemsChange={handleSelectedTaniListChange} />}
+            {isModalOpenTani && <TaniEkle onClose={handleCloseModalTani}  onSelectedItemsChange={handleSelectedTaniListChange} />}
         </div>
 
     </div>

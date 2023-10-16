@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./TaniEkle.css";
 import axios from "axios";
 
-function TaniEkle({ addToTable, onSelectedItemsChange, onClose }) {
+function TaniEkle({ onSelectedItemsChange, onClose }) {
   const [taniList, setTaniList] = useState([]);
   const [loading, setLoading] = useState(false);
   const [selectedOptions, setSelectedOptions] = useState([]);
@@ -54,6 +54,7 @@ function TaniEkle({ addToTable, onSelectedItemsChange, onClose }) {
               className="checkbox-input"
               onChange={() => handleCheckboxChange(tani)}
             />
+            
             {`${tani.icd10Kodu} - ${tani.taniAdi}`}
           </label>
         ))}
