@@ -71,8 +71,8 @@ export const SideBarData = [
         cName: 'nav-text'
     },
     {
-        title: 'Diabet takip Formu',
-        path: '/#',
+        title: 'Anamnez',
+        path: '/anamnez',
         icon: <FaIcons6.FaRectangleList/>,
         cName: 'nav-text'
     },

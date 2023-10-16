@@ -32,11 +32,12 @@ import IlacBilgisi from "./Components/IlacBilgisi";
 import IlacBilgisiDetay from "./Components/IlacBilgisiDetay";
 import IlacListesi from "./Components/IlacListesi";
 import IlacListesiDetay from "./Components/IlacListesiDetay";
-import logo from "./img/birkil.jpg";
+import logo from "./img/birkil3.jpeg";
 import HastaAra from "./Components/HastaAra";
 import MuayeneBilgisiDetayArama from "./Components/MuayeneBilgisiDetayArama";
 import Login from "./Components/Login";
 import AmeliyatGiris from "./Components/AmeliyatGiris";
+import Anamnez from "./Components/Anamnez";
 
 const MyStyledButton = styled(Button)({
   fontSize: "6px",
@@ -63,7 +64,7 @@ const App = () => {
           </Grid>
           <Grid item xs={9}>
             <Paper elevation={3} style={{ padding: "10px" }}>
-              <div
+              {/* <div
                 style={{
                   display: "flex",
                   justifyContent: "start",
@@ -83,7 +84,7 @@ const App = () => {
                 <Card style={{ width: "200px", border:"1px solid #1976d2"  }}>
                   <HastaAra />
                 </Card>
-              </div>
+              </div> */}
               <div style={{ display: "flex", justifyContent: "start" }}>
                 <Card style={{ width: "125px", height: "80px", margin: "5px", border:"1px solid #1976d2" }}>
                   <div>
@@ -91,7 +92,7 @@ const App = () => {
                       src={logo}
                       alt="Profil Fotosu"
                       className="logo-image"
-                      style={{ width: "125px" }}
+                      style={{ width: "100px", height:"60px", marginTop:"10px", marginLeft:"5px" }}
                     />
                   </div>
                 </Card>
@@ -170,6 +171,7 @@ const App = () => {
                 <Route path="/login" element={<Login />} />
                 <Route path="/ilac-detay/:id" element={<IlacBilgisiDetay />} />
                 <Route path="/ilac-listesi" element={<IlacListesi />} />
+                <Route path="/anamnez" element={<Anamnez />} />
                 <Route path="/ameliyat-giris" element={<AmeliyatGiris />} />
                 <Route
                   path="/ilac-list-detay/:id"

@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { SideBarData } from "./SideBarData";
 import "./Navbar.css";
 import { IconContext } from "react-icons/lib";
-import logo from "../img/birkil.jpg";
+import logo from "../img/birkil3.jpeg";
 
 function Navi() {
   return (

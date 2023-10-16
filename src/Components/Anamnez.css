@@ -1,0 +1,167 @@
+.main {
+    border: solid 1px #000000;
+    padding: 5px;
+}
+h3 {
+    margin-top: 5px;
+}
+.muayene-top {
+    margin-top: 5px;
+    display: flex;
+}
+.muayene-bottom {
+    margin-top: 5px;
+    display: flex;
+}
+
+.form-text {
+    margin-right: 20px;
+}
+.sikayet {
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+}
+.sikayet label {
+    margin-right: 35px;
+    
+}
+.hikaye {
+    display: flex;
+    align-items: center;
+}
+.hikaye label {
+    margin-right: 40px;
+}
+.ozgecmis {
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+}
+.ozgecmis label {
+    margin-right: 20px;
+}
+.soygecmis {
+    display: flex;
+    align-items: center;
+}
+.soygecmis label {
+    margin-right: 15px;
+}
+.sikayet-doktor select{
+    margin-top: 10px;
+    margin-left: 40px;
+    width: 200px;
+    text-align: left;
+}
+.sikayet-doktor input {
+    margin-left: 5px;
+}
+
+.hikaye-doktor select{
+    margin-top: 70px;
+    margin-left: 40px;
+    width: 200px;
+    text-align: left;
+}
+.hikaye-doktor input {
+    margin-left: 5px;
+}
+
+.ozgecmis-doktor select {
+    margin-top: 20px;
+    margin-left: 40px;
+    width: 200px;
+    text-align: left;
+}
+.ozgecmis-doktor input{
+    margin-left: 5px;
+}
+
+.soygecmis-doktor select {
+    margin-top: 60px;
+    margin-left: 40px;
+    width: 200px;
+    text-align: left;
+}
+.soygecmis-doktor input {
+    margin-left: 5px;
+}
+
+.alerji {
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+}
+.alerji label {
+    margin-right: 53px;
+}
+
+.sigara{
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.sigara-label{
+    margin-right: 40px;
+}
+
+.sigara label {
+    margin-right: 5px;
+}
+#sigara-baslik {
+    margin-right: 44px;
+}
+.sigara input {
+    margin-left: 5px;
+}
+
+.grip-asisi {
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+}
+
+#grip-baslik {
+    margin-right: 24px;
+}
+
+.grip-asisi input {
+    margin-right: 3px;
+}
+
+.grip-asisi label {
+    margin-right: 5px;
+}
+
+.alt-menu {
+    margin-top: 10px;
+    text-align: center;
+}
+.alt-menu button {
+    width: 70px;
+    margin-right: 2px;
+    
+}
+
+.alt-menu button:hover {
+    background-color: rgb(150, 195, 234);
+    cursor: pointer;
+}
+
+.tani-ekle {
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.tani-ekle label {
+    margin-right: 65px;
+}
+
+.tani-ekle input {
+    width: 710px;
+}
+
+
