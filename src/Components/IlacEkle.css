@@ -1,4 +1,4 @@
-.tani-ekle-modal {
+.ilac-ekle-modal {
     position: fixed;
     top: 50%;
     left: 50%;
@@ -15,44 +15,20 @@
 }
 .close-button {
     position: absolute;
-    width: 30px;
+    width: 15x;
     height: 30px;
     top: 10px;
     right: 10px;    
     font-size: 12px;
-    
 }
 .add-button{
     margin-top: 10px;
     height: 30px;
-    width: 40px;
 }
 .scrollable-liste {
     max-height: 300px;
     overflow-y: scroll;
-    display: block;
 }
-
-table {
-    width: 100%;
-    border-collapse: collapse;
-}
-
-thead {
-    display: table;
-    width: 100%;
-    position: sticky;
-    top: 0;
-    z-index: 10;
-    background-color: #fff;
-}
-tbody {
-    display: table;
-    width: 100%;
-    overflow: auto;
-}
-
 .checkbox-item input {
     margin-right: 5px;
 }
-

@@ -141,14 +141,19 @@ h3 {
     margin-top: 10px;
     text-align: center;
 }
-.alt-menu button {
-    width: 70px;
+.menu-button {
+    width: 60px;
+    height: 40px;
     margin-right: 2px;
+    font-size: 11px;
+    box-sizing: border-box;
     
 }
 
 .alt-menu button:hover {
-    background-color: rgb(150, 195, 234);
+    /* background-color: rgb(150, 195, 234); */
+    background-color: #555;
+    color: white;
     cursor: pointer;
 }
 
@@ -163,6 +168,20 @@ h3 {
 }
 
 .tani-ekle input {
+    width: 708px;
+}
+
+.ilac-ekle {
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.ilac-ekle label {
+    margin-right: 68px;
+}
+
+.ilac-ekle input {
     width: 708px;
 }
 

@@ -3,13 +3,13 @@ import "./Anamnez.css";
 import { TextField } from '@mui/material';
 import { useState } from 'react';
 import TaniEkle from './TaniEkle';
+import IlacEkle from './IlacEkle';
 
 function Anamnez() {
-
+    //Tanı Ekleme Ekranı
     const [isModalOpenTani, setModalOpenTani] = useState(false);
     const [selectedTaniList, setSelectedTaniList] = useState([]);
-
-
+    
     const handleOpenModalTani = () => {
         setModalOpenTani(true);
     }
@@ -20,6 +20,19 @@ function Anamnez() {
         setSelectedTaniList(selectedItems);
     };
 
+    //İlaç Ekleme Ekranı
+    const [isModalOpenIlac, setModalOpenIlac] = useState(false);
+    const [selectedIlacList, setSelectedIlacList] = useState([]);
+
+    const handleOpenModalIlac = () => {
+        setModalOpenIlac(true);
+    };
+    const handleCloseModalIlac = () => {
+        setModalOpenIlac(false);
+    };
+    const handleSelectedIlacListChange = (selectedItems) => {
+        setSelectedIlacList(selectedItems);
+    };
 
 
   return (
@@ -129,16 +142,23 @@ function Anamnez() {
         </div>
         <div className='tani-ekle'>
             <label for="tani">Tanı: </label>
-            <input onClick={handleOpenModalTani} type="text" value={selectedTaniList.join(', ')}/>
+            <input onClick={handleOpenModalTani} type="text" value={selectedTaniList.join(',   ')}/>
+        </div>
+        <div className="ilac-ekle">
+            <label for="ilac">İlaç: </label>
+            <input onClick={handleOpenModalIlac} type="text" value={selectedIlacList.join(',   ')}/>
         </div>
 
 
         <div className='alt-menu'>
-            <button>Anamnez Ekle</button>
-            <button>Anamnez Notları</button>
-            <button>Hasta Sonuçları</button>
-            <button onClick={handleOpenModalTani}>Tanı<br/> Ekle</button>
+            
+            
+            <button className='menu-button' onClick={handleOpenModalTani}>Tanı<br/> Ekle</button>
             {isModalOpenTani && <TaniEkle onClose={handleCloseModalTani}  onSelectedItemsChange={handleSelectedTaniListChange} />}
+            <button className='menu-button' onClick={handleOpenModalIlac}>İlaç<br/> Ekle</button>
+            {isModalOpenIlac && <IlacEkle onClose={handleCloseModalIlac} onSelectedItemsChange={handleSelectedIlacListChange}/>}
+            <button className='menu-button'>Hizmet İstem Ekle</button>
+            <button className='menu-button'>Anamnez Kaydet</button>
         </div>
 
     </div>

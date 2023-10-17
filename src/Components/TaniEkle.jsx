@@ -45,19 +45,30 @@ function TaniEkle({ onSelectedItemsChange, onClose }) {
         X
       </button>
       <div className="scrollable-liste">
-        {taniList.map((tani) => (
-          <label key={tani.id} className="checkbox-item">
-            <input
-              type="checkbox"
-              name="option"
-              value={tani.taniAdi}
-              className="checkbox-input"
-              onChange={() => handleCheckboxChange(tani)}
-            />
-            
-            {`${tani.icd10Kodu} - ${tani.taniAdi}`}
-          </label>
-        ))}
+        <table>
+          <thead>
+            <tr>
+              {/* <th>Seç</th> */}
+              <th>ICD10 Kodu</th>
+              <th>Tanı Adı</th>
+            </tr>
+          </thead>
+          <tbody>
+            {taniList.map((tani) => (
+              <tr key={tani.id}>
+                <td>
+                  <input
+                    type="checkbox"
+                    value={tani.taniAdi}
+                    onChange={() => handleCheckboxChange(tani)}
+                  />
+                </td>
+                <td>{tani.icd10Kodu}</td>
+                <td>{tani.taniAdi}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </div>
       <button className="add-button" onClick={handleAddOption}>
         Ekle
