@@ -80,45 +80,7 @@ function Anamnez() {
     setSelectedIstemList(selectedItems);
   };
 
-  //Muayene Kaydet Fonksiyonu
-  //   const handleMuayeneKaydet = () => {
-  //     const muayeneData = {
-  //       sikayet,
-  //       hikaye,
-  //       selectedSikayetDoktor,
-  //       selectedHikayeDoktor,
-  //       ozgecmis,
-  //       soygecmis,
-  //       selectedOzgecmisDoktor,
-  //       selectedSoygecmisDoktor,
-  //       alerji,
-  //       sigara,
-  //       sigaraAciklama,
-  //       gripAsisi,
-  //       gripAsisiAciklama,
-  //       taniList: selectedTaniList,
-  //       ilacList: selectedIlacList,
-  //       istemList: selectedIstemList,
-  //     };
-  //     fetch("http://localhost:8080/muayene-kaydet/create", {
-  //       method: "POST",
-  //       headers: {
-  //         "Content-Type": "application/json",
-  //       },
-  //       body: JSON.stringify(muayeneData),
-  //     })
-  //       .then((response) => {
-  //         if (response.ok) {
-  //           console.log("Muayene başarıyla kaydedildi.");
-  //         } else {
-  //           console.error("Muayene kaydedilirken bir hata oluştu");
-  //         }
-  //       })
-  //       .catch((error) => {
-  //         console.error("Ağ hatası:", error);
-  //       });
-  //   };
-
+  //Muayene Kaydet
   const handleMuayeneKaydet = async () => {
     try {
       const response = await fetch(
@@ -144,10 +106,15 @@ function Anamnez() {
           }),
         }
       );
-      const data = await response.json();
-      console.log(data);
+      if (response.ok){
+        alert("Muayene başarıyla kaydedildi.");
+      } else {
+        const data = await response.json();
+        alert("Muayene kaydedilirken bir hata oluştu: " +(data.message || ""));
+      }
+      
     } catch (error) {
-      console.error("Bir hata meydana geldi:", error);
+      alert("Ağ hatası:", error);
     }
   };
 
