@@ -50,7 +50,7 @@ h3 {
     margin-right: 15px;
 }
 .sikayet-doktor select{
-    margin-top: 10px;
+    margin-top: 20px;
     margin-left: 40px;
     width: 200px;
     text-align: left;
@@ -60,7 +60,7 @@ h3 {
 }
 
 .hikaye-doktor select{
-    margin-top: 70px;
+    margin-top: 60px;
     margin-left: 40px;
     width: 200px;
     text-align: left;
@@ -178,10 +178,22 @@ h3 {
 }
 
 .ilac-ekle label {
-    margin-right: 68px;
+    margin-right: 69px;
 }
 
 .ilac-ekle input {
+    width: 708px;
+}
+
+.istem-ekle {
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+}
+.istem-ekle label {
+    margin-right: 55px;
+}
+.istem-ekle input {
     width: 708px;
 }
 

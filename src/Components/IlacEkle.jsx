@@ -4,21 +4,9 @@ import axios from "axios";
 
 function IlacEkle({ onSelectedItemsChange, onClose }) {
   const [ilacList, setIlacList] = useState([]);
-  const [loading, setLoading] = useState(false);
   const [selectedOptions, setSelectedOptions] = useState([]);
 
-  //   useEffect(() => {
-  //     const fetchIlacListesi = async () => {
-  //       try {
-  //         const response = await axios.get("http://localhost:8080/ilac-list");
-  //         setIlacList(response.data);
-  //         setLoading(false);
-  //       } catch (error) {
-  //         console.error("Veri alınamadı: ", error);
-  //       }
-  //     };
-  //     fetchIlacListesi();
-  //   }, []);
+
   useEffect(() => {
     const fetchIlacList = async () => {
       try {
@@ -47,6 +35,7 @@ function IlacEkle({ onSelectedItemsChange, onClose }) {
     );
     onSelectedItemsChange(selectedIlacNames);
     setSelectedOptions([]);
+    onClose();
   };
 
   return (
@@ -56,18 +45,30 @@ function IlacEkle({ onSelectedItemsChange, onClose }) {
         X
       </button>
       <div className="scrollable-liste">
-        {ilacList.map((ilac) => (
-          <label key={ilac.id} className="checkbox-item">
-            <input
-              type="checkbox"
-              name="option"
-              value={ilac.ilacAdi}
-              className="checkbox-input"
-              onChange={() => handleCheckboxChange(ilac)}
-            />
-            {`${ilac.ilacAdi} - ${ilac.doz}`}
-          </label>
-        ))}
+        <table>
+          <thead>
+            <tr>
+              <th>Seç</th>
+              <th>İlaç Adı</th>
+              <th>Doz</th>
+            </tr>
+          </thead>
+          <tbody>
+            {ilacList.map((ilac) => (
+              <tr key={ilac.id}>
+                <td>
+                  <input
+                    type="checkbox"
+                    value={ilac.ilacAdi}
+                    onChange={() => handleCheckboxChange(ilac)}
+                  />
+                </td>
+                <td>{ilac.ilacAdi}</td>
+                <td>{ilac.doz}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </div>
       <button className="add-button" onClick={handleAddOption}>
         Ekle

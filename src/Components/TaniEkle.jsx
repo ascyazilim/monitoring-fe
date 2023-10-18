@@ -36,6 +36,7 @@ function TaniEkle({ onSelectedItemsChange, onClose }) {
     );
     onSelectedItemsChange(selectedTaniNames);
     setSelectedOptions([]);
+    onClose();
   };
 
   return (
@@ -48,7 +49,7 @@ function TaniEkle({ onSelectedItemsChange, onClose }) {
         <table>
           <thead>
             <tr>
-              {/* <th>Seç</th> */}
+              <th>Seç</th>
               <th>ICD10 Kodu</th>
               <th>Tanı Adı</th>
             </tr>

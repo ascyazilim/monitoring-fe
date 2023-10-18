@@ -5,18 +5,14 @@ import {
   Container,
   Grid,
   Paper,
-  Table,
-  TableBody,
-  TableCell,
-  TableContainer,
-  TableRow,
+
 } from "@mui/material";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import TaniBilgisiList from "./Components/TaniBilgisiList";
 import CreateTaniBilgisi from "./Components/CreateTaniBilgisi";
 import "./App.css";
 import HastaBilgisi from "./Components/HastaBilgisi";
-import SettingsIcon from "@mui/icons-material/Settings";
+
 import { styled } from "@mui/system";
 import MuayeneBilgisi from "./Components/MuayeneBilgisi";
 import Navi from "./Components/Navi";
@@ -64,27 +60,7 @@ const App = () => {
           </Grid>
           <Grid item xs={9}>
             <Paper elevation={3} style={{ padding: "10px" }}>
-              {/* <div
-                style={{
-                  display: "flex",
-                  justifyContent: "start",
-                  height: "50px",
-                }}
-              >
-                <Card
-                  style={{
-                    width: "400px",
-                    color: "darkblue",
-                    marginRight: "10px",
-                    border:"1px solid #1976d2"
-                  }}
-                >
-                  <h2 style={{ margin: "10px" }}>Hasta Başı Monitör</h2>
-                </Card>
-                <Card style={{ width: "200px", border:"1px solid #1976d2"  }}>
-                  <HastaAra />
-                </Card>
-              </div> */}
+              
               <div style={{ display: "flex", justifyContent: "start" }}>
                 <Card style={{ width: "125px", height: "80px", margin: "5px", border:"1px solid #1976d2" }}>
                   <div>
