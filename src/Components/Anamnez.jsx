@@ -100,7 +100,11 @@ function Anamnez() {
             sigaraAciklama,
             gripAsisi,
             gripAsisiAciklama,
-            selectedTaniList,
+            taniList: selectedTaniList.map(tani => ({
+              icd10Kodu: tani.icd10Kodu,
+              taniAdi: tani.taniAdi,
+            })),
+            // selectedTaniList,
             selectedIlacList,
             selectedIstemList,
           }),
@@ -120,7 +124,7 @@ function Anamnez() {
 
   return (
     <div className="main">
-      <h3>Muayene</h3>
+      <div className="baslik">Muayene</div>
       <div className="muayene-top">
         <div className="form-text">
           <form className="main-form">

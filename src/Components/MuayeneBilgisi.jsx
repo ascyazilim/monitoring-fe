@@ -23,7 +23,7 @@ function MuayeneBilgisi() {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:8080/muayene-bilgisi"
+          "http://localhost:8080/muayene-kaydet/all"
         );
         setMuayeneListesi(response.data);
       } catch (error) {
@@ -45,7 +45,7 @@ function MuayeneBilgisi() {
               style={{ margin: "10px", padding: "10px", textAlign: "center" }}
             >
               <div>ID: {muayene.id}</div>
-              <div>İşlem Sıra No: {muayene.islemSiraNo}</div>
+              {/* <div>İşlem Sıra No: {muayene.islemSiraNo}</div> */}
               <Button
                 variant="contained"
                 color="primary"
@@ -72,14 +72,20 @@ function MuayeneBilgisi() {
           <Card className="mainCard">
             <h2 className="mainCardH2">Muayene Detayı</h2>
 
-            <div>ID: {selectedMuayene.id}</div>
-            <div>Branş Kodu: {selectedMuayene.bransKodu}</div>
-            <div>Dr. Tescil No: {selectedMuayene.drTescilNo}</div>
-            <div>SUT kodu: {selectedMuayene.sutKodu}</div>
-            <div>Hizmet Sunucu Ref No: {selectedMuayene.hizmetSunucuRefNo}</div>
-            <div>İşlem Sıra No: {selectedMuayene.islemSiraNo}</div>
-            <div>Muayene Tarihi: {selectedMuayene.muayeneTarihi}</div>
-            <div>Özel Durum: {selectedMuayene.ozelDurum}</div>
+            <div><b>ID:</b> {selectedMuayene.id}</div>
+            <div><b>Şikayet:</b> {selectedMuayene.sikayet}</div>
+            <div><b>Hikaye:</b> {selectedMuayene.hikaye}</div>
+            <div><b>ÖzGeçmiş:</b> {selectedMuayene.ozgecmis}</div>
+            <div><b>SoyGeçmiş:</b> {selectedMuayene.soygecmis}</div>
+            <div><b>Alerji:</b> {selectedMuayene.alerji}</div>
+            <div><b>Sigara:</b> {selectedMuayene.sigara}</div>
+            <div><b>Sigara Açıklama:</b> {selectedMuayene.sigaraAciklama}</div>
+            <div><b>Grip Aşısı:</b> {selectedMuayene.gripAsisi}</div>
+            <div><b>Grip Aşısı Açıklama:</b> {selectedMuayene.gripAsisiAciklama}</div>
+            <div><b>Tanı List:</b> {selectedMuayene.taniList.map(tani=> (
+              <div key={tani.id}>{tani.taniAdi}</div>
+              
+            ))}</div>
             <div className="backButton">
               <Button variant="contained" color="primary" onClick={closeModal}>
                 Geri

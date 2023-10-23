@@ -1,0 +1,79 @@
+.main-klinik {
+    border: 1px solid #000000;
+    padding: 5px;
+    background-color: #f5f5f5;
+}
+
+.baslik{
+    text-align: center;
+    background-color: #509af5;
+}
+
+.hasta-bilgileri {
+    margin-top: 5px;
+}
+
+.hasta-bilgileri label {
+    margin-right: 5px;
+}
+
+.hasta-bilgileri input {
+    width: 700px;
+}
+
+.tarih-saat {
+    margin-top: 5px;
+}
+.tarih-saat label {
+    margin-right: 68px;
+}
+
+.doktor {
+    margin-top: 5px;
+}
+
+.doktor label {
+    margin-right: 52px;
+}
+
+.konsultan {
+    margin-left: 10px;
+    margin-right: 5px;
+}
+
+.asistan {
+    margin-left: 10px;
+    margin-right: 5px;
+}
+
+.bulgular {
+    margin-top: 15px;
+}
+.bulgular textarea {
+    margin-top: 5px;
+}
+
+.tetkik {
+    margin-top: 5px;
+}
+.tetkik textarea {
+    margin-top: 5px;
+}
+
+.tedavi {
+    margin-top: 5px;
+}
+
+.tedavi textarea {
+    margin-top: 5px;
+}
+
+.klinik-button {
+    display: flex;
+    justify-content: center;
+}
+.klinik-button button {
+    margin-top: 10px;
+}
+
+

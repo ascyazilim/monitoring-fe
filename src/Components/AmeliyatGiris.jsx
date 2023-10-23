@@ -20,7 +20,7 @@ function AmeliyatGiris() {
   }, []);
   return (
     <div className="main">
-      <h2>Ameliyat Giriş</h2>
+      <div className="baslik">Ameliyat Giriş</div>
       <div className="section">
         <div className="form">
           <form className="main-form">

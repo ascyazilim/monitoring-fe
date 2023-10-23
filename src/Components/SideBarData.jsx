@@ -40,8 +40,8 @@ export const SideBarData = [
         cName: 'nav-text'
     },
     {
-        title: "Doktor Listesi",
-        path: "/doktor-list",
+        title: "Klinik Seyir",
+        path: "/klinik-seyir",
         icon: <FontAwesomeIcon icon={faStethoscope} />,
         cName: "nav-text"
     },
@@ -68,6 +68,12 @@ export const SideBarData = [
         title: 'İlaç Listesi',
         path: '/ilac-listesi',
         icon: <FaIcons.FaPrescriptionBottle/>,
+        cName: 'nav-text'
+    },
+    {
+        title: 'Tahlil Sonuçları',
+        path: '/tahlil-sonuclari',
+        icon: <FaIcons.FaFileMedicalAlt/>,
         cName: 'nav-text'
     },
     {

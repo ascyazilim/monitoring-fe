@@ -1,44 +1,46 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { useEffect } from "react";
 
-function HastaAra() {
-  const [aramaAdi, setAramaAdi] = useState("");
-  const [aramaSonuclari, setAramaSonuclari] = useState(null);
+const HastaAra = () => {
+  const [aramaId, setAramaId] = useState("");
+  const [hasta, setHasta] = useState(null);
+  const [hata, setHata] = useState("");
 
-  const handleAramaAdiChange = (e) => {
-    setAramaAdi(e.target.value);
-  };
-  
-  const handleAra = async () => {
-    try {
-      const response = await axios.get(
-        `http://localhost:8080/hasta/${aramaAdi}`
-      );
-      if(response.status === 200){
-        const hasta = response.data;
-        setAramaSonuclari(hasta);
-      }else{
-        setAramaSonuclari("Aranan hasta bulunamadı.");
-      }
-    } catch (error) {
-      console.error("Arama hatası:", error);
-      setAramaSonuclari("Arama sırasında bir hata oluştu.");
-    }
+  const hastaAra = () => {
+    axios
+      .get(`http://localhost:8080/hasta/${aramaId}`)
+      .then((response) => {
+        setHasta([response.data]);
+        setHata("");
+      })
+      .catch((error) => {
+        console.error("Hasta bilgileri çekilirken bir hata oluştu.", error);
+        setHasta([]);
+        setHata("Hasta bilgisi bulunamadı");
+      });
   };
 
   return (
     <div>
-      <div style={{margin:"3px"}}>
-        <input
-          type="text"
-          placeholder="Hasta Adı"
-          value={aramaAdi}
-          onChange={handleAramaAdiChange}
-        />
-        <button onClick={handleAra}>Ara</button>
-      </div>
+      <h1>Hasta Ara</h1>
+      <input
+        type="text"
+        value={aramaId}
+        onChange={(e) => setAramaId(e.target.value)}
+        placeholder="Hasta ID girin"
+      />
+      <button onClick={hastaAra}>Ara</button>
+
+      {hata && <div style={{color: "red"}}>{hata}</div>}
+
+      <ul>
+        {hasta.map((h) => (
+          <li key={h.id}>{h.ad} {h.soyad}</li>
+        ))}
+      </ul>
     </div>
   );
-}
+};
 
 export default HastaAra;

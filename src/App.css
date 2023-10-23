@@ -114,3 +114,16 @@ input[type="checkbox"] {
   background-position: 100% -42px;
 }
 
+.arama {
+  margin-left: 7px;
+  margin-bottom: 5px;
+}
+
+.arama label {
+  margin-right: 5px;
+}
+
+.arama input {
+  width: 200px;
+}
+

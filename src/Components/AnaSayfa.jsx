@@ -1,42 +1,19 @@
 import React, { useState, useEffect } from "react";
 import {
   Card,
-  CardContent,
   Button,
   Grid,
-  Typography,
   Modal,
-  Table,
-  TableHead,
-  TableCell,
-  TableRow,
-  TableBody,
-  Checkbox,
-  DialogTitle,
-  IconButton,
   TextField,
-  Collapse,
-  FormControl,
-  InputLabel,
-  Select,
-  MenuItem,
-  TableContainer,
-  Paper,
 } from "@mui/material";
 
-import { Link } from "react-router-dom";
+
 import axios from "axios";
 import "../App.css";
 import "./Card.css";
 import "./TaniList.css";
 import "./AnaSayfa.css";
-import { styled } from "@mui/system";
-import SettingsIcon from "@mui/icons-material/Settings";
-import CloseIcon from "@mui/icons-material/Close";
-import TaniBilgisiList from "./TaniBilgisiList";
-import DoktorList from "./DoktorList";
 import IlacListesi from "./IlacListesi";
-import IlacListesiDetay from "./IlacListesiDetay";
 import TaniListesi from "./TaniListesi";
 import IstemListesi from "./IstemListesi";
 import WindowModal from "./WindowModal";
@@ -55,7 +32,7 @@ const HomePage = () => {
   const [tableIlacData, setTableIlacData] = useState([]);
 
   const [inputText, setInputText] = useState("");
-  const [cardTextList, setCardTextList] = useState([]);
+ 
 
   const [selectedContent, setSelectedContent] = useState("");
 
@@ -66,8 +43,7 @@ const HomePage = () => {
   const [taniList, setTaniList] = useState([]);
   const [list, setList] = useState([]);
 
-  const [IstemList, setIstemList] = useState([]);
-  const [listIstem, setListIstem] = useState([]);
+
 
   const [isModalOpen, setIsModalopen] = useState(false);
   const [isSecondModalOpen, setIsSecondModalOpen] = useState(false);

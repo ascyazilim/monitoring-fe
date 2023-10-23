@@ -34,6 +34,11 @@ import MuayeneBilgisiDetayArama from "./Components/MuayeneBilgisiDetayArama";
 import Login from "./Components/Login";
 import AmeliyatGiris from "./Components/AmeliyatGiris";
 import Anamnez from "./Components/Anamnez";
+import TahlilSonuc from "./Components/TahlilSonuc";
+import KlinikSeyir from "./Components/KlinikSeyir";
+import { useEffect } from "react";
+import axios from "axios";
+
 
 const MyStyledButton = styled(Button)({
   fontSize: "6px",
@@ -49,6 +54,7 @@ const App = () => {
     setSelectedMuayeneId(id);
   };
 
+
   return (
     <Container
       style={{ marginLeft: "0px", marginBottom: "10px", marginRight: "10px" }}
@@ -60,6 +66,10 @@ const App = () => {
           </Grid>
           <Grid item xs={9}>
             <Paper elevation={3} style={{ padding: "10px" }}>
+              <div className="arama">
+                <label for="arama">Hasta Arama:</label>
+                <input type="text" />
+              </div>
               
               <div style={{ display: "flex", justifyContent: "start" }}>
                 <Card style={{ width: "125px", height: "80px", margin: "5px", border:"1px solid #1976d2" }}>
@@ -86,6 +96,7 @@ const App = () => {
                   </div>
                   <div>12345678912</div>
                   <div>34, Erkek, 0(RH -)</div>
+                  
                 </Card>
                 <Card
                   style={{
@@ -115,8 +126,9 @@ const App = () => {
                     <div>Uzm. Diş doktoru</div>
                   </div>
                 </Card>
+                
               </div>
-
+              
               <div
                 style={{ borderBottom: "1px solid #1976d2", marginBottom: "10px" }}
               ></div>
@@ -132,7 +144,7 @@ const App = () => {
                   path="/doktor-detay/:id"
                   element={<DoktorBilgisiDetay />}
                 />
-                <Route path="/doktor-list" element={<DoktorList />} />
+                <Route path="/klinik-seyir" element={<KlinikSeyir />} />
                 <Route path="/muayene" element={<MuayeneBilgisi />} />
                 <Route
                   path="/muayene-olustur"
@@ -148,6 +160,8 @@ const App = () => {
                 <Route path="/ilac-detay/:id" element={<IlacBilgisiDetay />} />
                 <Route path="/ilac-listesi" element={<IlacListesi />} />
                 <Route path="/anamnez" element={<Anamnez />} />
+                <Route path="/tahlil-sonuclari" element={<TahlilSonuc />}/>
+                
                 <Route path="/ameliyat-giris" element={<AmeliyatGiris />} />
                 <Route
                   path="/ilac-list-detay/:id"

@@ -26,7 +26,7 @@ function MuayeneBilgisiDetay() {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:8080/muayene-bilgisi/${id}`
+          `http://localhost:8080/muayene-kaydet/${id}`
         );
         setMuayeneDetay(response.data);
       } catch (error) {
@@ -49,22 +49,25 @@ function MuayeneBilgisiDetay() {
         open={isModalOpen}
         onClose={closeModal}
         style={{
-          position: 'absolute',
-          top: '15%',
-          left: '30%'
+          position: "absolute",
+          top: "15%",
+          left: "30%",
         }}
       >
         <Card className="mainCard">
           <h2 className="mainCardH2">Muayene Detayı</h2>
 
           <div>ID: {muayeneDetay.id}</div>
-          <div>Branş Kodu: {muayeneDetay.bransKodu}</div>
-          <div>Dr. Tescil No: {muayeneDetay.drTescilNo}</div>
-          <div>SUT kodu: {muayeneDetay.sutKodu}</div>
-          <div>Hizmet Sunucu Ref No: {muayeneDetay.hizmetSunucuRefNo}</div>
-          <div>İşlem Sıra No: {muayeneDetay.islemSiraNo}</div>
-          <div>Muayene Tarihi: {muayeneDetay.muayeneTarihi}</div>
-          <div>Özel Durum: {muayeneDetay.ozelDurum}</div>
+          <div>Şikayet: {muayeneDetay.sikayet}</div>
+          <div>Hikaye: {muayeneDetay.hikaye}</div>
+          <div>ÖzGeçmiş: {muayeneDetay.ozgecmis}</div>
+          <div>SoyGeçmiş: {muayeneDetay.soygecmis}</div>
+          <div>Alerji: {muayeneDetay.alerji}</div>
+          <div>Sigara: {muayeneDetay.sigara}</div>
+          <div>Sigara Açıklama: {muayeneDetay.sigaraAciklama}</div>
+          <div>Grip Aşısı: {muayeneDetay.gripAsisi}</div>
+          <div>Grip Aşısı Açıklama: {muayeneDetay.gripAsisiAciklama}</div>
+          <div>Tanı List: {muayeneDetay.taniList}</div>
           <div className="backButton">
             <Button
               variant="contained"
