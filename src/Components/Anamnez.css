@@ -229,35 +229,51 @@
 }
 
 .taniekle-table {
-    width: 100%;
+    width: 70%;
 }
 
+
 .icd-kodu {
-    width: 20%;
+    width: 26%;
     text-align: center;
 }
 
 .ilacekle-table {
-    width: 100%;
-    margin-right: 10px;
+    width: 70%;
+}
+.ilac-adi-yeni {
+    width: 65%;
 }
 
-.doz-baslik-yeni {
-    width: 32%;
+.ilac-content-yeni {
+    width: 65%;
+}
+
+.ilac-doz-yeni {
+    width: 26%;
+    text-align: center;
+}
+.doz-sil {
+    width: 9%;
+}
+
+.ilac-doz-content-yeni {
+    width: 26%;
     text-align: center;
 }
 
-.doz-content-yeni {
-    width: 32%;
-    text-align: center;
+.istemekle-table {
+    width: 70%;
 }
 
 .hizmet-kodu-baslik {
     width: 26%;
+    text-align: center;
 }
 
 .hizmet-kodu {
     width: 26%;
+    text-align: center;
 }
 .istem-adi-baslik {
     width: 65%;

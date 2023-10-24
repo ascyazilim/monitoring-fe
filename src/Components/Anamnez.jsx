@@ -76,7 +76,7 @@ function Anamnez() {
   const removeIlac = (index) => {
     const newList = [...selectedIlacList];
     newList.splice(index, 1);
-    setSelectedTaniList(newList);
+    setSelectedIlacList(newList);
   };
 
   //Hizmet-istem Ekleme
@@ -338,11 +338,7 @@ function Anamnez() {
       </div>
       <div className="tani-ekle">
         <label htmlFor="tani">Tanı: </label>
-        {/* <input
-          type="text"
-          value={selectedTaniList.join(",   ")}
-          onChange={(e) => setSelectedTaniList(e.target.value)}
-        /> */}
+
         <table className="taniekle-table">
           <thead>
             <tr>
@@ -362,30 +358,30 @@ function Anamnez() {
             ))}
           </tbody>
         </table>
-        <hr />
       </div>
-      {/* <div className="ilac-istem"> */}
+      <div
+        style={{
+          borderBottom: "1px dotted #1976d2",
+          marginBottom: "10px",
+          marginTop: "10px",
+        }}
+      ></div>
       <div className="ilac-ekle">
         <label htmlFor="ilac">İlaç: </label>
-        {/* <input
-          type="text"
-          value={selectedIlacList.join(",   ")}
-          onChange={(e) => setSelectedIlacList(e.target.value)}
-        /> */}
-        {/* onClick={handleOpenModalIlac} tıklayınca modal açılsın */}
+
         <table className="ilacekle-table">
           <thead>
             <tr>
-              <th className="ilac-baslik">İlaç Adı</th>
-              <th className="doz-baslik-yeni">Doz</th>
-              <th></th>
+              <th className="ilac-doz-yeni">Doz</th>
+              <th className="ilac-adi-yeni">İlaç Adı</th>
+              <th className="doz-sil"></th>
             </tr>
           </thead>
           <tbody>
             {selectedIlacList.map((ilac, index) => (
               <tr key={index}>
-                <td className="ilac-content">{ilac.ilacAdi}</td>
-                <td className="doz-content-yeni">{ilac.doz}</td>
+                <td className="ilac-doz-content-yeni">{ilac.doz}</td>
+                <td className="ilac-content-yeni">{ilac.ilacAdi}</td>
                 <td className="sil-buton">
                   <button onClick={() => removeIlac(index)}>Sil</button>
                 </td>
@@ -394,6 +390,14 @@ function Anamnez() {
           </tbody>
         </table>
       </div>
+
+      <div
+        style={{
+          borderBottom: "1px dotted #1976d2",
+          marginBottom: "10px",
+          marginTop: "10px",
+        }}
+      ></div>
 
       <div className="istem-ekle">
         <label htmlFor="istem">İstem:</label>

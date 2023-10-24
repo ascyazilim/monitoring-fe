@@ -68,8 +68,8 @@ const App = () => {
           <Grid item xs={9}>
             <Paper elevation={3} style={{ padding: "10px" }}>
               <div className="arama">
-                <label for="arama">Hasta Arama:</label>
-                <input type="text" />
+                {/* <label for="arama">Hasta Arama:</label> */}
+                <input type="text" placeholder="Hasta Tc Kimlik No : " />
               </div>
               
               <div style={{ display: "flex", justifyContent: "start" }}>

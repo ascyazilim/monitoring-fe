@@ -29,15 +29,6 @@ function IlacEkle({ onSelectedItemsChange, onClose }) {
     }
   };
 
-  // const handleAddOption = () => {
-  //   const selectedIlacNames = selectedOptions.map(
-  //     (option) => `${option.ilacAdi} - ${option.doz}`
-  //   );
-  //   onSelectedItemsChange(selectedIlacNames);
-  //   setSelectedOptions([]);
-  //   onClose();
-  // };
-
   const handleAddOption = () => {
     onSelectedItemsChange(selectedOptions);
     setSelectedOptions([]);
