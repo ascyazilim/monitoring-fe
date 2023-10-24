@@ -44,11 +44,12 @@ function TahlilSonuc() {
 
   return (
     <div className="main-tahlil">
+      <div className="baslik">Tahlil Sonuçları</div>
       <div className="tahlil-menu">
-        <button onClick={handleMrClick}>MR Sonuçları</button>
-        <button onClick={handleKanClick}>Kan Sonuçları</button>
-        <button onClick={handleIdrarClick}>İdrar & Gaita Sonuçları</button>
-        <button onClick={handleTomografiClick}>Tomografi Sonuçları</button>
+        <button className={showMrSonuc ? "active": ""} onClick={handleMrClick}>MR Sonuçları</button>
+        <button className={showKanSonuc ? "active": ""}  onClick={handleKanClick}>Kan Sonuçları</button>
+        <button className={showIdrarSonuc ? "active": ""} onClick={handleIdrarClick}>İdrar & Gaita Sonuçları</button>
+        <button className={showTomografiSonuc ? "active": ""} onClick={handleTomografiClick}>Tomografi Sonuçları</button>
       </div>
       <div>
         {showMrSonuc ? <MRSonuc /> : null}

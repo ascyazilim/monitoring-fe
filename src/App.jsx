@@ -38,6 +38,7 @@ import TahlilSonuc from "./Components/TahlilSonuc";
 import KlinikSeyir from "./Components/KlinikSeyir";
 import { useEffect } from "react";
 import axios from "axios";
+import MainPage from "./Components/MainPage";
 
 
 const MyStyledButton = styled(Button)({
@@ -133,7 +134,7 @@ const App = () => {
                 style={{ borderBottom: "1px solid #1976d2", marginBottom: "10px" }}
               ></div>
               <Routes>
-                <Route path="/" element={<AnaSayfa />} />
+                <Route path="/" element={<MainPage />} />
                 <Route path="/tani" element={<TaniBilgisiList />} />
                 <Route path="/tani-olustur" element={<CreateTaniBilgisi />} />
                 <Route path="/tani-detay/:id" element={<TaniBilgisiDetay />} />

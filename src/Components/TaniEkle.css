@@ -38,6 +38,21 @@ table {
     border-collapse: collapse;
 }
 
+.sec-baslik {
+    width: 10%;
+}
+.chec-content {
+    width: 10%;
+}
+
+.icd-baslik {
+    width: 15%;
+}
+
+.icd-content {
+    width: 15%;
+}
+
 thead {
     display: table;
     width: 100%;

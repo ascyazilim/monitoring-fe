@@ -32,3 +32,29 @@
 .checkbox-item input {
     margin-right: 5px;
 }
+
+.sec-baslik {
+    text-align: center;
+}
+
+.ilac-baslik {
+    width: 50%;
+    text-align: center;
+}
+
+.chec-content {
+    text-align: center;
+}
+
+.ilac-content {
+    width: 50%;
+    text-align: center;
+}
+
+.doz-baslik {
+    text-align: center;
+}
+
+.doz-content {
+    text-align: center;
+}

@@ -48,23 +48,23 @@ function IlacEkle({ onSelectedItemsChange, onClose }) {
         <table>
           <thead>
             <tr>
-              <th>Seç</th>
-              <th>İlaç Adı</th>
-              <th>Doz</th>
+              <th className="sec-baslik">Seç</th>
+              <th className="ilac-baslik">İlaç Adı</th>
+              <th className="doz-baslik">Doz</th>
             </tr>
           </thead>
           <tbody>
             {ilacList.map((ilac) => (
               <tr key={ilac.id}>
-                <td>
+                <td className="chec-content">
                   <input
                     type="checkbox"
                     value={ilac.ilacAdi}
                     onChange={() => handleCheckboxChange(ilac)}
                   />
                 </td>
-                <td>{ilac.ilacAdi}</td>
-                <td>{ilac.doz}</td>
+                <td className="ilac-content">{ilac.ilacAdi}</td>
+                <td className="doz-content">{ilac.doz}</td>
               </tr>
             ))}
           </tbody>

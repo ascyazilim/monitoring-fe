@@ -49,23 +49,23 @@ function HizmetIstemEkle({ onSelectedItemsChange, onClose }) {
         <table>
           <thead>
             <tr>
-              <th>Seç</th>
-              <th>Hizmet Kodu</th>
-              <th>İstem Adı</th>
+              <th className="sec-baslik">Seç</th>
+              <th className="kod-baslik">Hizmet Kodu</th>
+              <th className="istem-baslik">İstem Adı</th>
             </tr>
           </thead>
           <tbody>
             {istemList.map((istem) => (
               <tr key={istem.id}>
-                <td>
+                <td className="chec-content">
                   <input
                     type="checkbox"
                     value={istem.istemAdi}
                     onChange={() => handleCheckboxChange(istem)}
                   />
                 </td>
-                <td>{istem.hizmetKodu}</td>
-                <td>{istem.istemAdi}</td>
+                <td className="kod-content">{istem.hizmetKodu}</td>
+                <td className="istem-content">{istem.istemAdi}</td>
               </tr>
             ))}
           </tbody>

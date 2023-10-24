@@ -82,10 +82,10 @@ function MuayeneBilgisi() {
             <div><b>Sigara Açıklama:</b> {selectedMuayene.sigaraAciklama}</div>
             <div><b>Grip Aşısı:</b> {selectedMuayene.gripAsisi}</div>
             <div><b>Grip Aşısı Açıklama:</b> {selectedMuayene.gripAsisiAciklama}</div>
-            <div><b>Tanı List:</b> {selectedMuayene.taniList.map(tani=> (
+            <div><b>Tanı List:</b> {selectedMuayene.taniList ? selectedMuayene.taniList.map(tani=> (
               <div key={tani.id}>{tani.taniAdi}</div>
               
-            ))}</div>
+            )): "Tanı Listesi bulunamadı."}</div>
             <div className="backButton">
               <Button variant="contained" color="primary" onClick={closeModal}>
                 Geri

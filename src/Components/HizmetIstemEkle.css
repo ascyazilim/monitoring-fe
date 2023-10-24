@@ -13,3 +13,19 @@
     width: 500px;
     border: 2px solid #000000;
 }
+
+.kod-baslik {
+    width: 35%;
+}
+
+.kod-content {
+    width: 35%;
+}
+
+/* .istem-baslik {
+    text-align: center;
+}
+
+.istem-content {
+    text-align: center;
+} */

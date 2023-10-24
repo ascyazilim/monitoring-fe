@@ -3,9 +3,33 @@
     padding: 5px;
     background-color: #f5f5f5;
 }
-h3 {
-    margin-top: 5px;
+.menu-buttonu {
+    display: flex;
+    justify-content: center;
 }
+
+.menu-buttonu button:hover {
+    background-color: #555;
+    color: white;
+    cursor: pointer;
+}
+
+.menu-buttonu button {
+    height: 30px;
+    padding: 5px;
+    margin-right: 2px;
+}
+
+.muayene-kaydet-button:hover{
+    background-color: rgb(23, 121, 23) !important;
+    /* color: white; */
+}
+
+.active {
+    color: rgb(205, 19, 19);
+    
+}
+
 .muayene-top {
     margin-top: 5px;
     display: flex;
@@ -197,4 +221,27 @@ h3 {
     width: 708px;
 }
 
+.taniekle-table {
+    width: 100%;
+}
 
+.icd-kodu {
+    width: 20%;
+    text-align: center;
+}
+
+
+.sil-buton {
+    width: 60px;
+    text-align: center;
+}
+
+.sil-buton button {
+    width: 35px;
+}
+
+.sil-buton button:hover {
+    background-color: firebrick;
+    color: #f5f5f5;
+    cursor: pointer;
+}

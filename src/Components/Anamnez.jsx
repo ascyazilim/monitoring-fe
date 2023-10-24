@@ -51,6 +51,13 @@ function Anamnez() {
     setSelectedTaniList(selectedItems);
   };
 
+  //Tanı Silme
+  const removeTani = (index) => {
+    const newList = [...selectedTaniList];
+    newList.splice(index, 1);
+    setSelectedTaniList(newList);
+  };
+
   //İlaç Ekleme Ekranı
   const [isModalOpenIlac, setModalOpenIlac] = useState(false);
   // const [selectedIlacList, setSelectedIlacList] = useState([]);
@@ -129,7 +136,7 @@ function Anamnez() {
         <div className="form-text">
           <form className="main-form">
             <div className="sikayet">
-              <label for="sikayet">Şikayet:</label>
+              <label htmlFor="sikayet">Şikayet:</label>
               <textarea
                 cols="45"
                 rows="4"
@@ -138,7 +145,7 @@ function Anamnez() {
               ></textarea>
             </div>
             <div className="hikaye">
-              <label for="hikaye">Hikaye:</label>
+              <label fhtmlForor="hikaye">Hikaye:</label>
               <textarea
                 cols="45"
                 rows="4"
@@ -188,7 +195,7 @@ function Anamnez() {
         <div className="form-text">
           <form className="main-form">
             <div className="ozgecmis">
-              <label for="ozgecmis">Özgeçmiş:</label>
+              <label htmlFor="ozgecmis">Özgeçmiş:</label>
               <textarea
                 cols="45"
                 rows="4"
@@ -197,7 +204,7 @@ function Anamnez() {
               ></textarea>
             </div>
             <div className="soygecmis">
-              <label for="soygecmis">Soygeçmiş:</label>
+              <label htmlFor="soygecmis">Soygeçmiş:</label>
               <textarea
                 cols="45"
                 rows="4"
@@ -244,7 +251,7 @@ function Anamnez() {
       </div>
 
       <div className="alerji">
-        <label for="alerji">Alerji:</label>
+        <label htmlFor="alerji">Alerji:</label>
         <textarea
           name="alerji"
           id="alerji"
@@ -256,7 +263,7 @@ function Anamnez() {
       </div>
 
       <div className="sigara">
-        <label for="sigara" id="sigara-baslik">
+        <label htmlFor="sigara" id="sigara-baslik">
           Sigara:
         </label>
         <input
@@ -266,7 +273,7 @@ function Anamnez() {
           checked={sigara === "yok"}
           onChange={(e) => setSigara(e.target.value)}
         />
-        <label for="yok">Yok</label>
+        <label htmlFor="yok">Yok</label>
         <input
           type="radio"
           name="sigara"
@@ -274,7 +281,7 @@ function Anamnez() {
           checked={sigara === "var"}
           onChange={(e) => setSigara(e.target.value)}
         />
-        <label for="var">Var</label>
+        <label htmlFor="var">Var</label>
         <label for="aciklama">Açıklama</label>
         <textarea
           name="aciklama"
@@ -287,7 +294,7 @@ function Anamnez() {
       </div>
 
       <div className="grip-asisi">
-        <label for="girp-asisi" id="grip-baslik">
+        <label htmlFor="girp-asisi" id="grip-baslik">
           Grip Aşısı:
         </label>
         <input
@@ -297,7 +304,7 @@ function Anamnez() {
           checked={gripAsisi === "yok"}
           onChange={(e) => setGripAsisi(e.target.value)}
         />
-        <label for="yok">Yok</label>
+        <label htmlFor="yok">Yok</label>
         <input
           type="radio"
           name="grip"
@@ -305,8 +312,8 @@ function Anamnez() {
           checked={gripAsisi === "var"}
           onChange={(e) => setGripAsisi(e.target.value)}
         />
-        <label for="var">Var</label>
-        <label for="aciklama">Açıklama</label>
+        <label htmlFor="var">Var</label>
+        <label htmlFor="aciklama">Açıklama</label>
         <textarea
           name="aciklama"
           id="aciklama"
@@ -317,15 +324,34 @@ function Anamnez() {
         ></textarea>
       </div>
       <div className="tani-ekle">
-        <label for="tani">Tanı: </label>
-        <input
+        <label htmlFor="tani">Tanı: </label>
+        {/* <input
           type="text"
           value={selectedTaniList.join(",   ")}
           onChange={(e) => setSelectedTaniList(e.target.value)}
-        />
+        /> */}
+        <table className="taniekle-table">
+          <thead>
+            <tr>
+              <th className="icd-kodu">ICD10 Kodu</th>
+              <th className="tani-adi">Tanı Adı</th>
+            </tr>
+          </thead>
+          <tbody>
+            {selectedTaniList.map((tani, index) => (
+              <tr key={index}>
+                <td className="icd-kodu">{tani.icd10Kodu}</td>
+                <td className="tani-adi">{tani.taniAdi}</td>
+                <td className="sil-buton">
+                  <button onClick={() => removeTani(index)}>Sil</button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </div>
       <div className="ilac-ekle">
-        <label for="ilac">İlaç: </label>
+        <label htmlFor="ilac">İlaç: </label>
         <input
           type="text"
           value={selectedIlacList.join(",   ")}
@@ -334,7 +360,7 @@ function Anamnez() {
         {/* onClick={handleOpenModalIlac} tıklayınca modal açılsın */}
       </div>
       <div className="istem-ekle">
-        <label for="istem">İstem:</label>
+        <label htmlFor="istem">İstem:</label>
         <input
           type="text"
           value={selectedIstemList.join(",   ")}
@@ -372,7 +398,7 @@ function Anamnez() {
             onSelectedItemsChange={handleSelectedIstemListChange}
           />
         )}
-        <button className="menu-button" onClick={handleMuayeneKaydet}>
+        <button className="menu-button muayene-kaydet-button" onClick={handleMuayeneKaydet}>
           Muayene Kaydet
         </button>
       </div>

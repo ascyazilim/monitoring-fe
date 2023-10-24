@@ -8,16 +8,17 @@ function TaniEkle({ onSelectedItemsChange, onClose }) {
   const [selectedOptions, setSelectedOptions] = useState([]);
 
   useEffect(() => {
-    const fetchTaniListesi = async () => {
+    const fetchIstemList = async () => {
       try {
-        const response = await axios.get("http://localhost:8080/tani-list");
+        const response = await axios.get(
+          "http://localhost:8080/tani-list"
+        );
         setTaniList(response.data);
-        setLoading(false);
       } catch (error) {
-        console.error("Veri alınamadı: ", error);
+        console.error("Veri alınamadı:", error);
       }
     };
-    fetchTaniListesi();
+    fetchIstemList();
   }, []);
 
   const handleCheckboxChange = (tani) => {
@@ -30,14 +31,21 @@ function TaniEkle({ onSelectedItemsChange, onClose }) {
     }
   };
 
+  // const handleAddOption = () => {
+  //   const selectedTaniNames = selectedOptions.map(
+  //     (option) => `${option.icd10Kodu} - ${option.taniAdi}`
+  //   );
+  //   onSelectedItemsChange(selectedTaniNames);
+  //   setSelectedOptions([]);
+  //   onClose();
+  // };
+
   const handleAddOption = () => {
-    const selectedTaniNames = selectedOptions.map(
-      (option) => `${option.icd10Kodu} - ${option.taniAdi}`
-    );
-    onSelectedItemsChange(selectedTaniNames);
+    onSelectedItemsChange(selectedOptions);
     setSelectedOptions([]);
     onClose();
-  };
+};
+
 
   return (
     <div className="tani-ekle-modal">
@@ -49,23 +57,23 @@ function TaniEkle({ onSelectedItemsChange, onClose }) {
         <table>
           <thead>
             <tr>
-              <th>Seç</th>
-              <th>ICD10 Kodu</th>
-              <th>Tanı Adı</th>
+              <th className="sec-baslik">Seç</th>
+              <th className="icd-baslik">ICD10 Kodu</th>
+              <th className="tani-baslik">Tanı Adı</th>
             </tr>
           </thead>
           <tbody>
             {taniList.map((tani) => (
               <tr key={tani.id}>
-                <td>
+                <td className="chec-content">
                   <input
                     type="checkbox"
                     value={tani.taniAdi}
                     onChange={() => handleCheckboxChange(tani)}
                   />
                 </td>
-                <td>{tani.icd10Kodu}</td>
-                <td>{tani.taniAdi}</td>
+                <td className="icd-content">{tani.icd10Kodu}</td>
+                <td className="tani-content">{tani.taniAdi}</td>
               </tr>
             ))}
           </tbody>
