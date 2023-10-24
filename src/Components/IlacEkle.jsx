@@ -29,14 +29,20 @@ function IlacEkle({ onSelectedItemsChange, onClose }) {
     }
   };
 
+  // const handleAddOption = () => {
+  //   const selectedIlacNames = selectedOptions.map(
+  //     (option) => `${option.ilacAdi} - ${option.doz}`
+  //   );
+  //   onSelectedItemsChange(selectedIlacNames);
+  //   setSelectedOptions([]);
+  //   onClose();
+  // };
+
   const handleAddOption = () => {
-    const selectedIlacNames = selectedOptions.map(
-      (option) => `${option.ilacAdi} - ${option.doz}`
-    );
-    onSelectedItemsChange(selectedIlacNames);
+    onSelectedItemsChange(selectedOptions);
     setSelectedOptions([]);
     onClose();
-  };
+  }
 
   return (
     <div className="ilac-ekle-modal">

@@ -72,6 +72,13 @@ function Anamnez() {
     setSelectedIlacList(selectedItems);
   };
 
+  //İlaç Silme
+  const removeIlac = (index) => {
+    const newList = [...selectedIlacList];
+    newList.splice(index, 1);
+    setSelectedTaniList(newList);
+  };
+
   //Hizmet-istem Ekleme
   const [isModalOpenIstem, setModalOpenIstem] = useState(false);
   // const [selectedIstemList, setSelectedIstemList] = useState([]);
@@ -85,6 +92,13 @@ function Anamnez() {
 
   const handleSelectedIstemListChange = (selectedItems) => {
     setSelectedIstemList(selectedItems);
+  };
+
+  //Hizmet-İstem Silme
+  const removeIstem = (index) => {
+    const newList = [...selectedIstemList];
+    newList.splice(index, 1);
+    setSelectedIstemList(newList);
   };
 
   //Muayene Kaydet
@@ -107,7 +121,7 @@ function Anamnez() {
             sigaraAciklama,
             gripAsisi,
             gripAsisiAciklama,
-            taniList: selectedTaniList.map(tani => ({
+            taniList: selectedTaniList.map((tani) => ({
               icd10Kodu: tani.icd10Kodu,
               taniAdi: tani.taniAdi,
             })),
@@ -117,13 +131,12 @@ function Anamnez() {
           }),
         }
       );
-      if (response.ok){
+      if (response.ok) {
         alert("Muayene başarıyla kaydedildi.");
       } else {
         const data = await response.json();
-        alert("Muayene kaydedilirken bir hata oluştu: " +(data.message || ""));
+        alert("Muayene kaydedilirken bir hata oluştu: " + (data.message || ""));
       }
-      
     } catch (error) {
       alert("Ağ hatası:", error);
     }
@@ -349,24 +362,63 @@ function Anamnez() {
             ))}
           </tbody>
         </table>
+        <hr />
       </div>
+      {/* <div className="ilac-istem"> */}
       <div className="ilac-ekle">
         <label htmlFor="ilac">İlaç: </label>
-        <input
+        {/* <input
           type="text"
           value={selectedIlacList.join(",   ")}
           onChange={(e) => setSelectedIlacList(e.target.value)}
-        />
+        /> */}
         {/* onClick={handleOpenModalIlac} tıklayınca modal açılsın */}
+        <table className="ilacekle-table">
+          <thead>
+            <tr>
+              <th className="ilac-baslik">İlaç Adı</th>
+              <th className="doz-baslik-yeni">Doz</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            {selectedIlacList.map((ilac, index) => (
+              <tr key={index}>
+                <td className="ilac-content">{ilac.ilacAdi}</td>
+                <td className="doz-content-yeni">{ilac.doz}</td>
+                <td className="sil-buton">
+                  <button onClick={() => removeIlac(index)}>Sil</button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </div>
+
       <div className="istem-ekle">
         <label htmlFor="istem">İstem:</label>
-        <input
-          type="text"
-          value={selectedIstemList.join(",   ")}
-          onChange={(e) => setSelectedIstemList(e.target.value)}
-        />
+        <table className="istemekle-table">
+          <thead>
+            <tr>
+              <th className="hizmet-kodu-baslik">Hizmet Kodu</th>
+              <th className="istem-adi-baslik">İstem Adı</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            {selectedIstemList.map((istem, index) => (
+              <tr key={index}>
+                <td className="hizmet-kodu">{istem.hizmetKodu}</td>
+                <td className="istem-adi">{istem.istemAdi}</td>
+                <td className="sil-buton">
+                  <button onClick={() => removeIstem(index)}>Sil</button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </div>
+      {/* </div> */}
 
       <div className="alt-menu">
         <button className="menu-button" onClick={handleOpenModalTani}>
@@ -398,7 +450,10 @@ function Anamnez() {
             onSelectedItemsChange={handleSelectedIstemListChange}
           />
         )}
-        <button className="menu-button muayene-kaydet-button" onClick={handleMuayeneKaydet}>
+        <button
+          className="menu-button muayene-kaydet-button"
+          onClick={handleMuayeneKaydet}
+        >
           Muayene Kaydet
         </button>
       </div>

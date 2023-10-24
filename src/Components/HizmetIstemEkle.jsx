@@ -30,14 +30,19 @@ function HizmetIstemEkle({ onSelectedItemsChange, onClose }) {
     }
   };
 
+  // const handleAddOption = () => {
+  //   const selectedIstemNames = selectedOptions.map(
+  //     (option) => `${option.hizmetKodu} - ${option.istemAdi}`
+  //   );
+  //   onSelectedItemsChange(selectedIstemNames);
+  //   setSelectedOptions([]);
+  //   onClose();
+  // };
   const handleAddOption = () => {
-    const selectedIstemNames = selectedOptions.map(
-      (option) => `${option.hizmetKodu} - ${option.istemAdi}`
-    );
-    onSelectedItemsChange(selectedIstemNames);
+    onSelectedItemsChange(selectedOptions);
     setSelectedOptions([]);
     onClose();
-  };
+  }
 
   return (
     <div className="istem-ekle-modal">
