@@ -37,6 +37,9 @@ function Anamnez() {
   const [selectedIlacList, setSelectedIlacList] = useState([]);
   const [selectedIstemList, setSelectedIstemList] = useState([]);
 
+  //Tanı türü Seçimi
+  const [selectedTaniTuru, setSelectedTaniTuru] = useState("");
+
   //Tanı Ekleme Ekranı
   const [isModalOpenTani, setModalOpenTani] = useState(false);
   // const [selectedTaniList, setSelectedTaniList] = useState([]);
@@ -358,6 +361,15 @@ function Anamnez() {
             ))}
           </tbody>
         </table>
+        <select
+            name="tani-turu"
+            id="tani-turu"
+            value={selectedTaniTuru}
+            onChange={(e) => setSelectedTaniTuru(e.target.value)}
+          >
+            <option value="tani1">Ön Tanı</option>
+            <option value="tani2">Kesin Tanı</option>
+          </select>
       </div>
       <div
         style={{
@@ -373,6 +385,7 @@ function Anamnez() {
           <thead>
             <tr>
               <th className="ilac-doz-yeni">Doz</th>
+              <th className="ilac-kodu-yeni">İlaç Kodu</th>
               <th className="ilac-adi-yeni">İlaç Adı</th>
               <th className="doz-sil"></th>
             </tr>
@@ -381,6 +394,7 @@ function Anamnez() {
             {selectedIlacList.map((ilac, index) => (
               <tr key={index}>
                 <td className="ilac-doz-content-yeni">{ilac.doz}</td>
+                <td className="ilac-kodu-content-yeni">{ilac.barkod}</td>
                 <td className="ilac-content-yeni">{ilac.ilacAdi}</td>
                 <td className="sil-buton">
                   <button onClick={() => removeIlac(index)}>Sil</button>

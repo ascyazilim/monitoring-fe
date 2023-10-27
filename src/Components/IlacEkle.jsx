@@ -46,6 +46,7 @@ function IlacEkle({ onSelectedItemsChange, onClose }) {
           <thead>
             <tr>
               <th className="sec-baslik">Seç</th>
+              <th className="ilac-kodu-baslik">İlaç Kodu</th>
               <th className="ilac-baslik">İlaç Adı</th>
               <th className="doz-baslik">Doz</th>
             </tr>
@@ -60,6 +61,7 @@ function IlacEkle({ onSelectedItemsChange, onClose }) {
                     onChange={() => handleCheckboxChange(ilac)}
                   />
                 </td>
+                <td className="ilac-kodu-content">{ilac.barkod}</td>
                 <td className="ilac-content">{ilac.ilacAdi}</td>
                 <td className="doz-content">{ilac.doz}</td>
               </tr>

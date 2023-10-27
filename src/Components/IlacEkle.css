@@ -35,24 +35,35 @@
 
 .sec-baslik {
     text-align: center;
+    width: 10%;
+}
+
+.ilac-kodu-baslik{
+    width: 30%;
 }
 
 .ilac-baslik {
-    width: 50%;
+    width: 30%;
     text-align: center;
 }
 
 .chec-content {
     text-align: center;
+    width: 11%;
+}
+
+.ilac-kodu-content {
+    width: 36%;
 }
 
 .ilac-content {
-    width: 50%;
+    width: 35%;
     text-align: center;
 }
 
 .doz-baslik {
     text-align: center;
+    width: 15%;
 }
 
 .doz-content {

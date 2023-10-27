@@ -195,6 +195,11 @@
     width: 708px;
 }
 
+#tani-turu {
+    margin-left: 15px;
+    align-items: center;
+}
+
 .ilac-istem {
     display: flex;
     width: 100%;
@@ -241,16 +246,21 @@
 .ilacekle-table {
     width: 70%;
 }
+
+
 .ilac-adi-yeni {
-    width: 65%;
+    width: 45%;
+}
+.ilac-kodu-content-yeni {
+    width: 36%;
 }
 
 .ilac-content-yeni {
-    width: 65%;
+    width: 45%;
 }
 
 .ilac-doz-yeni {
-    width: 26%;
+    width: 10%;
     text-align: center;
 }
 .doz-sil {
@@ -258,7 +268,7 @@
 }
 
 .ilac-doz-content-yeni {
-    width: 26%;
+    width: 10%;
     text-align: center;
 }
 

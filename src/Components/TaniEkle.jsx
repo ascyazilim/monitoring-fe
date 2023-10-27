@@ -10,9 +10,7 @@ function TaniEkle({ onSelectedItemsChange, onClose }) {
   useEffect(() => {
     const fetchIstemList = async () => {
       try {
-        const response = await axios.get(
-          "http://localhost:8080/tani-list"
-        );
+        const response = await axios.get("http://localhost:8080/tani-list");
         setTaniList(response.data);
       } catch (error) {
         console.error("Veri alınamadı:", error);
@@ -44,8 +42,7 @@ function TaniEkle({ onSelectedItemsChange, onClose }) {
     onSelectedItemsChange(selectedOptions);
     setSelectedOptions([]);
     onClose();
-};
-
+  };
 
   return (
     <div className="tani-ekle-modal">
