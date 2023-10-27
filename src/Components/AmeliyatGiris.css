@@ -1,5 +1,17 @@
-.main {
-    margin: 5px;
+.main-ameliyat{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #f5f5f5;
+    color: #000;
+    padding: 20px;
+    z-index: 1000;
+    border: 1px solid #ccc;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    height: 400px;
+    width: 880px;
+    border: 2px solid #000000;
 }
 .main h2{
     text-align: center;
@@ -83,10 +95,10 @@
     
 }
 .norolojik{
-    margin-left: 5px;
+    margin-left: 3px;
 }
 .norolojik label {
-    margin-right:  47px;
+    margin-right:  42px;
 }
 .norolojik select {
     background-color: #d9d6d6a3;
@@ -95,10 +107,10 @@
 }
 .abdomen{
     margin-top: 5px;
-    margin-left: 5px;
+    margin-left: 3px;
 }
 .abdomen label {
-    margin-right:  45px;
+    margin-right:  41px;
 }
 .abdomen select {
     background-color: #d9d6d6a3;

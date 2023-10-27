@@ -5,6 +5,8 @@ import { useState } from "react";
 import TaniEkle from "./TaniEkle";
 import IlacEkle from "./IlacEkle";
 import HizmetIstemEkle from "./HizmetIstemEkle";
+import  {Konsultasyon}  from "./Konsultasyon";
+import  AmeliyatGiris from "./AmeliyatGiris";
 
 function Anamnez() {
   //Şikayet ve Hikaye Alanları
@@ -37,6 +39,9 @@ function Anamnez() {
   const [selectedIlacList, setSelectedIlacList] = useState([]);
   const [selectedIstemList, setSelectedIstemList] = useState([]);
 
+  const [selectedKonsultasyon, setSelectedKonsultasyon] = useState([]);
+  const [selectedAmeliyat, setSelectedAmeliyat] = useState([]);
+
   //Tanı türü Seçimi
   const [selectedTaniTuru, setSelectedTaniTuru] = useState("");
 
@@ -59,6 +64,28 @@ function Anamnez() {
     const newList = [...selectedTaniList];
     newList.splice(index, 1);
     setSelectedTaniList(newList);
+  };
+
+  //Konsültasyon Ekleme Ekranı
+  const [isModalOpenKonsultasyon, setModalOpenKonsultasyon] = useState(false);
+
+  const handleOpenModalKonsultasyon = () => {
+    setModalOpenKonsultasyon(true);
+  };
+
+  const handleCloseModalKonsultasyon = () => {
+    setModalOpenKonsultasyon(false);
+  };
+
+  const handleSelectedKonsultasyonChange = (selectedItems) => {
+    setSelectedKonsultasyon(selectedItems);
+  };
+
+  //Konsültasyon Silme
+  const removeKonstultasyon = (index) => {
+    const newList = [...selectedKonsultasyon];
+    newList.splice(index, 1);
+    setSelectedKonsultasyon(newList);
   };
 
   //İlaç Ekleme Ekranı
@@ -102,6 +129,25 @@ function Anamnez() {
     const newList = [...selectedIstemList];
     newList.splice(index, 1);
     setSelectedIstemList(newList);
+  };
+
+  //Ameliyat Giriş Ekleme
+  const [isModalOpenAmeliyat, setModalOpenAmeliyat] = useState(false);
+
+  const handleOpenModalAmeliyat = () => {
+    setModalOpenAmeliyat(true);
+  };
+  const handleCloseModalAmeliyat = () => {
+    setModalOpenAmeliyat(false);
+  };
+  const handleSelectedAmeliyatChange = (selectedItems) => {
+    setSelectedAmeliyat(selectedItems);
+  };
+  //Ameliyat Silme
+  const removeAmeliyat = (index) => {
+    const newList = [...selectedAmeliyat];
+    newList.splice(index, 1);
+    setSelectedAmeliyat(newList);
   };
 
   //Muayene Kaydet
@@ -339,6 +385,13 @@ function Anamnez() {
           onChange={(e) => setGripAsisisAciklama(e.target.value)}
         ></textarea>
       </div>
+      <div
+        style={{
+          borderBottom: "1px dotted #1976d2",
+          marginBottom: "10px",
+          marginTop: "10px",
+        }}
+      ></div>
       <div className="tani-ekle">
         <label htmlFor="tani">Tanı: </label>
 
@@ -362,14 +415,14 @@ function Anamnez() {
           </tbody>
         </table>
         <select
-            name="tani-turu"
-            id="tani-turu"
-            value={selectedTaniTuru}
-            onChange={(e) => setSelectedTaniTuru(e.target.value)}
-          >
-            <option value="tani1">Ön Tanı</option>
-            <option value="tani2">Kesin Tanı</option>
-          </select>
+          name="tani-turu"
+          id="tani-turu"
+          value={selectedTaniTuru}
+          onChange={(e) => setSelectedTaniTuru(e.target.value)}
+        >
+          <option value="tani1">Ön Tanı</option>
+          <option value="tani2">Kesin Tanı</option>
+        </select>
       </div>
       <div
         style={{
@@ -449,6 +502,7 @@ function Anamnez() {
             onSelectedItemsChange={handleSelectedTaniListChange}
           />
         )}
+
         <button className="menu-button" onClick={handleOpenModalIlac}>
           İlaç
           <br /> Ekle
@@ -467,6 +521,24 @@ function Anamnez() {
             onClose={handleCloseModalIstem}
             onSelectedItemsChange={handleSelectedIstemListChange}
           />
+        )}
+        <button className="menu-button" onClick={handleOpenModalKonsultasyon}>
+          Konsültasyon Ekle
+        </button>
+        {isModalOpenKonsultasyon && (
+          <Konsultasyon
+            onClose={handleCloseModalKonsultasyon}
+            onSelectedItemsChange={handleSelectedKonsultasyonChange}
+          />
+        )}
+        <button className="menu-button" onClick={handleOpenModalAmeliyat}>
+          Ameliyat <br /> Giriş
+        </button>
+        {isModalOpenAmeliyat && (
+          <AmeliyatGiris
+            onClose={handleCloseModalAmeliyat}
+            onSelectedItemsChange={handleSelectedAmeliyatChange}
+           />
         )}
         <button
           className="menu-button muayene-kaydet-button"

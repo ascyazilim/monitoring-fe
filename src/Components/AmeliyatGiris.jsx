@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "./AmeliyatGiris.css";
 
-function AmeliyatGiris() {
+function AmeliyatGiris({onClose}) {
   const [ameliyatGiris, setAmeliyatGiris] = useState([]);
 
   useEffect(() => {
@@ -19,8 +19,11 @@ function AmeliyatGiris() {
     fetchAmeliyatGiris();
   }, []);
   return (
-    <div className="main">
+    <div className="main-ameliyat">
       <div className="baslik">Ameliyat Giriş</div>
+      <button className="close-button" onClick={onClose}>
+        X
+      </button>
       <div className="section">
         <div className="form">
           <form className="main-form">

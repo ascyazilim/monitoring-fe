@@ -53,7 +53,7 @@ function KlinikSeyir() {
         <textarea cols="118" rows="6"></textarea>
       </div>
 
-      <div className="klinik-button">
+      <div className="klinik-button ">
         <button>Kaydet</button>
       </div>
     </div>

@@ -1,0 +1,165 @@
+.main-konsultasyon{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #f5f5f5;
+    color: #000;
+    padding: 20px;
+    z-index: 1000;
+    border: 1px solid #ccc;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    height: 500px;
+    width: 880px;
+    border: 2px solid #000000;
+}
+.form {
+    box-sizing: border-box;
+    display: flex;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.istek {
+    border: 1px solid #ccc;
+    margin-right: 10px;
+}
+
+.istek-content {
+    /* padding: 5px; */
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.istek-content select {
+    width: 180px;
+}
+
+.istek-content input {
+    width: 180px;
+}
+
+.istek-bolum {
+    margin: 5px;
+}
+
+.istek-birim {
+    margin: 5px;
+}
+.istek-doktor-adi {
+    margin: 5px;
+}
+.istek-doktor-iletisim {
+    margin: 5px;
+}
+
+.istek-asistan {
+    margin: 5px;
+}
+
+.istek-tarih {
+    margin: 5px;
+}
+
+.istek-nedeni {
+    margin: 5px;
+}
+
+.istek-bolum label {
+    margin-right: 20px;
+}
+
+.istek-birim label {
+    margin-right: 24px;
+}
+
+.istek-doktor-adi label{
+    margin-right: 11px;
+}
+
+.istek-doktor-iletisim label {
+    margin-right: 13px;
+}
+.istek-asistan label {
+    margin-right: 10px;
+}
+
+.istek-tarih label{
+    margin-right: 13px;
+}
+.istek-nedeni label {
+    margin-right: 35px;
+}
+/*--------------------------------------------*/
+
+.karsilama {
+    border: 1px solid #ccc;
+    padding: 5px;
+    margin-left: 5px;
+    /* margin-right: 5px; */
+}
+
+.karsilama select{
+    width: 358px;
+}
+.karsilama input{
+    width: 358px;
+}
+
+.karsilama-bolum {
+    margin: 5px;
+}
+.karsilama-birim {
+    margin: 5px;
+}
+.karsilama-doktor {
+    margin: 5px;
+}
+.karsilama-asistan {
+    margin: 5px;
+}
+.karsilama-ekip {
+    margin: 5px;
+}
+.karsilama-tarih {
+    margin: 5px;
+}
+
+.karsilama-bolum label {
+    margin-right: 15px;
+}
+
+.karsilama-birim label {
+    margin-right: 22px;
+}
+.karsilama-doktor label {
+    margin-right: 10px;
+}
+.karsilama-asistan label {
+    margin-right: 9px;
+}
+.karsilama-ekip label {
+    margin-right: 54px;
+}
+.karsilama-tarih label {
+    margin-right: 9px;
+}
+
+.karsilama-tarih input {
+    width: 150px;
+}
+
+.karsilama-not-button button:hover{
+    background-color: #555;
+    color: white;
+    cursor: pointer;
+}
+.istek-button {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-right: 5px;
+}
+
+.istek-button.active, .karsilama-button.active {
+    color: red;
+}
