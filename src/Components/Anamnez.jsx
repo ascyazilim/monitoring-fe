@@ -5,8 +5,11 @@ import { useState } from "react";
 import TaniEkle from "./TaniEkle";
 import IlacEkle from "./IlacEkle";
 import HizmetIstemEkle from "./HizmetIstemEkle";
-import  {Konsultasyon}  from "./Konsultasyon";
-import  AmeliyatGiris from "./AmeliyatGiris";
+import { Konsultasyon } from "./Konsultasyon";
+import AmeliyatGiris from "./AmeliyatGiris";
+import KlinikSeyir from "./KlinikSeyir";
+import TaburcuIstek from "./TaburcuIstek";
+import TahlilSonuc from "./TahlilSonuc";
 
 function Anamnez() {
   //Şikayet ve Hikaye Alanları
@@ -41,6 +44,9 @@ function Anamnez() {
 
   const [selectedKonsultasyon, setSelectedKonsultasyon] = useState([]);
   const [selectedAmeliyat, setSelectedAmeliyat] = useState([]);
+  const [selectedKlinik, setSelectedKlinik] = useState([]);
+  const [selectedTaburcu, setSelectedTaburcu] = useState([]);
+  const [selectedTahlil, setSelectedTahlil] = useState([]);
 
   //Tanı türü Seçimi
   const [selectedTaniTuru, setSelectedTaniTuru] = useState("");
@@ -149,6 +155,61 @@ function Anamnez() {
     newList.splice(index, 1);
     setSelectedAmeliyat(newList);
   };
+  //Klinik Seyir Ekleme
+  const [isModalOpenKlinik, setModalOpenKlinik] = useState(false);
+
+  const handleOpenModalKlinik = () => {
+    setModalOpenKlinik(true);
+  };
+  const handleCloseModalKlinik = () => {
+    setModalOpenKlinik(false);
+  };
+  const handleSelectedKlinikChange = (selectedItems) => {
+    setSelectedKlinik(selectedItems);
+  };
+  //Klinik Seyir Sillme
+  const removeKlinik = (index) => {
+    const newList = [...selectedKlinik];
+    newList.splice(index, 1);
+    setSelectedKlinik(newList);
+  };
+  // Taburcu İstek Ekleme
+  const [isModalOpenTaburcu, setModalOpenTaburcu] = useState(false);
+
+  const handleOpenModalTaburcu = () => {
+    setModalOpenTaburcu(true);
+  };
+  const handleCloseModalTaburcu = () => {
+    setModalOpenTaburcu(false);
+  };
+  const handleSelectedTaburcuChange = (selectedItems) => {
+    setSelectedTaburcu(selectedItems);
+  };
+  // Taburcu İstek Silme
+  const removeTaburcu = (index) => {
+    const newList = [...selectedTaburcu];
+    newList.splice(index, 1);
+    setSelectedTaburcu(newList);
+  };
+
+  //Tahlil Sonuç Ekleme
+  const [isModalOpenTahlil, setModalOpenTahlil] = useState(false);
+
+  const handleOpenModalTahlil = () => {
+    setModalOpenTahlil(true);
+  };
+  const handleCloseModalTahlil = () => {
+    setModalOpenTahlil(false);
+  };
+  const handleSelectedTahlilChange = (selectedItems) => {
+    setSelectedTahlil(selectedItems);
+  };
+  //Tahlil silme
+  const removeTahlil = (index) => {
+    const newList = [...selectedTahlil];
+    newList.splice(index, 1);
+    setSelectedTahlil(newList);
+  };
 
   //Muayene Kaydet
   const handleMuayeneKaydet = async () => {
@@ -190,6 +251,160 @@ function Anamnez() {
       alert("Ağ hatası:", error);
     }
   };
+
+  //TabStrip
+  const [activeTab, setActiveTab] = useState("tani");
+
+  const tabs = [
+    {
+      name: "tani",
+      title: "Tanı",
+      content: (
+        <div className="tani-ekle">
+          <label htmlFor="tani">Tanı: </label>
+
+          <table className="taniekle-table">
+            <thead>
+              <tr>
+                <th className="icd-kodu">ICD10 Kodu</th>
+                <th className="tani-adi">Tanı Adı</th>
+              </tr>
+            </thead>
+            <tbody>
+              {selectedTaniList.map((tani, index) => (
+                <tr key={index}>
+                  <td className="icd-kodu">{tani.icd10Kodu}</td>
+                  <td className="tani-adi">{tani.taniAdi}</td>
+                  <td className="sil-buton">
+                    <button onClick={() => removeTani(index)}>Sil</button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+          <div className="alt-menu">
+            <button
+              className="menu-button"
+              style={{ marginBottom: "20px" }}
+              onClick={handleOpenModalTani}
+            >
+              Tanı
+              <br /> Ekle
+            </button>
+            {isModalOpenTani && (
+              <TaniEkle
+                onClose={handleCloseModalTani}
+                onSelectedItemsChange={handleSelectedTaniListChange}
+              />
+            )}
+            <select
+              name="tani-turu"
+              id="tani-turu"
+              value={selectedTaniTuru}
+              onChange={(e) => setSelectedTaniTuru(e.target.value)}
+            >
+              <option value="tani1">Ön Tanı</option>
+              <option value="tani2">Kesin Tanı</option>
+            </select>
+          </div>
+        </div>
+      ),
+    },
+    {
+      name: "ilac",
+      title: "İlaç",
+      content: (
+        <div className="ilac-ekle">
+          <label htmlFor="ilac">İlaç: </label>
+
+          <table className="ilacekle-table">
+            <thead>
+              <tr>
+                <th className="ilac-doz-yeni">Doz</th>
+                <th className="ilac-kodu-yeni">İlaç Kodu</th>
+                <th className="ilac-adi-yeni">İlaç Adı</th>
+                <th className="doz-sil"></th>
+              </tr>
+            </thead>
+            <tbody>
+              {selectedIlacList.map((ilac, index) => (
+                <tr key={index}>
+                  <td className="ilac-doz-content-yeni">{ilac.doz}</td>
+                  <td className="ilac-kodu-content-yeni">{ilac.barkod}</td>
+                  <td className="ilac-content-yeni">{ilac.ilacAdi}</td>
+                  <td className="sil-buton">
+                    <button onClick={() => removeIlac(index)}>Sil</button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+          <div className="alt-menu">
+            <button
+              style={{ marginLeft: "15px" }}
+              className="menu-button"
+              onClick={handleOpenModalIlac}
+            >
+              İlaç
+              <br /> Ekle
+            </button>
+            {isModalOpenIlac && (
+              <IlacEkle
+                onClose={handleCloseModalIlac}
+                onSelectedItemsChange={handleSelectedIlacListChange}
+              />
+            )}
+          </div>
+        </div>
+      ),
+    },
+    {
+      name: "istem",
+      title: "Hizmet - İstem",
+      content: (
+        <div className="istem-ekle">
+          <div className="istem-ekle">
+            <label htmlFor="istem">İstem:</label>
+            <table className="istemekle-table">
+              <thead>
+                <tr>
+                  <th className="hizmet-kodu-baslik">Hizmet Kodu</th>
+                  <th className="istem-adi-baslik">İstem Adı</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                {selectedIstemList.map((istem, index) => (
+                  <tr key={index}>
+                    <td className="hizmet-kodu">{istem.hizmetKodu}</td>
+                    <td className="istem-adi">{istem.istemAdi}</td>
+                    <td className="sil-buton">
+                      <button onClick={() => removeIstem(index)}>Sil</button>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+            <div className="alt-menu">
+              <button
+                style={{ marginLeft: "15px" }}
+                className="menu-button"
+                onClick={handleOpenModalIstem}
+              >
+                Hizmet İstem Ekle
+              </button>
+              {isModalOpenIstem && (
+                <HizmetIstemEkle
+                  onClose={handleCloseModalIstem}
+                  onSelectedItemsChange={handleSelectedIstemListChange}
+                />
+              )}
+            </div>
+          </div>
+        </div>
+      ),
+    },
+  ];
 
   return (
     <div className="main">
@@ -392,110 +607,34 @@ function Anamnez() {
           marginTop: "10px",
         }}
       ></div>
-      <div className="tani-ekle">
-        <label htmlFor="tani">Tanı: </label>
-
-        <table className="taniekle-table">
-          <thead>
-            <tr>
-              <th className="icd-kodu">ICD10 Kodu</th>
-              <th className="tani-adi">Tanı Adı</th>
-            </tr>
-          </thead>
-          <tbody>
-            {selectedTaniList.map((tani, index) => (
-              <tr key={index}>
-                <td className="icd-kodu">{tani.icd10Kodu}</td>
-                <td className="tani-adi">{tani.taniAdi}</td>
-                <td className="sil-buton">
-                  <button onClick={() => removeTani(index)}>Sil</button>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-        <select
-          name="tani-turu"
-          id="tani-turu"
-          value={selectedTaniTuru}
-          onChange={(e) => setSelectedTaniTuru(e.target.value)}
-        >
-          <option value="tani1">Ön Tanı</option>
-          <option value="tani2">Kesin Tanı</option>
-        </select>
+      <div className="alt-menu-tab">
+        {tabs.map((tab) => (
+          <button
+            key={tab.name}
+            className={activeTab === tab.name ? "active" : ""}
+            // className={`menu-button ${activeTab === tab.name ? "active" : ""}`}
+            onClick={() => setActiveTab(tab.name)}
+          >
+            {tab.title}
+          </button>
+        ))}
       </div>
-      <div
-        style={{
-          borderBottom: "1px dotted #1976d2",
-          marginBottom: "10px",
-          marginTop: "10px",
-        }}
-      ></div>
-      <div className="ilac-ekle">
-        <label htmlFor="ilac">İlaç: </label>
-
-        <table className="ilacekle-table">
-          <thead>
-            <tr>
-              <th className="ilac-doz-yeni">Doz</th>
-              <th className="ilac-kodu-yeni">İlaç Kodu</th>
-              <th className="ilac-adi-yeni">İlaç Adı</th>
-              <th className="doz-sil"></th>
-            </tr>
-          </thead>
-          <tbody>
-            {selectedIlacList.map((ilac, index) => (
-              <tr key={index}>
-                <td className="ilac-doz-content-yeni">{ilac.doz}</td>
-                <td className="ilac-kodu-content-yeni">{ilac.barkod}</td>
-                <td className="ilac-content-yeni">{ilac.ilacAdi}</td>
-                <td className="sil-buton">
-                  <button onClick={() => removeIlac(index)}>Sil</button>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+      <div className="tab-content">
+        {tabs.map(
+          (tab) =>
+            activeTab === tab.name && (
+              <div key={tab.name} className="tab-panel">
+                {tab.content}
+              </div>
+            )
+        )}
       </div>
-
-      <div
-        style={{
-          borderBottom: "1px dotted #1976d2",
-          marginBottom: "10px",
-          marginTop: "10px",
-        }}
-      ></div>
-
-      <div className="istem-ekle">
-        <label htmlFor="istem">İstem:</label>
-        <table className="istemekle-table">
-          <thead>
-            <tr>
-              <th className="hizmet-kodu-baslik">Hizmet Kodu</th>
-              <th className="istem-adi-baslik">İstem Adı</th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody>
-            {selectedIstemList.map((istem, index) => (
-              <tr key={index}>
-                <td className="hizmet-kodu">{istem.hizmetKodu}</td>
-                <td className="istem-adi">{istem.istemAdi}</td>
-                <td className="sil-buton">
-                  <button onClick={() => removeIstem(index)}>Sil</button>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-      {/* </div> */}
 
       <div className="alt-menu">
-        <button className="menu-button" onClick={handleOpenModalTani}>
+        {/* <button className="menu-button" onClick={handleOpenModalTani}>
           Tanı
           <br /> Ekle
-        </button>
+        </button> */}
         {isModalOpenTani && (
           <TaniEkle
             onClose={handleCloseModalTani}
@@ -503,19 +642,19 @@ function Anamnez() {
           />
         )}
 
-        <button className="menu-button" onClick={handleOpenModalIlac}>
+        {/* <button className="menu-button" onClick={handleOpenModalIlac}>
           İlaç
           <br /> Ekle
-        </button>
+        </button> */}
         {isModalOpenIlac && (
           <IlacEkle
             onClose={handleCloseModalIlac}
             onSelectedItemsChange={handleSelectedIlacListChange}
           />
         )}
-        <button className="menu-button" onClick={handleOpenModalIstem}>
+        {/* <button className="menu-button" onClick={handleOpenModalIstem}>
           Hizmet İstem Ekle
-        </button>
+        </button> */}
         {isModalOpenIstem && (
           <HizmetIstemEkle
             onClose={handleCloseModalIstem}
@@ -538,7 +677,34 @@ function Anamnez() {
           <AmeliyatGiris
             onClose={handleCloseModalAmeliyat}
             onSelectedItemsChange={handleSelectedAmeliyatChange}
-           />
+          />
+        )}
+        <button className="menu-button" onClick={handleOpenModalKlinik}>
+          Klinik <br /> Seyir
+        </button>
+        {isModalOpenKlinik && (
+          <KlinikSeyir
+            onClose={handleCloseModalKlinik}
+            onSelectedItemsChange={handleSelectedKlinikChange}
+          />
+        )}
+        <button className="menu-button" onClick={handleOpenModalTaburcu}>
+          Taburcu <br /> İstek
+        </button>
+        {isModalOpenTaburcu && (
+          <TaburcuIstek
+            onClose={handleCloseModalTaburcu}
+            onSelectedItemsChange={handleSelectedTaburcuChange}
+          />
+        )}
+        <button className="menu-button" onClick={handleOpenModalTahlil}>
+          Tahlil <br /> Sonuç
+        </button>
+        {isModalOpenTahlil && (
+          <TahlilSonuc
+            onClose={handleCloseModalTahlil}
+            onSelectedItemsChange={handleSelectedTahlilChange}
+          />
         )}
         <button
           className="menu-button muayene-kaydet-button"

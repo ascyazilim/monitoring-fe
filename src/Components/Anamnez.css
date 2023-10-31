@@ -162,7 +162,7 @@
 }
 
 .alt-menu {
-    margin-top: 10px;
+    /* margin-top: 10px; */
     text-align: center;
 }
 .menu-button {
@@ -184,7 +184,7 @@
 .tani-ekle {
     margin-top: 10px;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
 }
 
 .tani-ekle label {
@@ -196,7 +196,6 @@
 }
 
 #tani-turu {
-    margin-left: 15px;
     align-items: center;
 }
 
@@ -208,8 +207,9 @@
 .ilac-ekle {
     margin-top: 10px;
     display: flex;
-    align-items: center;
+    /* align-items: center; */
     width: 100%;
+    alignItems:"flex-start"
 }
 
 .ilac-ekle label {
@@ -222,9 +222,9 @@
 
 .istem-ekle {
     width: 100%;
-    margin-top: 10px;
+    margin-top: 5px;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
 }
 .istem-ekle label {
     margin-right: 55px;
@@ -291,6 +291,40 @@
 .istem-adi {
     width: 65%;
 }
+.alt-menu-tab {
+    overflow: hidden;
+    border: 1px solid #ccc;
+    background-color: #f1f1f1;
+    display: flex;
+    justify-content: center;
+}
+.alt-menu-tab button {
+    background-color: inherit;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+}
+.alt-menu-tab button:hover{
+    background-color: #000000;
+    color: white;
+}
+.alt-menu-tab button.active {
+    background-color: #6b6969;
+    color: white;
+}
+.tab-content{
+    height: 200px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    max-height: 200px;
+    overflow-y: scroll;
+    display: block;
+    margin-bottom: 10px;
+}
+
 
 
 .sil-buton {

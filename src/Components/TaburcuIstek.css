@@ -1,0 +1,71 @@
+.main-taburcu{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #f5f5f5;
+    color: #000;
+    padding: 20px;
+    z-index: 1000;
+    border: 1px solid #ccc;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    height: 500px;
+    width: 780px;
+    border: 2px solid #000000;
+}
+
+.taburcu-content {
+    margin-top: 15px;
+    border: solid 1px #000000;
+    padding: 10px;
+    height: 300px;
+}
+
+.yatis-bilgileri {
+    display: flex;
+    margin-top: 10px;
+}
+.yatis-bilgileri label {
+    margin-right: 32px;
+}
+.yatis-bilgileri input {
+    width: 580px;
+}
+
+.taburcu-tarihi {
+    display: flex;
+    margin-top: 10px;
+}
+.taburcu-tarihi label {
+    margin-right: 26px;
+}
+#zaman {
+    margin-right: 10px;
+}
+
+#taburcu-tipi {
+    width: 170px;
+}
+
+.taburcu-doktor {
+    display: flex;
+    margin-top: 10px;
+}
+.taburcu-doktor label {
+    margin-right: 10px;
+}
+#taburcu-doktor {
+    width: 178px;
+    margin-right: 10px;
+}
+#taburcu-ekip {
+    margin-left: 5px;
+    width: 170px;
+}
+.aciklama {
+    display: flex;
+    margin-top: 10px;
+}
+.aciklama label {
+    margin-right: 60px;
+}

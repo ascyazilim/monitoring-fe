@@ -177,6 +177,9 @@ function AmeliyatGiris({onClose}) {
             </div>
         </div>
       </div>
+      <div className="window-button">
+        <button style={{marginTop:"20px"}}>Kaydet</button>
+      </div>
     </div>
   );
 }

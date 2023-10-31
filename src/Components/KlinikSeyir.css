@@ -1,7 +1,23 @@
 .main-klinik {
-    border: 1px solid #000000;
-    padding: 5px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     background-color: #f5f5f5;
+    color: #000;
+    padding: 20px;
+    z-index: 1000;
+    border: 1px solid #ccc;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    height: 500px;
+    width: 880px;
+    border: 2px solid #000000;
+}
+
+.klinik-content {
+    border: solid 1px #000000;
+    padding: 2px;
+    height: 435px;
 }
 
 .baslik{
@@ -23,18 +39,26 @@
 }
 
 .tarih-saat {
+    display: flex;
+    margin-left: 14px;
     margin-top: 5px;
 }
 .tarih-saat label {
-    margin-right: 68px;
+    margin-right: 20px;
+}
+.tarih-saat input {
+    width: 172px;
+    text-align: center;
 }
 
 .doktor {
+    display: flex;
+    margin-left: 14px;
     margin-top: 5px;
 }
 
 .doktor label {
-    margin-right: 52px;
+    margin-right: 5px;
 }
 
 .konsultan {
@@ -48,38 +72,38 @@
 }
 
 .bulgular {
-    margin-top: 15px;
+    margin-top: 5px;
 }
 .bulgular textarea {
-    margin-top: 5px;
+    margin-top: 2px;
 }
 
 .tetkik {
-    margin-top: 5px;
+    margin-top: 2px;
 }
 .tetkik textarea {
-    margin-top: 5px;
+    margin-top: 2px;
 }
 
 .tedavi {
-    margin-top: 5px;
+    margin-top: 2px;
 }
 
 .tedavi textarea {
-    margin-top: 5px;
+    margin-top: 2px;
 }
 
-.klinik-button {
+.window-button {
     display: flex;
     justify-content: center;
 }
-.klinik-button button {
+.window-button button {
     margin-top: 10px;
     width: 50px;
     height: 30px;
 }
 
-.klinik-button button:hover {
+.window-button button:hover {
     background-color: rgb(15, 106, 15);
     cursor: pointer;
     color: white;

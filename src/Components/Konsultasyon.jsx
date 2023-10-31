@@ -146,6 +146,9 @@ export const Konsultasyon = ({onClose}) => {
           ></textarea>
         )}
       </div>
+      <div className="window-button">
+        <button>Kaydet</button>
+      </div>
     </div>
   );
 };
