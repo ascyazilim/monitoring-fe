@@ -62,7 +62,15 @@ function Anamnez() {
     setModalOpenTani(false);
   };
   const handleSelectedTaniListChange = (selectedItems) => {
-    setSelectedTaniList(selectedItems);
+    setSelectedTaniList((prevSelectedTaniList) => {
+      const newTaniList = [...prevSelectedTaniList];
+      selectedItems.forEach((selectedItem) => {
+        if(!newTaniList.some((tani) => tani.icd10Kodu === selectedItem.icd10Kodu)) {
+          newTaniList.push(selectedItem);
+        }
+      });
+      return newTaniList;
+    });
   };
 
   //Tanı Silme

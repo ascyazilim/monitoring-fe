@@ -294,35 +294,47 @@
 .alt-menu-tab {
     overflow: hidden;
     border: 1px solid #ccc;
-    background-color: #f1f1f1;
+    background-color: #f9f9f9;
     display: flex;
     justify-content: center;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1);
+    border-radius: 8px 8px 0 0;
+    margin-bottom: -1px;
 }
 .alt-menu-tab button {
     background-color: inherit;
     float: left;
-    border: none;
+    border: 1px solid #e0e0e0;
+    border-bottom: none;
     outline: none;
     cursor: pointer;
     padding: 14px 16px;
-    transition: 0.3s;
+    transition: background-color 0.3s, color 0.3s;
+    border-radius: 6px 6px 0 0;
+    margin: 4px 2px 0 2px;
 }
 .alt-menu-tab button:hover{
-    background-color: #000000;
+    background-color: #6b6969;
     color: white;
+    transition: background-color 0.3s, color 0.3s;
 }
 .alt-menu-tab button.active {
     background-color: #6b6969;
     color: white;
+    border: 1px solid #6b6969;
+    border-bottom: none;
+    position: relative;
+    top: 1px;
 }
 .tab-content{
     height: 200px;
-    border: 1px solid #ccc;
+    border: 1px solid #e0e0e0;
     padding: 10px;
     max-height: 200px;
     overflow-y: scroll;
     display: block;
     margin-bottom: 10px;
+    border-radius: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 
