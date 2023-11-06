@@ -39,6 +39,10 @@
 .taburcu-tarihi label {
     margin-right: 26px;
 }
+.taburcu-tarihi input {
+    width: 178px;
+    margin-right: 10px;
+}
 #zaman {
     margin-right: 10px;
 }

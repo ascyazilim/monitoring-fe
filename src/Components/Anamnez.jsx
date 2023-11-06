@@ -113,7 +113,15 @@ function Anamnez() {
     setModalOpenIlac(false);
   };
   const handleSelectedIlacListChange = (selectedItems) => {
-    setSelectedIlacList(selectedItems);
+    setSelectedIlacList((prevSelectedIlacList) => {
+      const newIlacList = [...prevSelectedIlacList];
+      selectedItems.forEach((selectedItem) => {
+        if(!newIlacList.some((ilac) => ilac.barkod === selectedItem.barkod)){
+          newIlacList.push(selectedItem);
+        }
+      });
+      return newIlacList;
+    });
   };
 
   //İlaç Silme
@@ -135,7 +143,15 @@ function Anamnez() {
   };
 
   const handleSelectedIstemListChange = (selectedItems) => {
-    setSelectedIstemList(selectedItems);
+    setSelectedIstemList((prevSelectedIstemList) => {
+      const newIstemList = [...prevSelectedIstemList];
+      selectedItems.forEach((selectedItem) => {
+        if(!newIstemList.some((istem) => istem.istemAdi === selectedItem.istemAdi)) {
+          newIstemList.push(selectedItem);
+        }
+      });
+      return newIstemList;
+    });
   };
 
   //Hizmet-İstem Silme

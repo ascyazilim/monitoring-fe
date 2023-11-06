@@ -1,10 +1,63 @@
 import React, { useState } from "react";
 import "./Konsultasyon.css";
+import axios from "axios";
 
-export const Konsultasyon = ({onClose}) => {
+export const Konsultasyon = ({ onClose }) => {
   const [noteType, setNoteType] = useState("istek");
   const [istekNote, setIstekNote] = useState("");
   const [karsilamaNote, setKarsilamaNote] = useState("");
+  const [istekBolumAdi, setIstekBolumAdi] = useState("istek-eriskin-acil");
+  const [istekBirimAdi, setIstekBirimAdi] = useState("acil-klinik");
+  const [istekDoktorAdi, setIstekDoktorAdi] = useState("doktor1");
+  const [istekDoktorIletisim, setIstekDoktorIletisim] = useState("");
+  const [istekAsistanAdi, setIstekAsistanAdi] = useState("");
+  const [istekTarihi, setIstekTarihi] = useState("");
+  const [istekNedeni, setIstekNedeni] = useState("");
+
+  const [karsilamaBolumAdi, setKarsilamaBolumAdi] = useState(
+    "karsilama-enfeksiyon"
+  );
+  const [karsilamaBirimAdi, setKarsilamaBirimAdi] =
+    useState("enfeksiyon-klinik");
+  const [karsilamaDoktorAdi, setKarsilamaDoktorAdi] = useState("doktor1");
+  const [karsilamaAsistanAdi, setKarsilamaAsistanAdi] = useState("");
+  const [karsilamaEkip, setKarsilamaEkip] = useState("");
+  const [karsilamaTarihi, setKarsilamaTarihi] = useState("");
+  const [karsilamaCevap, setKarsilamaCevap] = useState("");
+  const [karsilamaNedeni, setKarsilamaNedeni] = useState("");
+
+  const handleSave = async () => {
+    const data = {
+      noteType,
+      istekNote,
+      karsilamaNote,
+      istekBolumAdi,
+      istekBirimAdi,
+      istekDoktorAdi,
+      istekDoktorIletisim,
+      istekAsistanAdi,
+      istekTarihi,
+      istekNedeni,
+      karsilamaBolumAdi,
+      karsilamaBirimAdi,
+      karsilamaDoktorAdi,
+      karsilamaAsistanAdi,
+      karsilamaEkip,
+      karsilamaTarihi,
+      karsilamaCevap,
+      karsilamaNedeni,
+    };
+
+    try {
+      const response = await axios.post(
+        "http://localhost:8080/konsultasyon/create",
+        data
+      );
+      console.log("Veri başarıyla kaydedildi", response.data);
+    } catch (error) {
+      console.error("veri kaydedilirken bir hata oluştu", error);
+    }
+  };
 
   return (
     <div className="main-konsultasyon">
@@ -19,20 +72,35 @@ export const Konsultasyon = ({onClose}) => {
               <div className="istek-baslik">İstek Bilgileri</div>
               <div className="istek-bolum">
                 <label htmlFor="bolum-adi">Bölüm adı:</label>
-                <select name="bolum-adi" id="bolum-adi">
+                <select
+                  name="bolum-adi"
+                  id="bolum-adi"
+                  value={istekBolumAdi}
+                  onChange={(e) => setIstekBolumAdi(e.target.value)}
+                >
                   <option value="istek-eriskin-acil">Erişkin Acil</option>
                   <option value="istek-cocuk-acil">Çocuk Acil</option>
                 </select>
               </div>
               <div className="istek-birim">
                 <label htmlFor="birim-adi">Birim Adı:</label>
-                <select name="birim-adi" id="birim-adi">
+                <select
+                  name="birim-adi"
+                  id="birim-adi"
+                  value={istekBirimAdi}
+                  onChange={(e) => setIstekBirimAdi(e.target.value)}
+                >
                   <option value="acil-klinik">Acil Klinik</option>
                 </select>
               </div>
               <div className="istek-doktor-adi">
                 <label htmlFor="istek-doktor-adi">Doktor Adı:</label>
-                <select name="istek-doktor-adi" id="istek-doktor-adi">
+                <select
+                  name="istek-doktor-adi"
+                  id="istek-doktor-adi"
+                  value={istekDoktorAdi}
+                  onChange={(e) => setIstekDoktorAdi(e.target.value)}
+                >
                   <option value="doktor1">Prof.Dr.Ahmet DEMİRCAN</option>
                   <option value="doktor2">Prof.Dr. Ali Cebecioğlu</option>
                   <option value="doktor3">Dr. Betül Öztürk</option>
@@ -43,19 +111,35 @@ export const Konsultasyon = ({onClose}) => {
               </div>
               <div className="istek-doktor-iletisim">
                 <label htmlFor="doktor-iletisim">Dr. İletişim:</label>
-                <input type="text" />
+                <input
+                  type="text"
+                  value={istekDoktorIletisim}
+                  onChange={(e) => setIstekDoktorIletisim(e.target.value)}
+                />
               </div>
               <div className="istek-asistan">
                 <label htmlFor="asistan">Asistan Adı:</label>
-                <input type="text" />
+                <input
+                  type="text"
+                  value={istekAsistanAdi}
+                  onChange={(e) => setIstekAsistanAdi(e.target.value)}
+                />
               </div>
               <div className="istek-tarih">
                 <label htmlFor="istek-tarih">İstek Tarihi:</label>
-                <input type="datetime-local" />
+                <input
+                  type="datetime-local"
+                  value={istekTarihi}
+                  onChange={(e) => setIstekTarihi(e.target.value)}
+                />
               </div>
               <div className="istek-nedeni">
                 <label htmlFor="nedeni">Nedeni: </label>
-                <input type="text" />
+                <input
+                  type="text"
+                  value={istekNedeni}
+                  onChange={(e) => setIstekNedeni(e.target.value)}
+                />
               </div>
             </div>
           </div>
@@ -63,7 +147,12 @@ export const Konsultasyon = ({onClose}) => {
             <div className="karsilama-baslik">Karşılama Bilgileri</div>
             <div className="karsilama-bolum">
               <label htmlFor="bolum-adi">Bölüm Adı:</label>
-              <select name="bolum-adi" id="bolum-adi">
+              <select
+                name="bolum-adi"
+                id="bolum-adi"
+                value={karsilamaBolumAdi}
+                onChange={(e) => setKarsilamaBolumAdi(e.target.value)}
+              >
                 <option value="karsilama-enfeksiyon">
                   Enfeksiyon Hastalıkları
                 </option>
@@ -73,7 +162,12 @@ export const Konsultasyon = ({onClose}) => {
             </div>
             <div className="karsilama-birim">
               <label htmlFor="birim-adi">Birim Adı:</label>
-              <select name="birim-adi" id="birim-adi">
+              <select
+                name="birim-adi"
+                id="birim-adi"
+                value={karsilamaBirimAdi}
+                onChange={(e) => setKarsilamaBirimAdi(e.target.value)}
+              >
                 <option value="enfeksiyon-klinik">Enfeksiyon Klinik</option>
                 <option value="goz-klinik">Göz Klinik</option>
                 <option value="dahiliye-klinik">Dahiiye klinik</option>
@@ -81,7 +175,12 @@ export const Konsultasyon = ({onClose}) => {
             </div>
             <div className="karsilama-doktor">
               <label htmlFor="karsilama-doktor">Doktor Adı:</label>
-              <select name="karsilama-doktor" id="karsilama-doktor">
+              <select
+                name="karsilama-doktor"
+                id="karsilama-doktor"
+                value={karsilamaDoktorAdi}
+                onChange={(e) => setKarsilamaDoktorAdi(e.target.value)}
+              >
                 <option value="doktor1">Prof.Dr.Ahmet DEMİRCAN</option>
                 <option value="doktor2">Prof.Dr. Ali Cebecioğlu</option>
                 <option value="doktor3">Dr. Betül Öztürk</option>
@@ -92,17 +191,33 @@ export const Konsultasyon = ({onClose}) => {
             </div>
             <div className="karsilama-asistan">
               <label htmlFor="karsilama-asistan">Asistan Adı:</label>
-              <input type="text" />
+              <input
+                type="text"
+                value={karsilamaAsistanAdi}
+                onChange={(e) => setKarsilamaAsistanAdi(e.target.value)}
+              />
             </div>
             <div className="karsilama-ekip">
               <label htmlFor="ekip">Ekip: </label>
-              <input type="text" />
+              <input
+                type="text"
+                value={karsilamaEkip}
+                onChange={(e) => setKarsilamaEkip(e.target.value)}
+              />
             </div>
             <div className="karsilama-tarih">
               <label htmlFor="karsilama-tarih">Karş. Tarihi:</label>
-              <input type="datetime-local" />
+              <input
+                type="datetime-local"
+                value={karsilamaTarihi}
+                onChange={(e) => setKarsilamaTarihi(e.target.value)}
+              />
               <label htmlFor="cevap">Cevap:</label>
-              <input type="text" />
+              <input
+                type="text"
+                value={karsilamaCevap}
+                onChange={(e) => setKarsilamaCevap(e.target.value)}
+              />
             </div>
           </div>
         </div>
@@ -147,9 +262,8 @@ export const Konsultasyon = ({onClose}) => {
         )}
       </div>
       <div className="window-button">
-        <button>Kaydet</button>
+        <button onClick={handleSave}>Kaydet</button>
       </div>
     </div>
   );
 };
-
