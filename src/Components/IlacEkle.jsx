@@ -6,7 +6,6 @@ function IlacEkle({ onSelectedItemsChange, onClose }) {
   const [ilacList, setIlacList] = useState([]);
   const [selectedOptions, setSelectedOptions] = useState([]);
 
-
   useEffect(() => {
     const fetchIlacList = async () => {
       try {
@@ -33,7 +32,7 @@ function IlacEkle({ onSelectedItemsChange, onClose }) {
     onSelectedItemsChange(selectedOptions);
     setSelectedOptions([]);
     onClose();
-  }
+  };
 
   return (
     <div className="ilac-ekle-modal">
@@ -48,7 +47,7 @@ function IlacEkle({ onSelectedItemsChange, onClose }) {
               <th className="sec-baslik">Seç</th>
               <th className="ilac-kodu-baslik">İlaç Kodu</th>
               <th className="ilac-baslik">İlaç Adı</th>
-              <th className="doz-baslik">Doz</th>
+              {/* <th className="doz-baslik">Doz</th> */}
             </tr>
           </thead>
           <tbody>
@@ -63,7 +62,13 @@ function IlacEkle({ onSelectedItemsChange, onClose }) {
                 </td>
                 <td className="ilac-kodu-content">{ilac.barkod}</td>
                 <td className="ilac-content">{ilac.ilacAdi}</td>
-                <td className="doz-content">{ilac.doz}</td>
+                {/* <td className="doz-content">
+                  <select name="doz" id="doz">
+                    <option value="doz1">1x1</option>
+                    <option value="doz2">2x1</option>
+                    <option value="doz3">3x1</option>
+                  </select>
+                </td> */}
               </tr>
             ))}
           </tbody>

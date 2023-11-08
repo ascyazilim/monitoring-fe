@@ -3,59 +3,59 @@ import "./MainPage.css";
 import { useState } from 'react';
 import { useNavigate } from 'react-router';
 import Anamnez from "./Anamnez";
-import AmeliyatGiris from "./AmeliyatGiris";
-import TahlilSonuc from './TahlilSonuc';
-import KlinikSeyir from './KlinikSeyir';
-import { Konsultasyon } from './Konsultasyon';
+// import AmeliyatGiris from "./AmeliyatGiris";
+// import TahlilSonuc from './TahlilSonuc';
+// import KlinikSeyir from './KlinikSeyir';
+// import { Konsultasyon } from './Konsultasyon';
 
 const MainPage = () => {
 
-    const navigate = useNavigate();
-    const [showAnamnez, setShowAnamnez] = useState(true);
-    const [showKonsultasyon, setShowKonsultasyon] = useState(false);
-    const [showAmeliyat, setShowAmeliyat] = useState(false);
-    const [showTahlil, setShowTahlil] = useState(false);
-    const [showKlinikSeyir, setShowKlinikSeyir] = useState(false);
+    // const navigate = useNavigate();
+    // const [showAnamnez, setShowAnamnez] = useState(true);
+    // const [showKonsultasyon, setShowKonsultasyon] = useState(false);
+    // const [showAmeliyat, setShowAmeliyat] = useState(false);
+    // const [showTahlil, setShowTahlil] = useState(false);
+    // const [showKlinikSeyir, setShowKlinikSeyir] = useState(false);
 
-    const handleAnamnezClick = () => {
-        setShowAnamnez(true);
-        setShowKonsultasyon(false);
-        setShowAmeliyat(false);
-        setShowTahlil(false);
-        setShowKlinikSeyir(false);
-    };
+    // const handleAnamnezClick = () => {
+    //     setShowAnamnez(true);
+    //     setShowKonsultasyon(false);
+    //     setShowAmeliyat(false);
+    //     setShowTahlil(false);
+    //     setShowKlinikSeyir(false);
+    // };
 
-    const handleKonsultasyonClick = () => {
-        setShowKonsultasyon(true);
-        setShowAnamnez(false);
-        setShowAmeliyat(false);
-        setShowTahlil(false);
-        setShowKlinikSeyir(false);
-    }
+    // const handleKonsultasyonClick = () => {
+    //     setShowKonsultasyon(true);
+    //     setShowAnamnez(false);
+    //     setShowAmeliyat(false);
+    //     setShowTahlil(false);
+    //     setShowKlinikSeyir(false);
+    // }
 
-    const handleAmeliyatClick = () => {
-        setShowAmeliyat(true);
-        setShowAnamnez(false);
-        setShowKonsultasyon(false);
-        setShowTahlil(false);
-        setShowKlinikSeyir(false);
-    }
+    // const handleAmeliyatClick = () => {
+    //     setShowAmeliyat(true);
+    //     setShowAnamnez(false);
+    //     setShowKonsultasyon(false);
+    //     setShowTahlil(false);
+    //     setShowKlinikSeyir(false);
+    // }
 
-    const handleTahlilClick = () => {
-        setShowTahlil(true);
-        setShowAnamnez(false);
-        setShowKonsultasyon(false);
-        setShowAmeliyat(false);
-        setShowKlinikSeyir(false);
-    }
+    // const handleTahlilClick = () => {
+    //     setShowTahlil(true);
+    //     setShowAnamnez(false);
+    //     setShowKonsultasyon(false);
+    //     setShowAmeliyat(false);
+    //     setShowKlinikSeyir(false);
+    // }
 
-    const handleKlinikSeyirClick = () => {
-        setShowKlinikSeyir(true);
-        setShowAnamnez(false);
-        setShowKonsultasyon(false);
-        setShowAmeliyat(false);
-        setShowTahlil(false);
-    }
+    // const handleKlinikSeyirClick = () => {
+    //     setShowKlinikSeyir(true);
+    //     setShowAnamnez(false);
+    //     setShowKonsultasyon(false);
+    //     setShowAmeliyat(false);
+    //     setShowTahlil(false);
+    // }
   return (
     <div className='main-mainpage'>
         {/* <div className="mainpage-menu">

@@ -4,14 +4,13 @@ import axios from "axios";
 
 export const Konsultasyon = ({ onClose }) => {
   const [noteType, setNoteType] = useState("istek");
-  const [istekNote, setIstekNote] = useState("");
-  const [karsilamaNote, setKarsilamaNote] = useState("");
+  const [istekNotu, setIstekNotu] = useState("");
   const [istekBolumAdi, setIstekBolumAdi] = useState("istek-eriskin-acil");
   const [istekBirimAdi, setIstekBirimAdi] = useState("acil-klinik");
   const [istekDoktorAdi, setIstekDoktorAdi] = useState("doktor1");
   const [istekDoktorIletisim, setIstekDoktorIletisim] = useState("");
   const [istekAsistanAdi, setIstekAsistanAdi] = useState("");
-  const [istekTarihi, setIstekTarihi] = useState("");
+  const [istekTarih, setIstekTarih] = useState("");
   const [istekNedeni, setIstekNedeni] = useState("");
 
   const [karsilamaBolumAdi, setKarsilamaBolumAdi] = useState(
@@ -22,30 +21,29 @@ export const Konsultasyon = ({ onClose }) => {
   const [karsilamaDoktorAdi, setKarsilamaDoktorAdi] = useState("doktor1");
   const [karsilamaAsistanAdi, setKarsilamaAsistanAdi] = useState("");
   const [karsilamaEkip, setKarsilamaEkip] = useState("");
-  const [karsilamaTarihi, setKarsilamaTarihi] = useState("");
+  const [karsilamaTarih, setKarsilamaTarih] = useState("");
   const [karsilamaCevap, setKarsilamaCevap] = useState("");
-  const [karsilamaNedeni, setKarsilamaNedeni] = useState("");
+  const [karsilamaNotu, setKarsilamaNotu] = useState("");
 
   const handleSave = async () => {
     const data = {
       noteType,
-      istekNote,
-      karsilamaNote,
+      istekNotu,
       istekBolumAdi,
       istekBirimAdi,
       istekDoktorAdi,
       istekDoktorIletisim,
       istekAsistanAdi,
-      istekTarihi,
+      istekTarih,
       istekNedeni,
       karsilamaBolumAdi,
       karsilamaBirimAdi,
       karsilamaDoktorAdi,
       karsilamaAsistanAdi,
       karsilamaEkip,
-      karsilamaTarihi,
+      karsilamaTarih,
       karsilamaCevap,
-      karsilamaNedeni,
+      karsilamaNotu,
     };
 
     try {
@@ -129,8 +127,8 @@ export const Konsultasyon = ({ onClose }) => {
                 <label htmlFor="istek-tarih">İstek Tarihi:</label>
                 <input
                   type="datetime-local"
-                  value={istekTarihi}
-                  onChange={(e) => setIstekTarihi(e.target.value)}
+                  value={istekTarih}
+                  onChange={(e) => setIstekTarih(e.target.value)}
                 />
               </div>
               <div className="istek-nedeni">
@@ -209,8 +207,8 @@ export const Konsultasyon = ({ onClose }) => {
               <label htmlFor="karsilama-tarih">Karş. Tarihi:</label>
               <input
                 type="datetime-local"
-                value={karsilamaTarihi}
-                onChange={(e) => setKarsilamaTarihi(e.target.value)}
+                value={karsilamaTarih}
+                onChange={(e) => setKarsilamaTarih(e.target.value)}
               />
               <label htmlFor="cevap">Cevap:</label>
               <input
@@ -246,8 +244,8 @@ export const Konsultasyon = ({ onClose }) => {
             cols="122"
             rows="8"
             placeholder="İstek Notu girin"
-            value={istekNote}
-            onChange={(e) => setIstekNote(e.target.value)}
+            value={istekNotu}
+            onChange={(e) => setIstekNotu(e.target.value)}
           ></textarea>
         ) : (
           <textarea
@@ -256,8 +254,8 @@ export const Konsultasyon = ({ onClose }) => {
             cols="122"
             rows="8"
             placeholder="Karşılama Notu girin"
-            value={karsilamaNote}
-            onChange={(e) => setKarsilamaNote(e.target.value)}
+            value={karsilamaNotu}
+            onChange={(e) => setKarsilamaNotu(e.target.value)}
           ></textarea>
         )}
       </div>

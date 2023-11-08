@@ -1,12 +1,5 @@
 import React, { useState } from "react";
-import {
-  Button,
-  Card,
-  Container,
-  Grid,
-  Paper,
-
-} from "@mui/material";
+import { Button, Card, Container, Grid, Paper } from "@mui/material";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import TaniBilgisiList from "./Components/TaniBilgisiList";
 import CreateTaniBilgisi from "./Components/CreateTaniBilgisi";
@@ -40,7 +33,6 @@ import { useEffect } from "react";
 import axios from "axios";
 import MainPage from "./Components/MainPage";
 
-
 const MyStyledButton = styled(Button)({
   fontSize: "6px",
   padding: "10px 20px",
@@ -51,10 +43,27 @@ const MyStyledButton = styled(Button)({
 const App = () => {
   const [selectedMuayeneId, setSelectedMuayeneId] = useState(null);
 
+  const [tcKimlikNo, setTcKimlikNo] = useState("");
+  const [hastaBilgileri, setHastaBilgileri] = useState(null);
+
   const handleMuayeneIdSelection = (id) => {
     setSelectedMuayeneId(id);
   };
 
+  const handleTcKimlikNoChange = (e) => {
+    setTcKimlikNo(e.target.value);
+  };
+
+  const handleSearch = async () => {
+    try {
+      const response = await axios.get(
+        `http://localhost:8080/hasta/search`
+      );
+      setHastaBilgileri(response.data);
+    } catch (error) {
+      console.error("Veri alınamadı", error);
+    }
+  };
 
   return (
     <Container
@@ -69,17 +78,35 @@ const App = () => {
             <Paper elevation={3} style={{ padding: "10px" }}>
               <div className="arama">
                 {/* <label for="arama">Hasta Arama:</label> */}
-                <input type="text" placeholder="Hasta Tc Kimlik No : " />
+                <input
+                  type="text"
+                  placeholder="Hasta Tc Kimlik No : "
+                  value={tcKimlikNo}
+                  onChange={handleTcKimlikNoChange}
+                />
+                <button onClick={handleSearch}>Ara</button>
               </div>
-              
+
               <div style={{ display: "flex", justifyContent: "start" }}>
-                <Card style={{ width: "125px", height: "80px", margin: "5px", border:"1px solid #1976d2" }}>
+                <Card
+                  style={{
+                    width: "125px",
+                    height: "80px",
+                    margin: "5px",
+                    border: "1px solid #1976d2",
+                  }}
+                >
                   <div>
                     <img
                       src={logo}
                       alt="Profil Fotosu"
                       className="logo-image"
-                      style={{ width: "100px", height:"60px", marginTop:"10px", marginLeft:"5px" }}
+                      style={{
+                        width: "100px",
+                        height: "60px",
+                        marginTop: "10px",
+                        marginLeft: "5px",
+                      }}
                     />
                   </div>
                 </Card>
@@ -89,7 +116,7 @@ const App = () => {
                     height: "80px",
                     margin: "5px",
                     textAlign: "center",
-                    border:"1px solid #1976d2"
+                    border: "1px solid #1976d2",
                   }}
                 >
                   <div style={{ marginTop: "10px" }}>
@@ -97,7 +124,6 @@ const App = () => {
                   </div>
                   <div>12345678912</div>
                   <div>34, Erkek, 0(RH -)</div>
-                  
                 </Card>
                 <Card
                   style={{
@@ -105,10 +131,10 @@ const App = () => {
                     height: "80px",
                     margin: "5px",
                     textAlign: "center",
-                    border:"1px solid #1976d2"
+                    border: "1px solid #1976d2",
                   }}
                 >
-                  <div style={{marginTop: "10px"}}>
+                  <div style={{ marginTop: "10px" }}>
                     <h4>Giriş Bilgileri</h4>
                     <div></div>
                   </div>
@@ -119,7 +145,7 @@ const App = () => {
                     height: "80px",
                     margin: "5px",
                     textAlign: "center",
-                    border:"1px solid #1976d2"
+                    border: "1px solid #1976d2",
                   }}
                 >
                   <div style={{ marginTop: "10px" }}>
@@ -127,11 +153,13 @@ const App = () => {
                     <div>Uzm. Diş doktoru</div>
                   </div>
                 </Card>
-                
               </div>
-              
+
               <div
-                style={{ borderBottom: "1px solid #1976d2", marginBottom: "10px" }}
+                style={{
+                  borderBottom: "1px solid #1976d2",
+                  marginBottom: "10px",
+                }}
               ></div>
               <Routes>
                 <Route path="/" element={<MainPage />} />
@@ -161,8 +189,8 @@ const App = () => {
                 <Route path="/ilac-detay/:id" element={<IlacBilgisiDetay />} />
                 <Route path="/ilac-listesi" element={<IlacListesi />} />
                 <Route path="/anamnez" element={<Anamnez />} />
-                <Route path="/tahlil-sonuclari" element={<TahlilSonuc />}/>
-                
+                <Route path="/tahlil-sonuclari" element={<TahlilSonuc />} />
+
                 <Route path="/ameliyat-giris" element={<AmeliyatGiris />} />
                 <Route
                   path="/ilac-list-detay/:id"

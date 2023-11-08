@@ -6,7 +6,7 @@ function AmeliyatGiris({ onClose }) {
   const [ameliyatGiris, setAmeliyatGiris] = useState([]);
   const [baslangicTarihi, setBaslangicTarihi] = useState("");
   const [bitisTarihi, setBitisTarihi] = useState("");
-  const [ameliyathane, setAmeliyathane] = useState("ameliyathane1");
+  const [ameliyathane, setAmeliyathane] = useState("");
   const [anestezi, setAnestezi] = useState("genel");
   const [ameliyatTipi, setAmeliyatTipi] = useState("ayaktan");
   const [norolojik, setNorolojik] = useState("");
@@ -80,7 +80,7 @@ function AmeliyatGiris({ onClose }) {
         <div className="form">
           <form className="main-form">
             <div className="baslangic">
-              <label for="baslangicTarihi">Başlangıç Tarihi:</label>
+              <label htmlFor="baslangicTarihi">Başlangıç Tarihi:</label>
               <input
                 type="datetime-local"
                 id="baslangicTarihi"
@@ -91,7 +91,7 @@ function AmeliyatGiris({ onClose }) {
             </div>
 
             <div className="bitis">
-              <label for="bitisTarihi">Bitiş Tarihi:</label>
+              <label htmlFor="bitisTarihi">Bitiş Tarihi:</label>
               <input
                 type="datetime-local"
                 id="bitisTarihi"
@@ -101,7 +101,7 @@ function AmeliyatGiris({ onClose }) {
               />
             </div>
             <div className="ameliyathane">
-              <label for="ameliyathane">Ameliyathane:</label>
+              <label htmlFor="ameliyathane">Ameliyathane:</label>
               <select
                 name="ameliyathane"
                 id="ameliyathane"
@@ -115,7 +115,7 @@ function AmeliyatGiris({ onClose }) {
               </select>
             </div>
             <div className="anestezi">
-              <label for="anestezi">Anestezi:</label>
+              <label htmlFor="anestezi">Anestezi:</label>
               <select
                 name="anestezi"
                 id="anestezi"
@@ -128,7 +128,7 @@ function AmeliyatGiris({ onClose }) {
               </select>
             </div>
             <div className="ameliyat-tipi">
-              <label for="ameliyat-tipi">Ameliyat Tipi:</label>
+              <label htmlFor="ameliyat-tipi">Ameliyat Tipi:</label>
               <select
                 name="ameliyat-tipi"
                 id="ameliyat-tipi"
@@ -143,7 +143,7 @@ function AmeliyatGiris({ onClose }) {
               </select>
             </div>
             <div className="norolojik">
-              <label for="norolojik">Nörolojik:</label>
+              <label htmlFor="norolojik">Nörolojik:</label>
               <select
                 name="norolojik"
                 id="norolojik"
@@ -154,7 +154,7 @@ function AmeliyatGiris({ onClose }) {
               </select>
             </div>
             <div className="abdomen">
-              <label for="abdomen">Abdomen:</label>
+              <label htmlFor="abdomen">Abdomen:</label>
               <select
                 name="abdomen"
                 id="abdomen"
@@ -168,7 +168,7 @@ function AmeliyatGiris({ onClose }) {
         </div>
         <div className="text-area">
           <div className="preop">
-            <label for="preop">Preop Tanı: </label>
+            <label htmlFor="preop">Preop Tanı: </label>
             <input
               type="text"
               value={preopTani}
@@ -176,7 +176,7 @@ function AmeliyatGiris({ onClose }) {
             />
           </div>
           <div className="postop">
-            <label for="postop">Postop Tanı: </label>
+            <label htmlFor="postop">Postop Tanı: </label>
             <input
               type="text"
               value={postopTani}
@@ -184,7 +184,7 @@ function AmeliyatGiris({ onClose }) {
             />
           </div>
           <div className="sonuc">
-            <label for="sonuc">Sonuc: </label>
+            <label htmlFor="sonuc">Sonuc: </label>
             <select
               name="sonuc"
               id="sonuc"
@@ -195,7 +195,7 @@ function AmeliyatGiris({ onClose }) {
             </select>
           </div>
           <div className="risk">
-            <label for="risk" className="risk-label">
+            <label htmlFor="risk" className="risk-label">
               Risk:
             </label>
             <select
@@ -206,7 +206,7 @@ function AmeliyatGiris({ onClose }) {
             >
               <option value="risk"></option>
             </select>
-            <label for="kalp" className="kalp-label">
+            <label htmlFor="kalp" className="kalp-label">
               Kalp:{" "}
             </label>
             <select
@@ -217,7 +217,7 @@ function AmeliyatGiris({ onClose }) {
             >
               <option value="kalp"></option>
             </select>
-            <label for="gogus" className="gogus-label">
+            <label htmlFor="gogus" className="gogus-label">
               Göğüs:{" "}
             </label>
             <select
@@ -235,19 +235,19 @@ function AmeliyatGiris({ onClose }) {
               value={checkboxSelection}
               onChange={(e) => setCheckboxSelection(e.target.value)}
             />
-            <label for="acil" className="acil-label">
+            <label htmlFor="acil" className="acil-label">
               Acil
             </label>
             <input type="checkbox" />
-            <label for="patoloji" className="patoloji-label">
+            <label htmlFor="patoloji" className="patoloji-label">
               Patoloji Var
             </label>
             <input type="checkbox" />
-            <label for="ozel" className="ozel-label">
+            <label htmlFor="ozel" className="ozel-label">
               Özel Fark Var
             </label>
             <input type="checkbox" />
-            <label for="malzeme" className="malzeme-label">
+            <label htmlFor="malzeme" className="malzeme-label">
               Özellikli Malzeme Var
             </label>
           </div>
@@ -268,7 +268,7 @@ function AmeliyatGiris({ onClose }) {
             {/* <button className="ekle">Ekle</button> */}
           </div>
           <div className="personel">
-            <label for="personel" id="personel">
+            <label htmlFor="personel" id="personel">
               Personel:{" "}
             </label>
             <select name="doktor" id="doktor">
@@ -288,7 +288,7 @@ function AmeliyatGiris({ onClose }) {
         </div>
         <div className="sag-bolum">
           <div className="anestezi-ekibi">
-            <label for="anestezi-ekibi">Anestezi Ekibi: </label>
+            <label htmlFor="anestezi-ekibi">Anestezi Ekibi: </label>
             <select
               name="anestezi-ekibi"
               id="anestezi-ekibi"
@@ -299,7 +299,7 @@ function AmeliyatGiris({ onClose }) {
             </select>
           </div>
           <div className="personel-anestezi">
-            <label for="persone-anestezi">Personel:</label>
+            <label htmlFor="persone-anestezi">Personel:</label>
             <select
               name="persone-anestezi"
               id="personel-anestezi"

@@ -43,7 +43,7 @@ function KlinikSeyir({ onClose }) {
           <input type="text" />
         </div> */}
         <div className="tarih-saat">
-          <label for="tarih">Tarih:</label>
+          <label htmlFor="tarih">Tarih:</label>
           <input
             type="datetime-local"
             value={tarih}
@@ -52,7 +52,7 @@ function KlinikSeyir({ onClose }) {
         </div>
 
         <div className="doktor">
-          <label for="doktor">Doktor:</label>
+          <label htmlFor="doktor">Doktor:</label>
           <select
             name="klinik-doktor"
             id="klinik doktor"

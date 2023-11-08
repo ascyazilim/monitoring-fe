@@ -65,7 +65,9 @@ function Anamnez() {
     setSelectedTaniList((prevSelectedTaniList) => {
       const newTaniList = [...prevSelectedTaniList];
       selectedItems.forEach((selectedItem) => {
-        if(!newTaniList.some((tani) => tani.icd10Kodu === selectedItem.icd10Kodu)) {
+        if (
+          !newTaniList.some((tani) => tani.icd10Kodu === selectedItem.icd10Kodu)
+        ) {
           newTaniList.push(selectedItem);
         }
       });
@@ -116,7 +118,7 @@ function Anamnez() {
     setSelectedIlacList((prevSelectedIlacList) => {
       const newIlacList = [...prevSelectedIlacList];
       selectedItems.forEach((selectedItem) => {
-        if(!newIlacList.some((ilac) => ilac.barkod === selectedItem.barkod)){
+        if (!newIlacList.some((ilac) => ilac.barkod === selectedItem.barkod)) {
           newIlacList.push(selectedItem);
         }
       });
@@ -146,7 +148,11 @@ function Anamnez() {
     setSelectedIstemList((prevSelectedIstemList) => {
       const newIstemList = [...prevSelectedIstemList];
       selectedItems.forEach((selectedItem) => {
-        if(!newIstemList.some((istem) => istem.istemAdi === selectedItem.istemAdi)) {
+        if (
+          !newIstemList.some(
+            (istem) => istem.istemAdi === selectedItem.istemAdi
+          )
+        ) {
           newIstemList.push(selectedItem);
         }
       });
@@ -235,6 +241,9 @@ function Anamnez() {
     setSelectedTahlil(newList);
   };
 
+  //Doz ekleme
+  //const [doz, setDoz] = useState("");
+
   //Muayene Kaydet
   const handleMuayeneKaydet = async () => {
     try {
@@ -285,7 +294,7 @@ function Anamnez() {
       title: "Tanı",
       content: (
         <div className="tani-ekle">
-          <label htmlFor="tani">Tanı: </label>
+          {/* <label htmlFor="tani">Tanı: </label> */}
 
           <table className="taniekle-table">
             <thead>
@@ -309,7 +318,7 @@ function Anamnez() {
           <div className="alt-menu">
             <button
               className="menu-button"
-              style={{ marginBottom: "20px" }}
+              style={{ marginBottom: "10px" }}
               onClick={handleOpenModalTani}
             >
               Tanı
@@ -321,6 +330,7 @@ function Anamnez() {
                 onSelectedItemsChange={handleSelectedTaniListChange}
               />
             )}
+            <br />
             <select
               name="tani-turu"
               id="tani-turu"
@@ -339,7 +349,7 @@ function Anamnez() {
       title: "İlaç",
       content: (
         <div className="ilac-ekle">
-          <label htmlFor="ilac">İlaç: </label>
+          {/* <label htmlFor="ilac">İlaç: </label> */}
 
           <table className="ilacekle-table">
             <thead>
@@ -353,7 +363,14 @@ function Anamnez() {
             <tbody>
               {selectedIlacList.map((ilac, index) => (
                 <tr key={index}>
-                  <td className="ilac-doz-content-yeni">{ilac.doz}</td>
+                  {/* <td className="ilac-doz-content-yeni">{ilac.doz}</td> */}
+                  <td className="ilac-doz-content-yeni">
+                    <select name="doz" id="doz">
+                      <option value="doz1">1x1</option>
+                      <option value="doz2">2x1</option>
+                      <option value="doz3">3x1</option>
+                    </select>
+                  </td>
                   <td className="ilac-kodu-content-yeni">{ilac.barkod}</td>
                   <td className="ilac-content-yeni">{ilac.ilacAdi}</td>
                   <td className="sil-buton">
@@ -365,7 +382,7 @@ function Anamnez() {
           </table>
           <div className="alt-menu">
             <button
-              style={{ marginLeft: "15px" }}
+              // style={{ marginLeft: "15px" }}
               className="menu-button"
               onClick={handleOpenModalIlac}
             >
@@ -388,7 +405,7 @@ function Anamnez() {
       content: (
         <div className="istem-ekle">
           <div className="istem-ekle">
-            <label htmlFor="istem">İstem:</label>
+            {/* <label htmlFor="istem">İstem:</label> */}
             <table className="istemekle-table">
               <thead>
                 <tr>
@@ -411,7 +428,7 @@ function Anamnez() {
             </table>
             <div className="alt-menu">
               <button
-                style={{ marginLeft: "15px" }}
+                // style={{ marginLeft: "15px" }}
                 className="menu-button"
                 onClick={handleOpenModalIstem}
               >
@@ -446,7 +463,7 @@ function Anamnez() {
               ></textarea>
             </div>
             <div className="hikaye">
-              <label fhtmlForor="hikaye">Hikaye:</label>
+              <label htmlFor="hikaye">Hikaye:</label>
               <textarea
                 cols="45"
                 rows="4"
