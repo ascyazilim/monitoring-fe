@@ -16,35 +16,30 @@ import HastaDetay from "./Components/HastaDetay";
 import TaniBilgisiDetay from "./Components/TaniBilgisiDetay";
 import DoktorBilgisi from "./Components/DoktorBilgisi";
 import DoktorBilgisiDetay from "./Components/DoktorBilgisiDetay";
-import DoktorList from "./Components/DoktorList";
 import IlacBilgisi from "./Components/IlacBilgisi";
 import IlacBilgisiDetay from "./Components/IlacBilgisiDetay";
 import IlacListesi from "./Components/IlacListesi";
 import IlacListesiDetay from "./Components/IlacListesiDetay";
 import logo from "./img/birkil3.jpeg";
-import HastaAra from "./Components/HastaAra";
-import MuayeneBilgisiDetayArama from "./Components/MuayeneBilgisiDetayArama";
+
 import Login from "./Components/Login";
 import AmeliyatGiris from "./Components/AmeliyatGiris";
 import Anamnez from "./Components/Anamnez";
 import TahlilSonuc from "./Components/TahlilSonuc";
 import KlinikSeyir from "./Components/KlinikSeyir";
-import { useEffect } from "react";
+
 import axios from "axios";
 import MainPage from "./Components/MainPage";
 
-const MyStyledButton = styled(Button)({
-  fontSize: "6px",
-  padding: "10px 20px",
-  backgroundColor: "skyblue",
-  color: "black",
-});
+
 
 const App = () => {
   const [selectedMuayeneId, setSelectedMuayeneId] = useState(null);
 
   const [tcKimlikNo, setTcKimlikNo] = useState("");
+  const [error, setError] = useState("");
   const [hastaBilgileri, setHastaBilgileri] = useState(null);
+  const [selectedHasta, setSelectedHasta] = useState(null);
 
   const handleMuayeneIdSelection = (id) => {
     setSelectedMuayeneId(id);
@@ -54,16 +49,49 @@ const App = () => {
     setTcKimlikNo(e.target.value);
   };
 
-  const handleSearch = async () => {
+  const handleSearch = async (e) => {
+    e.preventDefault();
+    if(tcKimlikNo.trim() === ''){
+      setError("Lütfen Tc Kimlik No girin");
+      setHastaBilgileri(null);
+      setSelectedHasta(null);
+      return;
+    }
     try {
-      const response = await axios.get(
-        `http://localhost:8080/hasta/search`
-      );
-      setHastaBilgileri(response.data);
-    } catch (error) {
-      console.error("Veri alınamadı", error);
+      const response = await axios.get(`http://localhost:8080/hasta/search`, {
+        params: { query: tcKimlikNo },
+      });
+      if(response.data.length > 0) {
+        setHastaBilgileri(response.data);
+        setError("");
+      }else {
+        setError('Hasta bulunamadı.');
+        setHastaBilgileri(null);
+      }
+      setSelectedHasta(null);
+    } catch (err) {
+      setError("Arama sırasında bir hata oluştu");
+      setHastaBilgileri(null);
+      setSelectedHasta(null);
     }
   };
+
+  const selectHasta = (hasta) => {
+    setSelectedHasta(hasta);
+  }
+
+  //yaş hesaplama date of birth
+  const calculateAge = (dob) => {
+    const birthDate = new Date(dob);
+    const today = new Date();
+    let age = today.getFullYear() - birthDate.getFullYear();
+    const m = today.getMonth() - birthDate.getMonth();
+
+    if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+      age--;
+    }
+    return age;
+  }
 
   return (
     <Container
@@ -76,15 +104,32 @@ const App = () => {
           </Grid>
           <Grid item xs={9}>
             <Paper elevation={3} style={{ padding: "10px" }}>
+              
               <div className="arama">
-                {/* <label for="arama">Hasta Arama:</label> */}
-                <input
-                  type="text"
-                  placeholder="Hasta Tc Kimlik No : "
-                  value={tcKimlikNo}
-                  onChange={handleTcKimlikNoChange}
-                />
-                <button onClick={handleSearch}>Ara</button>
+                <form onSubmit={handleSearch}>
+                  <input
+                    type="text"
+                    value={tcKimlikNo}
+                    onChange={(e) => setTcKimlikNo(e.target.value)}
+                    placeholder="Tc Kimlik No ile Ara"
+                  />
+                  <button type="submit">Ara</button>
+                </form>
+                {error && <p>{error}</p>}
+                {hastaBilgileri && (
+                  <ul style={{ listStyleType: "none" }}>
+                    {hastaBilgileri.map((hasta) => (
+                      <li key={hasta.id} onClick={() => {
+                        setSelectedHasta(hasta);
+                        setHastaBilgileri([]);
+                      }}>
+                        Ad: {hasta.ad}, Soyad: {hasta.soyad}, Tc Kimlik No:{" "}
+                        {hasta.tcKimNo}
+                      </li>
+                    ))}
+                  </ul>
+                )}
+                
               </div>
 
               <div style={{ display: "flex", justifyContent: "start" }}>
@@ -119,11 +164,13 @@ const App = () => {
                     border: "1px solid #1976d2",
                   }}
                 >
-                  <div style={{ marginTop: "10px" }}>
-                    <h3>Ali Cebecioğlu</h3>
-                  </div>
-                  <div>12345678912</div>
-                  <div>34, Erkek, 0(RH -)</div>
+                  {selectedHasta && (
+                    <div style={{marginTop: "7px"}}>
+                      <h3>{selectedHasta.ad} {selectedHasta.soyad}</h3>
+                      <div><b>TC K.No:</b> {selectedHasta.tcKimNo}</div>
+                      <div><b>Yaş:</b> {calculateAge(selectedHasta.dogumTarihi)}, <b>Cinsiyet:</b> {selectedHasta.cinsiyet}</div>
+                    </div>
+                  )}
                 </Card>
                 <Card
                   style={{

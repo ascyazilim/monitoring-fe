@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./Anamnez.css";
 
 import { useState } from "react";
@@ -97,13 +97,6 @@ function Anamnez() {
     setSelectedKonsultasyon(selectedItems);
   };
 
-  //Konsültasyon Silme
-  const removeKonstultasyon = (index) => {
-    const newList = [...selectedKonsultasyon];
-    newList.splice(index, 1);
-    setSelectedKonsultasyon(newList);
-  };
-
   //İlaç Ekleme Ekranı
   const [isModalOpenIlac, setModalOpenIlac] = useState(false);
   // const [selectedIlacList, setSelectedIlacList] = useState([]);
@@ -132,6 +125,26 @@ function Anamnez() {
     newList.splice(index, 1);
     setSelectedIlacList(newList);
   };
+
+  //İlacın dozunu yerel depolamaya kaydeden fonksiyon
+  const saveDozToLocalStorage = (ilacIndex, dozValue) => {
+    const currentIlacList = [...selectedIlacList];
+    currentIlacList[ilacIndex].selectedDoz = dozValue;
+    setSelectedIlacList(currentIlacList);
+    localStorage.setItem('ilacDoz_${ilacIndex}', dozValue);
+  };
+  //ilacın dozunu yerel depolamadan yükleyen fonksiyon
+  const loadDozFromLocalStorage = () => {
+    const loadedIlacList = selectedIlacList.map((ilac, index) => {
+      const savedDoz = localStorage.getItem('ilacDoz_${index}');
+      return {...ilac, selectedDoz: savedDoz || ilac.selectedDoz};
+    });
+    setSelectedIlacList(loadedIlacList);
+  };
+
+  useEffect(() => {
+    loadDozFromLocalStorage();
+  }, []);
 
   //Hizmet-istem Ekleme
   const [isModalOpenIstem, setModalOpenIstem] = useState(false);
@@ -179,12 +192,7 @@ function Anamnez() {
   const handleSelectedAmeliyatChange = (selectedItems) => {
     setSelectedAmeliyat(selectedItems);
   };
-  //Ameliyat Silme
-  const removeAmeliyat = (index) => {
-    const newList = [...selectedAmeliyat];
-    newList.splice(index, 1);
-    setSelectedAmeliyat(newList);
-  };
+
   //Klinik Seyir Ekleme
   const [isModalOpenKlinik, setModalOpenKlinik] = useState(false);
 
@@ -197,12 +205,7 @@ function Anamnez() {
   const handleSelectedKlinikChange = (selectedItems) => {
     setSelectedKlinik(selectedItems);
   };
-  //Klinik Seyir Sillme
-  const removeKlinik = (index) => {
-    const newList = [...selectedKlinik];
-    newList.splice(index, 1);
-    setSelectedKlinik(newList);
-  };
+
   // Taburcu İstek Ekleme
   const [isModalOpenTaburcu, setModalOpenTaburcu] = useState(false);
 
@@ -214,12 +217,6 @@ function Anamnez() {
   };
   const handleSelectedTaburcuChange = (selectedItems) => {
     setSelectedTaburcu(selectedItems);
-  };
-  // Taburcu İstek Silme
-  const removeTaburcu = (index) => {
-    const newList = [...selectedTaburcu];
-    newList.splice(index, 1);
-    setSelectedTaburcu(newList);
   };
 
   //Tahlil Sonuç Ekleme
@@ -234,15 +231,47 @@ function Anamnez() {
   const handleSelectedTahlilChange = (selectedItems) => {
     setSelectedTahlil(selectedItems);
   };
-  //Tahlil silme
-  const removeTahlil = (index) => {
-    const newList = [...selectedTahlil];
-    newList.splice(index, 1);
-    setSelectedTahlil(newList);
-  };
 
   //Doz ekleme
   //const [doz, setDoz] = useState("");
+
+  //yerel depolama alanından doktor seçimlerini yükleme
+  useEffect(() => {
+    const storedSikayetDoktor = localStorage.getItem('selectedSikayetDoktor');
+    const storedHikayeDoktor = localStorage.getItem('selectedHikayeDoktor');
+    const storedOzgecmisDoktor = localStorage.getItem('selectedOzgecmisDoktor');
+    const storedSoygecmisDoktor = localStorage.getItem('selectedSoygecmisDoktor');
+
+    if(storedSikayetDoktor) {
+      setSelectedSikayetDoktor(storedSikayetDoktor);
+    }
+    if(storedHikayeDoktor) {
+      setSelectedHikayeDoktor(storedHikayeDoktor);
+    }
+    if(storedOzgecmisDoktor) {
+      setSelectedOzgecmisDoktor(storedOzgecmisDoktor);
+    }
+    if(storedSoygecmisDoktor) {
+      setSelectedSoygecmisDoktor(storedSoygecmisDoktor);
+    } 
+  }, []);
+
+  //Doktor seçimini yerel depolamaya kaydeder
+  useEffect(() => {
+    localStorage.setItem('selectedSikayetDoktor', selectedSikayetDoktor);
+  }, [selectedSikayetDoktor]);
+
+  useEffect(() => {
+    localStorage.setItem('selectedHikayeDoktor', selectedHikayeDoktor);
+  }, [selectedHikayeDoktor]);
+
+  useEffect(() => {
+    localStorage.setItem('selectedOzgecmisDoktor', selectedOzgecmisDoktor);
+  }, [selectedOzgecmisDoktor]);
+
+  useEffect(() => {
+    localStorage.setItem('selectedSoygecmisDoktor', selectedSoygecmisDoktor);
+  }, [selectedSoygecmisDoktor]);
 
   //Muayene Kaydet
   const handleMuayeneKaydet = async () => {
@@ -365,7 +394,9 @@ function Anamnez() {
                 <tr key={index}>
                   {/* <td className="ilac-doz-content-yeni">{ilac.doz}</td> */}
                   <td className="ilac-doz-content-yeni">
-                    <select name="doz" id="doz">
+                    <select name="doz" id="doz"
+                    value={ilac.selectedDoz || 'doz1'}
+                    onChange={(e) => saveDozToLocalStorage(index, e.target.value)}>
                       <option value="doz1">1x1</option>
                       <option value="doz2">2x1</option>
                       <option value="doz3">3x1</option>
