@@ -28,16 +28,6 @@ function TaniEkle({ onSelectedItemsChange, onClose }) {
       setSelectedOptions((prevOptions) => [...prevOptions, tani]);
     }
   };
-
-  // const handleAddOption = () => {
-  //   const selectedTaniNames = selectedOptions.map(
-  //     (option) => `${option.icd10Kodu} - ${option.taniAdi}`
-  //   );
-  //   onSelectedItemsChange(selectedTaniNames);
-  //   setSelectedOptions([]);
-  //   onClose();
-  // };
-
   const handleAddOption = () => {
     onSelectedItemsChange(selectedOptions);
     setSelectedOptions([]);

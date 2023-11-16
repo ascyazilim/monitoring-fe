@@ -56,20 +56,6 @@ function AmeliyatGiris({ onClose }) {
       console.error("veri kaydedilirken bir hata oluştu", error);
     }
   };
-
-  // useEffect(() => {
-  //   const fetchAmeliyatGiris = async () => {
-  //     try {
-  //       const response = await axios.get(
-  //         "http://localhost:8080/ameliyat-giris/${id}"
-  //       );
-  //       setAmeliyatGiris(response.data);
-  //     } catch (error) {
-  //       console.error("Veri alınamadı:", error);
-  //     }
-  //   };
-  //   fetchAmeliyatGiris();
-  // }, []);
   return (
     <div className="main-ameliyat">
       <div className="baslik">Ameliyat Giriş</div>

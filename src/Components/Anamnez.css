@@ -1,3 +1,38 @@
+@media screen and(max-width:600px) {
+    .muayene-top, .muayene-bottom {
+        flex-direction: column;
+    }
+
+    .form-text, .form-doktor {
+        width: 100%;
+        margin-right: 0;
+    }
+
+    .sikayet label, .hikaye label, ozgecmis label, .soygecmis label{
+        margin-right: 10px;
+    }
+    .menu-button {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+    .tani-ekle input, .ilac-ekle input, .istem-ekle input {
+        width: 100%;
+    }
+}
+
+@media screen and (min-width:600px) and (max-width:900px) {
+    .form-text, .form-doktor{
+        width: 50%;
+    }
+    .menu-button {
+        width: 50%;
+    }
+    .tani-ekle input, .ilac-ekle input, .istem-ekle input {
+        width: 95%;
+    }
+}
+
+
 .main {
     border: solid 1px #000000;
     padding: 5px;

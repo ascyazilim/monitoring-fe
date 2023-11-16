@@ -33,10 +33,16 @@ export const SideBarData = [
         icon: <FontAwesomeIcon icon={faProcedures} />,
         cName: 'nav-text'
     },
+    // {
+    //     title: "Doktor Bilgisi",
+    //     path: "/doktor",
+    //     icon: <FaIcons6.FaUserDoctor />,
+    //     cName: 'nav-text'
+    // },
     {
-        title: "Doktor Bilgisi",
-        path: "/doktor",
-        icon: <FaIcons6.FaUserDoctor />,
+        title: "Login",
+        path: "/login",
+        icon: <FaIcons6.FaUserCheck />,
         cName: 'nav-text'
     },
     {

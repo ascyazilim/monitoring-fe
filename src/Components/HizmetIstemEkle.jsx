@@ -30,14 +30,6 @@ function HizmetIstemEkle({ onSelectedItemsChange, onClose }) {
     }
   };
 
-  // const handleAddOption = () => {
-  //   const selectedIstemNames = selectedOptions.map(
-  //     (option) => `${option.hizmetKodu} - ${option.istemAdi}`
-  //   );
-  //   onSelectedItemsChange(selectedIstemNames);
-  //   setSelectedOptions([]);
-  //   onClose();
-  // };
   const handleAddOption = () => {
     onSelectedItemsChange(selectedOptions);
     setSelectedOptions([]);

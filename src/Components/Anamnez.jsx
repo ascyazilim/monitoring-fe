@@ -141,7 +141,7 @@ function Anamnez() {
     });
     setSelectedIlacList(loadedIlacList);
   };
-
+  
   useEffect(() => {
     loadDozFromLocalStorage();
   }, []);
@@ -293,10 +293,11 @@ function Anamnez() {
             sigaraAciklama,
             gripAsisi,
             gripAsisiAciklama,
-            taniList: selectedTaniList.map((tani) => ({
-              icd10Kodu: tani.icd10Kodu,
-              taniAdi: tani.taniAdi,
-            })),
+            // taniList: selectedTaniList.map((tani) => ({
+            //   icd10Kodu: tani.icd10Kodu,
+            //   taniAdi: tani.taniAdi,
+            // })),
+            taniList:selectedTaniList,
             // selectedTaniList,
             selectedIlacList,
             selectedIstemList,
@@ -350,7 +351,7 @@ function Anamnez() {
               style={{ marginBottom: "10px" }}
               onClick={handleOpenModalTani}
             >
-              Tanı
+              Tanı    
               <br /> Ekle
             </button>
             {isModalOpenTani && (
@@ -398,8 +399,8 @@ function Anamnez() {
                     value={ilac.selectedDoz || 'doz1'}
                     onChange={(e) => saveDozToLocalStorage(index, e.target.value)}>
                       <option value="doz1">1x1</option>
-                      <option value="doz2">2x1</option>
-                      <option value="doz3">3x1</option>
+                      <option value="doz2">1x2</option>
+                      <option value="doz3">1x3</option>
                     </select>
                   </td>
                   <td className="ilac-kodu-content-yeni">{ilac.barkod}</td>
