@@ -294,6 +294,7 @@ function Anamnez() {
             gripAsisi,
             gripAsisiAciklama,
             // taniList: selectedTaniList.map((tani) => ({
+            //   id: tani.id,
             //   icd10Kodu: tani.icd10Kodu,
             //   taniAdi: tani.taniAdi,
             // })),

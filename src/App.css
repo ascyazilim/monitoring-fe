@@ -115,15 +115,70 @@ input[type="checkbox"] {
 }
 
 .arama {
+  margin-top: 20px;
   margin-left: 7px;
   margin-bottom: 5px;
+  height: 150px;
+  width: 280px;
+  /* border: solid 1px #555; */
+  box-sizing: border-box;
+}
+
+.arama form{
+  margin-bottom: 10px;
 }
 
 .arama label {
   margin-right: 5px;
 }
-
+/**/
 .arama input {
-  width: 200px;
+  margin-left: 1px;
+  width: 220px;
+  height: 30px;
 }
+
+.arama button {
+  padding: 8px 15px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  width: 57px;
+  height: 30px;
+}
+
+.arama button:hover {
+  background-color: #0056b3;
+}
+
+.arama ul{
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.arama li {
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  padding: 10px;
+  margin-bottom: 5px;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.arama li:hover {
+  background-color: #efefef;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.arama input[type="text"] {
+  padding: 8px;
+  margin: 10px 0;
+  width: calc(100% - 22px); /* 10px padding + 1px border on each side */
+  border: 1px solid #ddd;
+}
+
 

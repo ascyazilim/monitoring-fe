@@ -84,7 +84,7 @@ const TaburcuIstek = ({ onClose }) => {
             name="aciklama"
             id="aciklama"
             cols="84"
-            rows="7"
+            rows="10"
             value={aciklama}
             onChange={(e) => setAciklama(e.target.value)}
           ></textarea>

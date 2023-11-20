@@ -73,7 +73,7 @@ html {
   -moz-osx-font-smoothing: grayscale;
 }
 
-.main-login {
+/* .main-login {
   height: 700px;
   background: rgba(30,29,31,1);
 background: -moz-linear-gradient(-45deg, rgba(30,29,31,1) 0%, rgba(223,64,90,1) 100%);
@@ -83,7 +83,20 @@ background: -o-linear-gradient(-45deg, rgba(30,29,31,1) 0%, rgba(223,64,90,1) 10
 background: -ms-linear-gradient(-45deg, rgba(30,29,31,1) 0%, rgba(223,64,90,1) 100%);
 background: linear-gradient(135deg, rgba(30,29,31,1) 0%, rgba(223,64,90,1) 100%);
 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e1d1f', endColorstr='#df405a', GradientType=1 );
+} */
+
+.main-login {
+  height: 700px;
+  background: rgba(30,61,120,1);
+  background: -moz-linear-gradient(-45deg, rgba(30,61,120,1) 0%, rgba(80,154,245,1) 100%);
+  background: -webkit-gradient(left top, right bottom, color-stop(0%, rgba(30,61,120,1)), color-stop(100%, rgba(80,154,245,1)));
+  background: -webkit-linear-gradient(-45deg, rgba(30,61,120,1) 0%, rgba(80,154,245,1) 100%);
+  background: -o-linear-gradient(-45deg, rgba(30,61,120,1) 0%, rgba(80,154,245,1) 100%);
+  background: -ms-linear-gradient(-45deg, rgba(30,61,120,1) 0%, rgba(80,154,245,1) 100%);
+  background: linear-gradient(135deg, rgba(30,61,120,1) 0%, rgba(80,154,245,1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e3d78', endColorstr='#509af5', GradientType=1 );
 }
+
 
 /*--------------------
 Text
@@ -173,7 +186,7 @@ Login Box
 }
 
 .box-form {
-  width: 320px;
+  width: 460px;
   position: relative;
   z-index: 1;
 }
@@ -213,7 +226,7 @@ Login Box
 .box-login {
   position: relative;
   top: -4px;
-  width: 320px;
+  width: 370px;
   background: #fdfdfd;
   text-align: center;
   overflow: hidden;
@@ -380,7 +393,7 @@ input[type=password]:focus {
     outline: none;
 }
 
-input[type=submit]  {
+/* input[type=submit]  {
   width: 100%;
   height: 48px;
   margin-top: 24px;
@@ -400,6 +413,27 @@ input[type=submit]  {
 input[type=submit]:hover {
 	background-color: #df405a;
   border: 1px #df405a solid;
+} */
+
+input[type=submit] {
+  width: 100%;
+  height: 48px;
+  margin-top: 24px;
+  padding: 0px 20px;
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+  color: #fff;
+  line-height: 40px;
+  text-align: center;
+  background-color: #1e3d78;
+  border: 1px #1e3d78 solid;
+  opacity: 1;
+  cursor: pointer;
+}
+input[type=submit]:hover {
+  background-color: #509af5;
+  border: 1px #509af5 solid;
 }
 
 input[type=submit]:focus {

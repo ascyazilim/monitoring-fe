@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Button, Card, Container, Grid, Paper } from "@mui/material";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import TaniBilgisiList from "./Components/TaniBilgisiList";
@@ -41,6 +41,40 @@ const App = () => {
   const [hastaBilgileri, setHastaBilgileri] = useState(null);
   const [selectedHasta, setSelectedHasta] = useState(null);
 
+
+  //Navbar Search kısmı
+  const [tumHastalar, setTumHastalar] = useState([]);
+  const [filtrelenmisHastalar, setFiltrelenmisHastalar] = useState([]);
+
+  //açılır kapanır search kısmı
+  const [isGridVisible, setIsGridVisible] = useState(true);
+
+  const toggleGridVisibility = () => {
+    setIsGridVisible(!isGridVisible);
+  };
+
+  useEffect(() => {
+    const fetchHastalar = async () => {
+      try {
+        const response = await axios.get('http://localhost:8080/hasta/all');
+        setTumHastalar(response.data.slice(0, 10));
+      } catch (error){
+        console.error('Hastalar yüklenirken hata oluştu', error);
+      }
+    };
+    fetchHastalar();
+  }, []);
+
+  // useEffect(() => {
+  //   axios.get('http://localhost:8080/hasta/all')
+  //     .then(response => setTumHastalar(response.data))
+  //     .catch(error => console.error("Hastalar yükenirken hata oluştu", error));
+  // }, []);
+
+  // const filtrelenmisHastalar = tcKimlikNo
+  //   ? tumHastalar.filter(hasta => hasta.tcKimNo.includes(tcKimlikNo))
+  //   : [];
+//-------------------------------------------------------------------------------------
   const handleMuayeneIdSelection = (id) => {
     setSelectedMuayeneId(id);
   };
@@ -49,31 +83,39 @@ const App = () => {
     setTcKimlikNo(e.target.value);
   };
 
-  const handleSearch = async (e) => {
+  // const handleSearch = async (e) => {
+  //   e.preventDefault();
+  //   if(tcKimlikNo.trim() === ''){
+  //     setError("Lütfen Tc Kimlik No girin");
+  //     setHastaBilgileri(null);
+  //     setSelectedHasta(null);
+  //     return;
+  //   }
+  //   try {
+  //     const response = await axios.get(`http://localhost:8080/hasta/search`, {
+  //       params: { query: tcKimlikNo },
+  //     });
+  //     if(response.data.length > 0) {
+  //       setHastaBilgileri(response.data);
+  //       setError("");
+  //     }else {
+  //       setError('Hasta bulunamadı.');
+  //       setHastaBilgileri(null);
+  //     }
+  //     setSelectedHasta(null);
+  //   } catch (err) {
+  //     setError("Arama sırasında bir hata oluştu");
+  //     setHastaBilgileri(null);
+  //     setSelectedHasta(null);
+  //   }
+  // };
+
+  const handleSearch = (e) => {
     e.preventDefault();
-    if(tcKimlikNo.trim() === ''){
-      setError("Lütfen Tc Kimlik No girin");
-      setHastaBilgileri(null);
-      setSelectedHasta(null);
-      return;
-    }
-    try {
-      const response = await axios.get(`http://localhost:8080/hasta/search`, {
-        params: { query: tcKimlikNo },
-      });
-      if(response.data.length > 0) {
-        setHastaBilgileri(response.data);
-        setError("");
-      }else {
-        setError('Hasta bulunamadı.');
-        setHastaBilgileri(null);
-      }
-      setSelectedHasta(null);
-    } catch (err) {
-      setError("Arama sırasında bir hata oluştu");
-      setHastaBilgileri(null);
-      setSelectedHasta(null);
-    }
+    const filtrelenen = tumHastalar.filter(hasta =>
+      hasta.tcKimNo.includes(tcKimlikNo)
+    );
+    setFiltrelenmisHastalar(filtrelenen);
   };
 
   const selectHasta = (hasta) => {
@@ -99,13 +141,40 @@ const App = () => {
     >
       <Router>
         <Grid container spacing={3}>
+          
           <Grid item xs={3}>
-            <Navi />
+            {/* <Navi /> */}
+            <div className="arama">
+              <form onSubmit={handleSearch}>
+                <input
+                  type="text"
+                  value={tcKimlikNo}
+                  onChange={(e) => setTcKimlikNo(e.target.value)}
+                  placeholder="Tc Kimlik No ile Ara"
+                />
+                <button type="submit">Ara</button>
+              </form>
+              <ul style={{listStyleType: 'none'}}>
+                {(filtrelenmisHastalar.length > 0 ? filtrelenmisHastalar: tumHastalar).map(hasta => (
+                  <li key={hasta.id} onClick={() => selectHasta(hasta)}>
+                    {hasta.ad} {hasta.soyad}, {hasta.tcKimNo}
+                  </li>
+                ))}
+              </ul>
+              {/* {error && <p>{error}</p>} */}
+              {/* <ul style={{listStyleType:"none"}}>
+                {filtrelenmisHastalar.map((hasta) => (
+                  <li key={hasta.id} onClick={() => selectHasta(hasta)}>
+                     {hasta.ad} {hasta.soyad}, {hasta.tcKimNo}
+                  </li>
+                ))}
+              </ul> */}
+            </div>
           </Grid>
           <Grid item xs={9}>
             <Paper elevation={3} style={{ padding: "10px" }}>
               
-              <div className="arama">
+              {/* <div className="arama">
                 <form onSubmit={handleSearch}>
                   <input
                     type="text"
@@ -130,7 +199,7 @@ const App = () => {
                   </ul>
                 )}
                 
-              </div>
+              </div> */}
 
               <div style={{ display: "flex", justifyContent: "start" }}>
                 <Card
@@ -208,6 +277,7 @@ const App = () => {
                   marginBottom: "10px",
                 }}
               ></div>
+              
               <Routes>
                 <Route path="/" element={<MainPage />} />
                 <Route path="/tani" element={<TaniBilgisiList />} />
