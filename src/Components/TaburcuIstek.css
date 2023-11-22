@@ -10,15 +10,17 @@
     border: 1px solid #ccc;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     height: 500px;
-    width: 780px;
+    width: 800px;
     border: 2px solid #000000;
 }
 
 .taburcu-content {
     margin-top: 15px;
-    border: solid 1px #000000;
-    padding: 10px;
-    height: 300px;
+    box-sizing: border-box;
+    border: solid 2px #000000;
+    padding: 20px;
+    padding-top: 30px !important;
+    height: 370px;
 }
 
 .yatis-bilgileri {

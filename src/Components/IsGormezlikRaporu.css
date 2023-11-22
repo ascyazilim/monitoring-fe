@@ -1,0 +1,200 @@
+.isgormezlik-main {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #f5f5f5;
+    color: #000;
+    padding: 20px;
+    z-index: 1000;
+    border: 1px solid #ccc;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    height: 500px;
+    width: 880px;
+    border: 2px solid #000000;
+}
+.isgormezlik-form {
+    margin-top: 15px;
+    box-sizing: border-box;
+    display: flex;
+    padding: 20px;
+    padding-top: 30px !important;
+    border: 2px solid #000000;
+    height: 370px;
+}
+.isgormezlik-sol input{
+    width: 110px;
+}
+.belge-duzenleme-tarihi{
+    margin-left: 1px;
+    display: flex;
+}
+.belge-duzenleme-tarihi label{
+    margin-right: 5px;
+}
+
+.baslama-tarihi {
+    display: flex;
+    margin-top: 5px;
+    margin-left: 1px;
+}
+.baslama-tarihi label {
+    margin-right: 33px;
+}
+.vaka {
+    display: flex;
+    margin-top: 5px;
+    margin-left: 1px;
+}
+.vaka label {
+    margin-right: 101px;
+}
+.vaka select {
+    width: 110px;
+    border-radius: 3px;
+}
+.duzenleme-turu {
+    display: flex;
+    margin-top: 5px;
+    margin-left: 1px;
+}
+.duzenleme-turu label {
+    margin-right: 20px;
+}
+.duzenleme-turu select {
+    width: 110px;
+    border-radius: 3px;
+}
+.adli-vaka {
+    display: flex;
+    margin-top: 5px;
+    margin-left: 1px;
+}
+.adli-vaka label{
+    margin-right: 70px;
+}
+.adli-vaka select {
+    width: 110px;
+    border-radius: 3px;
+}
+.yatis-durumu {
+    display: flex;
+    margin-top: 5px;
+    margin-left: 1px;
+}
+.yatis-durumu label{
+    margin-right: 39px;
+}
+.yatis-durumu select{
+    width: 110px;
+    border-radius: 3px;
+}
+.yatarak-gun {
+    display: flex;
+    margin-top: 5px;
+    margin-left: 1px;
+}
+.yatarak-gun label {
+    margin-right: 6px;
+}
+.ayakta-gun{
+    display: flex;
+    margin-top: 5px;
+    margin-left: 1px;
+}
+.ayakta-gun label{
+    margin-right: 11px;
+}
+.isgormezlik-sag {
+    margin-left: 90px;
+}
+.hasta-adsoyad{
+    display: flex;
+}
+.hasta-adsoyad label{
+    margin-right: 52px;
+}
+.hasta-adsoyad input{
+    width: 160px;
+}
+.tc-kimlik-no {
+    display: flex;
+    margin-top: 5px;
+}
+.tc-kimlik-no input {
+    width: 160px;
+}
+.tc-kimlik-no label {
+    margin-right: 83px;
+}
+.rapor-durumu {
+    display: flex;
+    margin-top: 5px;
+}
+.rapor-durumu label {
+    margin-right: 10px;
+}
+.rapor-durumu input[type="radio"]{
+    margin-right: 2px;
+}
+.meslek-hastaligi {
+    display: flex;
+    margin-top: 5px;
+}
+.meslek-hastaligi label{
+    margin-right: 23px;
+}
+.meslek-hastaligi select {
+    width: 75px;
+    text-align: center;
+    border-radius: 3px;
+}
+.ayakta-baslama{
+    display: flex;
+    margin-top: 5px;
+}
+.ayakta-baslama input {
+    width: 160px;
+}
+.ayakta-baslama label {
+    margin-right: 16px;
+}
+.ayakta-bitis {
+    display: flex;
+    margin-top: 5px;
+}
+.ayakta-bitis input{
+    width: 160px;
+}
+.ayakta-bitis label {
+    margin-right: 44px;
+}
+.rapor-doktor {
+    display: flex;
+    margin-top: 5px;
+}
+.rapor-doktor label {
+    margin-right: 43px;
+}
+.rapor-doktor select {
+    width: 160px;
+    border-radius: 3px;
+}
+.doktor-brans {
+    display: flex;
+    margin-top: 5px;
+}
+.doktor-brans label {
+    margin-right: 75px;
+}
+.doktor-brans select {
+    width: 160px;
+    border-radius: 3px;
+}
+.rapor-aciklama {
+    display: flex;
+    margin-top: 5px;
+}
+.rapor-aciklama label {
+    margin-right: 60px;
+}

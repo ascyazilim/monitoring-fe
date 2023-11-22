@@ -10,6 +10,7 @@ import AmeliyatGiris from "./AmeliyatGiris";
 import KlinikSeyir from "./KlinikSeyir";
 import TaburcuIstek from "./TaburcuIstek";
 import TahlilSonuc from "./TahlilSonuc";
+import IsGormezlikRaporu from "./IsGormezlikRaporu";
 
 function Anamnez() {
   //Şikayet ve Hikaye Alanları
@@ -46,6 +47,7 @@ function Anamnez() {
   const [selectedAmeliyat, setSelectedAmeliyat] = useState([]);
   const [selectedKlinik, setSelectedKlinik] = useState([]);
   const [selectedTaburcu, setSelectedTaburcu] = useState([]);
+  const [selectedRapor, setSelectedRapor] = useState([]);
   const [selectedTahlil, setSelectedTahlil] = useState([]);
 
   //Tanı türü Seçimi
@@ -131,17 +133,17 @@ function Anamnez() {
     const currentIlacList = [...selectedIlacList];
     currentIlacList[ilacIndex].selectedDoz = dozValue;
     setSelectedIlacList(currentIlacList);
-    localStorage.setItem('ilacDoz_${ilacIndex}', dozValue);
+    localStorage.setItem("ilacDoz_${ilacIndex}", dozValue);
   };
   //ilacın dozunu yerel depolamadan yükleyen fonksiyon
   const loadDozFromLocalStorage = () => {
     const loadedIlacList = selectedIlacList.map((ilac, index) => {
-      const savedDoz = localStorage.getItem('ilacDoz_${index}');
-      return {...ilac, selectedDoz: savedDoz || ilac.selectedDoz};
+      const savedDoz = localStorage.getItem("ilacDoz_${index}");
+      return { ...ilac, selectedDoz: savedDoz || ilac.selectedDoz };
     });
     setSelectedIlacList(loadedIlacList);
   };
-  
+
   useEffect(() => {
     loadDozFromLocalStorage();
   }, []);
@@ -219,6 +221,19 @@ function Anamnez() {
     setSelectedTaburcu(selectedItems);
   };
 
+  //Rapor Ekleme
+  const [isModalOpenRapor, setModalOpenRapor] = useState(false);
+
+  const handleOpenModalRapor = () => {
+    setModalOpenRapor(true);
+  };
+  const handleCloseModalRapor = () => {
+    setModalOpenRapor(false);
+  };
+  const handleSelectedRaporChange = (selectedItems) => {
+    setSelectedRapor(selectedItems);
+  };
+
   //Tahlil Sonuç Ekleme
   const [isModalOpenTahlil, setModalOpenTahlil] = useState(false);
 
@@ -237,40 +252,42 @@ function Anamnez() {
 
   //yerel depolama alanından doktor seçimlerini yükleme
   useEffect(() => {
-    const storedSikayetDoktor = localStorage.getItem('selectedSikayetDoktor');
-    const storedHikayeDoktor = localStorage.getItem('selectedHikayeDoktor');
-    const storedOzgecmisDoktor = localStorage.getItem('selectedOzgecmisDoktor');
-    const storedSoygecmisDoktor = localStorage.getItem('selectedSoygecmisDoktor');
+    const storedSikayetDoktor = localStorage.getItem("selectedSikayetDoktor");
+    const storedHikayeDoktor = localStorage.getItem("selectedHikayeDoktor");
+    const storedOzgecmisDoktor = localStorage.getItem("selectedOzgecmisDoktor");
+    const storedSoygecmisDoktor = localStorage.getItem(
+      "selectedSoygecmisDoktor"
+    );
 
-    if(storedSikayetDoktor) {
+    if (storedSikayetDoktor) {
       setSelectedSikayetDoktor(storedSikayetDoktor);
     }
-    if(storedHikayeDoktor) {
+    if (storedHikayeDoktor) {
       setSelectedHikayeDoktor(storedHikayeDoktor);
     }
-    if(storedOzgecmisDoktor) {
+    if (storedOzgecmisDoktor) {
       setSelectedOzgecmisDoktor(storedOzgecmisDoktor);
     }
-    if(storedSoygecmisDoktor) {
+    if (storedSoygecmisDoktor) {
       setSelectedSoygecmisDoktor(storedSoygecmisDoktor);
-    } 
+    }
   }, []);
 
   //Doktor seçimini yerel depolamaya kaydeder
   useEffect(() => {
-    localStorage.setItem('selectedSikayetDoktor', selectedSikayetDoktor);
+    localStorage.setItem("selectedSikayetDoktor", selectedSikayetDoktor);
   }, [selectedSikayetDoktor]);
 
   useEffect(() => {
-    localStorage.setItem('selectedHikayeDoktor', selectedHikayeDoktor);
+    localStorage.setItem("selectedHikayeDoktor", selectedHikayeDoktor);
   }, [selectedHikayeDoktor]);
 
   useEffect(() => {
-    localStorage.setItem('selectedOzgecmisDoktor', selectedOzgecmisDoktor);
+    localStorage.setItem("selectedOzgecmisDoktor", selectedOzgecmisDoktor);
   }, [selectedOzgecmisDoktor]);
 
   useEffect(() => {
-    localStorage.setItem('selectedSoygecmisDoktor', selectedSoygecmisDoktor);
+    localStorage.setItem("selectedSoygecmisDoktor", selectedSoygecmisDoktor);
   }, [selectedSoygecmisDoktor]);
 
   //Muayene Kaydet
@@ -298,7 +315,7 @@ function Anamnez() {
             //   icd10Kodu: tani.icd10Kodu,
             //   taniAdi: tani.taniAdi,
             // })),
-            taniList:selectedTaniList,
+            taniList: selectedTaniList,
             // selectedTaniList,
             selectedIlacList,
             selectedIstemList,
@@ -352,7 +369,7 @@ function Anamnez() {
               style={{ marginBottom: "10px" }}
               onClick={handleOpenModalTani}
             >
-              Tanı    
+              Tanı
               <br /> Ekle
             </button>
             {isModalOpenTani && (
@@ -396,9 +413,14 @@ function Anamnez() {
                 <tr key={index}>
                   {/* <td className="ilac-doz-content-yeni">{ilac.doz}</td> */}
                   <td className="ilac-doz-content-yeni">
-                    <select name="doz" id="doz"
-                    value={ilac.selectedDoz || 'doz1'}
-                    onChange={(e) => saveDozToLocalStorage(index, e.target.value)}>
+                    <select
+                      name="doz"
+                      id="doz"
+                      value={ilac.selectedDoz || "doz1"}
+                      onChange={(e) =>
+                        saveDozToLocalStorage(index, e.target.value)
+                      }
+                    >
                       <option value="doz1">1x1</option>
                       <option value="doz2">1x2</option>
                       <option value="doz3">1x3</option>
@@ -769,6 +791,15 @@ function Anamnez() {
           <TaburcuIstek
             onClose={handleCloseModalTaburcu}
             onSelectedItemsChange={handleSelectedTaburcuChange}
+          />
+        )}
+        <button className="menu-button" onClick={handleOpenModalRapor}>
+          Rapor <br /> Ekle
+        </button>
+        {isModalOpenRapor && (
+          <IsGormezlikRaporu
+            onClose={handleCloseModalRapor}
+            onSelectedItemsChange={handleSelectedRaporChange}
           />
         )}
         <button className="menu-button" onClick={handleOpenModalTahlil}>
