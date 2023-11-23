@@ -11,6 +11,7 @@ import KlinikSeyir from "./KlinikSeyir";
 import TaburcuIstek from "./TaburcuIstek";
 import TahlilSonuc from "./TahlilSonuc";
 import IsGormezlikRaporu from "./IsGormezlikRaporu";
+import IlacRaporu from "./IlacRaporu";
 
 function Anamnez() {
   //Şikayet ve Hikaye Alanları
@@ -48,6 +49,7 @@ function Anamnez() {
   const [selectedKlinik, setSelectedKlinik] = useState([]);
   const [selectedTaburcu, setSelectedTaburcu] = useState([]);
   const [selectedRapor, setSelectedRapor] = useState([]);
+  const [selectedIlacRapor, setSelectedIlacRapor] = useState([]);
   const [selectedTahlil, setSelectedTahlil] = useState([]);
 
   //Tanı türü Seçimi
@@ -234,6 +236,19 @@ function Anamnez() {
     setSelectedRapor(selectedItems);
   };
 
+  //Ilac Rapor Ekleme
+  const [isModalOpenIlacRapor, setModalOpenIlacRapor] = useState(false);
+
+  const handleOpenModalIlacRapor = () => {
+    setModalOpenIlacRapor(true);
+  };
+  const handleCloseModalIlacRapor = () => {
+    setModalOpenIlacRapor(false);
+  };
+  const handleSelectedIlacRaporChange = (selectedItems) => {
+    setSelectedIlacRapor(selectedItems);
+  };
+    
   //Tahlil Sonuç Ekleme
   const [isModalOpenTahlil, setModalOpenTahlil] = useState(false);
 
@@ -794,12 +809,21 @@ function Anamnez() {
           />
         )}
         <button className="menu-button" onClick={handleOpenModalRapor}>
-          Rapor <br /> Ekle
+          İş Görmezlik <br />Raporu Ekle
         </button>
         {isModalOpenRapor && (
           <IsGormezlikRaporu
             onClose={handleCloseModalRapor}
             onSelectedItemsChange={handleSelectedRaporChange}
+          />
+        )}
+        <button className="menu-button" onClick={handleOpenModalIlacRapor}>
+          İlaç Rapor <br/> Hazırlama
+        </button>
+        {isModalOpenIlacRapor && (
+          <IlacRaporu 
+            onClose={handleCloseModalIlacRapor}
+            onSelectedItemsChange={handleSelectedIlacRaporChange}
           />
         )}
         <button className="menu-button" onClick={handleOpenModalTahlil}>
