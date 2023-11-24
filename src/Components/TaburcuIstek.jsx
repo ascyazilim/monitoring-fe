@@ -60,7 +60,12 @@ const TaburcuIstek = ({ onClose }) => {
             id="taburcu-tipi"
             value={taburcuTipi}
             onChange={(e) => setTaburcuTipi(e.target.value)}
-          ></select>
+          >
+            <option value="">Seçiniz</option>
+            <option value="1">Normal Taburcu</option>
+            <option value="2">Erken Taburcu</option>
+            <option value="3">İstek Üzere Taburcu</option>
+          </select>
         </div>
         <div className="taburcu-doktor">
           <label htmlFor="taburcu-doktor">Taburcu Eden Dr.</label>
@@ -69,14 +74,24 @@ const TaburcuIstek = ({ onClose }) => {
             id="taburcu-doktor"
             value={doktor}
             onChange={(e) => setDoktor(e.target.value)}
-          ></select>
+          >
+            <option value="">Seçiniz</option>
+            <option value="1">Dr. Ahmet Yılmaz</option>
+            <option value="2">Dr. Mehmet Öz</option>
+            <option value="3">Dr. Ayşe Öztürk</option>
+          </select>
           <label htmlFor="taburcu-ekip">Tab. Eden Ekip</label>
           <select
             name="taburcu-ekip"
             id="taburcu-ekip"
             value={ekip}
             onChange={(e) => setEkip(e.target.value)}
-          ></select>
+          >
+            <option value="">Seçiniz</option>
+            <option value="1">Hemşire Ekibi</option>
+            <option value="2">Fizyoterapi Ekibi</option>
+            <option value="3">Diyet Ekibi</option>
+          </select>
         </div>
         <div className="aciklama">
           <label htmlFor="aciklama">Açıklama:</label>
@@ -91,7 +106,8 @@ const TaburcuIstek = ({ onClose }) => {
         </div>
       </div>
       <div className="window-button">
-        <button onClick={handleSave} style={{ marginTop: "15px" }}>Kaydet</button>
+        {/* <button onClick={handleSave} style={{ marginTop: "15px" }}>Kaydet</button> */}
+        <button className="save-button" onClick={handleSave}>Kaydet</button>
       </div>
     </div>
   );

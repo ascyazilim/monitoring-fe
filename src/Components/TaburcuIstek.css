@@ -1,77 +1,144 @@
-.main-taburcu{
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: #f5f5f5;
-    color: #000;
-    padding: 20px;
-    z-index: 1000;
-    border: 1px solid #ccc;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    height: 500px;
-    width: 800px;
-    border: 2px solid #000000;
+.main-taburcu {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  /* background-color: #f5f5f5;
+  color: #000; */
+  background-color: #f0f8ff;
+  color: #2196f3;
+  border-radius: 10px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+
+  padding: 20px;
+  z-index: 1000;
+  border: 1px solid #ccc;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  height: 500px;
+  width: 800px;
+  border: 2px solid #000000;
+}
+.baslik {
+  text-align: center;
+  font-size: 1.2em;
+  margin-bottom: 20px;
+  font-family: sans-serif;
+}
+
+.close-button {
+  cursor: pointer;
+  padding: 5px;
+  border-radius: 10%;
+  background-color: #f44336;
+  color: white;
+}
+.close-button:hover {
+  background-color: white !important;
+  color: #f44336 !important;
 }
 
 .taburcu-content {
-    margin-top: 15px;
-    box-sizing: border-box;
-    border: solid 1px #000000;
-    padding: 20px;
-    padding-top: 30px !important;
-    height: 370px;
+  margin-top: 5px;
+  box-sizing: border-box;
+  border: none;
+  padding: 20px;
+  padding-top: 5px !important;
+  height: 370px;
+  overflow-y: auto;
+}
+.main-taburcu input,
+.main-taburcu select {
+  /* width: 100px; */
+  padding: 8px 12px;
+  /* margin: 8px 0; */
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.main-taburcu textarea {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin: 8px 0;
+  padding: 8px;
+  display: inline-block;
+}
+.save-button {
+  background-color: #3a8d3d;
+  color: white;
+  /* padding: 14px 20px; */
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.save-button:hover {
+  background-color: #45a049;
 }
 
 .yatis-bilgileri {
-    display: flex;
-    margin-top: 10px;
+  display: flex;
+  margin-top: 10px;
 }
 .yatis-bilgileri label {
-    margin-right: 32px;
+  margin-top: 5px;
+  margin-right: 32px;
 }
 .yatis-bilgileri input {
-    width: 580px;
+  width: 580px;
 }
 
 .taburcu-tarihi {
-    display: flex;
-    margin-top: 10px;
+  display: flex;
+  margin-top: 10px;
 }
 .taburcu-tarihi label {
-    margin-right: 26px;
+  margin-right: 26px;
+  margin-top: 5px;
 }
 .taburcu-tarihi input {
-    width: 178px;
-    margin-right: 10px;
+  width: 178px;
+  margin-right: 10px;
 }
 #zaman {
-    margin-right: 10px;
+  margin-right: 10px;
 }
 
 #taburcu-tipi {
-    width: 170px;
+  width: 170px;
 }
 
 .taburcu-doktor {
-    display: flex;
-    margin-top: 10px;
+  display: flex;
+  margin-top: 10px;
 }
 .taburcu-doktor label {
-    margin-right: 10px;
+  margin-top: 5px;
+  margin-right: 10px;
 }
 #taburcu-doktor {
-    width: 178px;
-    margin-right: 10px;
+  width: 178px;
+  margin-right: 10px;
 }
 #taburcu-ekip {
-    margin-left: 5px;
-    width: 170px;
+  margin-left: 5px;
+  width: 170px;
 }
 .aciklama {
-    display: flex;
-    margin-top: 10px;
+  display: flex;
+  margin-top: 10px;
 }
 .aciklama label {
-    margin-right: 60px;
+  margin-right: 60px;
+}
+
+@media screen and (max-width: 600px) {
+  .main-taburcu,
+  .taburcu-content {
+    width: 100%;
+    margin: 0;
+    padding: 10px;
+  }
 }
