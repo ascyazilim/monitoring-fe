@@ -3,8 +3,13 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: #f5f5f5;
-    color: #000;
+    /* background-color: #f5f5f5;
+    color: #000; */
+    background-color: #f0f8ff;
+    color: #2196f3;
+    border-radius: 10px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+
     padding: 20px;
     z-index: 1000;
     border: 1px solid #ccc;
@@ -13,6 +18,15 @@
     width: 880px;
     border: 2px solid #000000;
 }
+
+.main-ameliyat input, .main-ameliyat select{
+    padding: 4px 8px;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+
+}
 .main h2{
     text-align: center;
 }
@@ -20,7 +34,7 @@
 .section {
     margin-top: 15px;
     display: flex;
-    border: solid 1px #4e4e4e;
+    /* border: solid 1px #4e4e4e; */
     padding-top: 10px;
     padding-bottom: 5px;
 }
@@ -68,10 +82,9 @@
 }
 
 .ameliyathane label {
-    margin-right: 16px;
+    margin-right: 14px;
 }
 .ameliyathane select {
-    background-color: #d9d6d6a3;
     width: 183px;
     text-align: center;
 }
@@ -81,7 +94,6 @@
 }
 
 .anestezi select {
-    background-color: #d9d6d6a3;
     width: 183px;
     text-align: center;
 }
@@ -91,7 +103,6 @@
 }
 
 .ameliyat-tipi select {
-    background-color: #d9d6d6a3;
     width: 183px;
     text-align: center;
     
@@ -103,7 +114,6 @@
     margin-right:  42px;
 }
 .norolojik select {
-    background-color: #d9d6d6a3;
     width: 183px;
     text-align: center;
 }
@@ -115,7 +125,6 @@
     margin-right:  41px;
 }
 .abdomen select {
-    background-color: #d9d6d6a3;
     width: 183px;
     text-align: center;
 }
@@ -147,14 +156,12 @@
 
 .sonuc select {
     width: 300px;
-    background-color: #d9d6d6a3;
 }
 .risk {
     margin-top: 5px;
 }
 .risk select {
     width: 67px;
-    background-color: #d9d6d6a3;
 }
 
 
@@ -181,22 +188,21 @@
 .section2 {
     display: flex;
     margin-top: 15px;
-    border: solid 1px #4e4e4e;
+    /* border: solid 1px #4e4e4e; */
     padding-top: 10px;
     padding-bottom: 5px;
     
     
 }
 .cerrahi-ekip {
-    margin-left: 20px;
+    margin-left: 17px;
 }
 .cerrahi-ekip label {
     margin-right: 10px;
 }
 
 .cerrahi-ekip select {
-    width: 300px;
-    background-color: #d9d6d6a3;
+    width: 315px;
     margin-right: 10px;
 }
 
@@ -209,7 +215,6 @@
 }
 
 .personel select {
-    background-color: #d9d6d6a3;
     margin-right: 10px;
 }
 
@@ -238,7 +243,6 @@
 }
 .anestezi-ekibi select {
     width: 200px;
-    background-color: #d9d6d6a3;
 }
 
 .personel-anestezi {
@@ -252,7 +256,6 @@
 
 .personel-anestezi select {
     width: 114px;
-    background-color: #d9d6d6a3;
 }
 
 .personel-anestezi button {

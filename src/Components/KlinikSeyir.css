@@ -3,21 +3,42 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: #f5f5f5;
-    color: #000;
+    /* background-color: #f5f5f5;
+    color: #000; */
+    background-color: #f0f8ff;
+    color: #2196f3;
+    border-radius: 10px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+
     padding: 20px;
     z-index: 1000;
     border: 1px solid #ccc;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    height: 500px;
+    height: 520px;
     width: 880px;
     border: 2px solid #000000;
 }
 
 .klinik-content {
-    border: solid 1px #000000;
     padding: 2px;
     height: 435px;
+}
+
+.main-klinik input, .main-klinik select {
+    padding: 4px 8px;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.main-klinik textarea {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    /* margin: 8px 0;*/
+    padding: 2px;
+    display: inline-block;
 }
 
 .baslik{
@@ -49,7 +70,7 @@
     margin-right: 20px;
 }
 .tarih-saat input {
-    width: 172px;
+    width: 188px;
     text-align: center;
 }
 

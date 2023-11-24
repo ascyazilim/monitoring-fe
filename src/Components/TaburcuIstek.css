@@ -31,6 +31,7 @@
   border-radius: 10%;
   background-color: #f44336;
   color: white;
+  margin-top: 5px;
 }
 .close-button:hover {
   background-color: white !important;
