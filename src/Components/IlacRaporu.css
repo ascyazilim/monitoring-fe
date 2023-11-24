@@ -3,8 +3,11 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: #f5f5f5;
-    color: #000;
+    background-color: #f0f8ff;
+    color: #2196f3;
+    border-radius: 10px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+
     padding: 20px;
     z-index: 1000;
     border: 1px solid #ccc;

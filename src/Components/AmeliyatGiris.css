@@ -255,7 +255,7 @@
 }
 
 .personel-anestezi select {
-    width: 114px;
+    width: 200px;
 }
 
 .personel-anestezi button {
@@ -271,3 +271,4 @@
     background-color: blue;
     cursor: pointer;
 }
+

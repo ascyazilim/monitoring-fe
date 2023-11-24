@@ -294,8 +294,6 @@ function AmeliyatGiris({ onClose }) {
             >
               <option value="persone-anestezi"></option>
             </select>
-            <button className="ekle">Ekle</button>
-            <button className="sil">Sil</button>
           </div>
         </div>
       </div>
