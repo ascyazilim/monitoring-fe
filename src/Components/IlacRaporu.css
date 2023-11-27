@@ -115,6 +115,10 @@
 .ilac-raporu-tablo-tani {
     width: 100%;
 }
+.ilac-raporu-tablo-tani table {
+    width: 100%;
+    border-collapse: collapse;
+}
 .ilac-rapor-icd-kodu {
     width: 20%;
 }

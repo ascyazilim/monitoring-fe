@@ -134,6 +134,7 @@ const IlacRaporu = ({ onClose }) => {
                 <tr>
                   <th className="ilac-rapor-icd-kodu">ICD10 Kodu</th>
                   <th className="ilac-rapor-tani-adi">Tanı Adı</th>
+                  <th className="sil-buton"></th>
                 </tr>
               </thead>
               <tbody>
@@ -150,6 +151,17 @@ const IlacRaporu = ({ onClose }) => {
             </table>
           </div>
         </div>
+      </div>
+      <div
+        className="window-button"
+        style={{
+          position: "fixed",
+          left: "50%",
+          bottom: "0",
+          marginBottom: "5px",
+        }}
+      >
+        <button>Kaydet</button>
       </div>
     </div>
   );
