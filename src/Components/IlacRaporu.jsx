@@ -2,6 +2,7 @@ import React from "react";
 import "./IlacRaporu.css";
 import { useState } from "react";
 import TaniEkle from "./TaniEkle";
+import DoktorList from "./DoktorList";
 
 const IlacRaporu = ({ onClose }) => {
   const [selectedTaniList, setSelectedTaniList] = useState([]);
@@ -53,11 +54,16 @@ const IlacRaporu = ({ onClose }) => {
     });
   };
 
-
   const removeTani = (index) => {
     const newList = [...selectedTaniList];
     newList.splice(index, 1);
     setSelectedTaniList(newList);
+  };
+
+  const removeDoktor = (index) => {
+    const newList = [...selectedDoktorList];
+    newList.splice(index, 1);
+    setSelectedDoktorList(newList);
   };
 
   return (
@@ -110,27 +116,41 @@ const IlacRaporu = ({ onClose }) => {
         <div className="rapor-girisleri">
           <div className="ilac-rapor-tanilari">
             <label htmlFor="rapor-tanilari">Rapor Tanıları</label>
-            <button onClick={handleOpenModalTani}>Tanı Ekle</button>
+            <button className="rapor-ekle-button" onClick={handleOpenModalTani}>
+              Tanı Ekle
+            </button>
             {isModalOpenTani && (
-              <TaniEkle onClose={handleCloseModalTani}
-              onSelectedItemsChange={handleSelectedTaniListChange}/>
+              <TaniEkle
+                onClose={handleCloseModalTani}
+                onSelectedItemsChange={handleSelectedTaniListChange}
+              />
             )}
-            
           </div>
           <div className="ilac-rapor-doktorlari">
             <label htmlFor="rapor-doktorlari">Rapor Doktorları</label>
-            <button>Doktor Ekle</button>
+            <button
+              className="rapor-ekle-button"
+              onClick={handleOpenModalDoktor}
+            >
+              Doktor Ekle
+            </button>
+            {isModalOpenDoktor && (
+              <DoktorList
+                onClose={handleCloseModalDoktor}
+                onSelectedItemsChange={handleSelectedDoktorListChange}
+              />
+            )}
           </div>
         </div>
         {/* className="tani-ekle" */}
         <div>
           {/* className="taniekle-table" */}
-          <table style={{width:"45%"}}>
+          <table style={{ width: "45%" }}>
             <thead>
               <tr>
                 {/* className="icd-kodu" className="tani-adi" */}
-                <th >ICD10 Kodu</th>
-                <th >Tanı Adı</th>
+                <th>ICD10 Kodu</th>
+                <th>Tanı Adı</th>
               </tr>
             </thead>
             <tbody>
@@ -139,11 +159,32 @@ const IlacRaporu = ({ onClose }) => {
                   {/* className="icd-kodu" className="tani-adi" className="sil-buton" */}
                   <td>{tani.icd10Kodu}</td>
                   <td>{tani.taniAdi}</td>
-                  <td >
+                  <td>
                     <button onClick={() => removeTani(index)}>Sil</button>
                   </td>
                 </tr>
               ))}
+            </tbody>
+          </table>
+        </div>
+        <div>
+          <table style={{ width: "45%" }}>
+            <thead>
+              <tr>
+                <th>Dr Adı</th>
+                <th>Dr Soyadı</th>
+              </tr>
+            </thead>
+            <tbody>
+              {selectedDoktorList.map((doktor, index) => {
+                <tr key={index}>
+                  <td>{doktor.drAdi}</td>
+                  <td>{doktor.drSoyadi}</td>
+                  <td>
+                    <button onClick={() => removeDoktor(index)}>Sil</button>
+                  </td>
+                </tr>
+              })}
             </tbody>
           </table>
         </div>
