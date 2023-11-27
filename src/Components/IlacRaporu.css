@@ -112,17 +112,15 @@
     height: 25px;
     border-radius: 4px;
 }
-.ilac-rapor-doktorlari {
-    margin-top: 5px;
+.ilac-raporu-tablo-tani {
+    width: 100%;
 }
-.ilac-rapor-doktorlari label {
-    margin-left: 3px;
-    margin-right: 165px;
+.ilac-rapor-icd-kodu {
+    width: 20%;
 }
-.ilac-rapor-doktorlari button {
-    margin-top: 2px;
-    width: 80px;
-    background-color: #ebe9e9;
-    height: 25px;
-    border-radius: 4px;
+.ilac-rapor-tani-adi {
+    text-align: center;
+}
+.ilac-rapor-tani-sil-btn {
+    width: 250px;
 }

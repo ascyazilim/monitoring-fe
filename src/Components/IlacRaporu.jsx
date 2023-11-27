@@ -126,67 +126,29 @@ const IlacRaporu = ({ onClose }) => {
               />
             )}
           </div>
-          <div className="ilac-rapor-doktorlari">
-            <label htmlFor="rapor-doktorlari">Rapor Doktorları</label>
-            <button
-              className="rapor-ekle-button"
-              onClick={handleOpenModalDoktor}
-            >
-              Doktor Ekle
-            </button>
-            {isModalOpenDoktor && (
-              <DoktorList
-                onClose={handleCloseModalDoktor}
-                onSelectedItemsChange={handleSelectedDoktorListChange}
-              />
-            )}
+        </div>
+        <div className="ilac-raporu-tablolar">
+          <div className="ilac-raporu-tablo-tani">
+            <table>
+              <thead>
+                <tr>
+                  <th className="ilac-rapor-icd-kodu">ICD10 Kodu</th>
+                  <th className="ilac-rapor-tani-adi">Tanı Adı</th>
+                </tr>
+              </thead>
+              <tbody>
+                {selectedTaniList.map((tani, index) => (
+                  <tr key={index}>
+                    <td className="ilac-rapor-icd-kodu">{tani.icd10Kodu}</td>
+                    <td className="ilac-rapor-tani-adi">{tani.taniAdi}</td>
+                    <td className="sil-buton">
+                      <button onClick={() => removeTani(index)}>Sil</button>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
-        </div>
-        {/* className="tani-ekle" */}
-        <div>
-          {/* className="taniekle-table" */}
-          <table style={{ width: "45%" }}>
-            <thead>
-              <tr>
-                {/* className="icd-kodu" className="tani-adi" */}
-                <th>ICD10 Kodu</th>
-                <th>Tanı Adı</th>
-              </tr>
-            </thead>
-            <tbody>
-              {selectedTaniList.map((tani, index) => (
-                <tr key={index}>
-                  {/* className="icd-kodu" className="tani-adi" className="sil-buton" */}
-                  <td>{tani.icd10Kodu}</td>
-                  <td>{tani.taniAdi}</td>
-                  <td>
-                    <button onClick={() => removeTani(index)}>Sil</button>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-        <div>
-          <table style={{ width: "45%" }}>
-            <thead>
-              <tr>
-                <th>Dr Adı</th>
-                <th>Dr Soyadı</th>
-              </tr>
-            </thead>
-            <tbody>
-              {selectedDoktorList.map((doktor, index) => {
-                <tr key={index}>
-                  <td>{doktor.drAdi}</td>
-                  <td>{doktor.drSoyadi}</td>
-                  <td>
-                    <button onClick={() => removeDoktor(index)}>Sil</button>
-                  </td>
-                </tr>
-              })}
-            </tbody>
-          </table>
         </div>
       </div>
     </div>

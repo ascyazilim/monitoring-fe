@@ -71,3 +71,9 @@ tbody {
     margin-right: 5px;
 }
 
+.ilac-raporu-tablolar {
+    display: flex;
+}
+.ilac-raporu-tablo-tani {
+    margin-top: 5px;
+}
