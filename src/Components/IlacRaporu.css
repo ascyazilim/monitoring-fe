@@ -15,10 +15,114 @@
     height: 500px;
     width: 880px;
     border: 2px solid #000000;
+    overflow-y: auto;
+    max-height: 500px;
 }
-.form-ilac-raporu {
+
+.main-ilac-raporu input, .main-ilac-raporu select{
+    padding: 4px 8px;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
     box-sizing: border-box;
-    display: flex;
+}
+.main-ilac-raporu textarea {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    padding: 2px;
+    display: inline-block;
+}
+.ilac-raporu {
+    box-sizing: border-box;
     padding-top: 5px;
     padding-bottom: 5px;
+    margin-left: 20px;
+}
+.form-ilac-raporu-tarih{
+    display: flex;
+    margin-top: 5px;
+}
+.hasta-bilgileri-ilac-raporu {
+    display: flex;
+}
+.hasta-bilgileri-ilac-raporu h4{
+    color: #000000;
+}
+
+.ilac-rapor-tarihi label {
+    margin-right: 15px;
+    margin-top: 2px;
+}
+.ilac-rapor-tarihi input {
+    margin-right: 5px;
+    width: 110px;
+}
+
+.ilac-rapor-protokol-no label {
+    margin-right: 5px;
+    margin-top: 2px;
+}
+.ilac-rapor-protokol-no input {
+    width: 60px;
+}
+.ilac-rapor-sayac-no label {
+    margin-right: 5px;
+    margin-top: 2px;
+    margin-left: 5px;
+}
+.ilac-rapor-sayac-no input {
+    width: 60px;
+}
+.ilac-rapor-duzenleme-turu label {
+    margin-left: 5px;
+    margin-top: 2px;
+    margin-right: 5px;
+}
+.form-ilac-rapor-baslik {
+    display: flex;
+    margin-top: 5px;
+}
+.rapor-basligi label {
+    margin-right: 6px;
+}
+.rapor-basligi input{
+    width: 270px;
+}
+.rapor-isteyen-doktor label {
+    margin-left: 5px;
+    margin-right: 5px;
+}
+.rapor-isteyen-doktor select {
+    width: 250px;
+}
+.rapor-girisleri {
+    display: flex;
+}
+.ilac-rapor-tanilari {
+    margin-top: 5px;
+}
+.ilac-rapor-tanilari label {
+    margin-right: 208px;
+}
+.ilac-rapor-tanilari button {
+    margin-top: 2px;
+    width: 70px;
+    background-color: #ebe9e9;
+    height: 25px;
+    border-radius: 4px;
+}
+.ilac-rapor-doktorlari {
+    margin-top: 5px;
+}
+.ilac-rapor-doktorlari label {
+    margin-left: 3px;
+    margin-right: 165px;
+}
+.ilac-rapor-doktorlari button {
+    margin-top: 2px;
+    width: 80px;
+    background-color: #ebe9e9;
+    height: 25px;
+    border-radius: 4px;
 }
