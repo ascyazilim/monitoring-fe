@@ -1,0 +1,72 @@
+.hasta-yatis-main {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #f0f8ff;
+    color: #2196f3;
+    border-radius: 10px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+
+    padding: 20px;
+    z-index: 1000;
+    border: 2px solid #000000;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    height: 500px;
+    width: 880px;
+}
+.yatan-hasta-bilgileri {
+    display: flex;
+}
+.yatan-hasta-bilgileri p {
+    margin-top: 10px;
+    margin-left: 60px;
+}
+.hasta-yatis-form{
+    display: flex;
+}
+
+.hasta-yatis-form input, .hasta-yatis-form select {
+    width: 190px;
+    padding: 8px 12px;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+.hasta-yatis-form-sol select {
+    width: 300px;
+}
+.hasta-yatis-bolum {
+    margin-top: 5px;
+}
+.hasta-yatis-bolum label {
+    margin-right: 46px;
+}
+.hasta-yatis-birim {
+    margin-top: 5px;
+}
+.hasta-yatis-birim label {
+    margin-right: 53px;
+}
+.hasta-yatis-istek-doktor {
+    margin-top: 5px;
+}
+.hasta-yatis-istek-doktor label {
+    margin-right: 5px;
+}
+.hasta-yatis-form-sag{
+    margin-left: 30px;
+}
+.yatak-grubu {
+    margin-top: 5px;
+}
+.yatak-grubu label{
+    margin-right: 10px;
+}
+.yatak-turu {
+    margin-top: 5px;
+}
+.yatak-turu label {
+    margin-right: 22px;
+}

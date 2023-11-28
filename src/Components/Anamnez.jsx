@@ -12,6 +12,7 @@ import TaburcuIstek from "./TaburcuIstek";
 import TahlilSonuc from "./TahlilSonuc";
 import IsGormezlikRaporu from "./IsGormezlikRaporu";
 import IlacRaporu from "./IlacRaporu";
+import HastaYatis from "./HastaYatis";
 
 function Anamnez() {
   //Şikayet ve Hikaye Alanları
@@ -51,6 +52,7 @@ function Anamnez() {
   const [selectedRapor, setSelectedRapor] = useState([]);
   const [selectedIlacRapor, setSelectedIlacRapor] = useState([]);
   const [selectedTahlil, setSelectedTahlil] = useState([]);
+  const [selectedHastaYatis, setSelectedHastaYatis] = useState([]);
 
   //Tanı türü Seçimi
   const [selectedTaniTuru, setSelectedTaniTuru] = useState("");
@@ -261,6 +263,20 @@ function Anamnez() {
   const handleSelectedTahlilChange = (selectedItems) => {
     setSelectedTahlil(selectedItems);
   };
+
+  //Hasta Yatış Ekleme
+  const [isModalOpenHastaYatis, setModalOpenHastaYatis] = useState(false);
+
+  const handleOpenModalHastaYatis = () => {
+    setModalOpenHastaYatis(true);
+  };
+  const handleCloseModalHastaYatis = () => {
+    setModalOpenHastaYatis(false);
+  };
+  const handleSelectedHastaChange = (selectedItems) => {
+    setSelectedHastaYatis(selectedItems);
+  };
+
 
   //Doz ekleme
   //const [doz, setDoz] = useState("");
@@ -833,6 +849,15 @@ function Anamnez() {
           <TahlilSonuc
             onClose={handleCloseModalTahlil}
             onSelectedItemsChange={handleSelectedTahlilChange}
+          />
+        )}
+        <button className="menu-button" onClick={handleOpenModalHastaYatis}>
+          Hasta <br/> Yatış
+        </button>
+        {isModalOpenHastaYatis && (
+          <HastaYatis 
+            onClose={handleCloseModalHastaYatis}
+            onSelectedItemsChange={handleSelectedHastaChange}
           />
         )}
         <button
