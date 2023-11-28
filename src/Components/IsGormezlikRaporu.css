@@ -127,14 +127,14 @@
   margin-right: 52px;
 }
 .hasta-adsoyad input {
-  width: 160px;
+  width: 205px;
 }
 .tc-kimlik-no {
   display: flex;
   margin-top: 5px;
 }
 .tc-kimlik-no input {
-  width: 160px;
+  width: 205px;
 }
 .tc-kimlik-no label {
   margin-right: 83px;
@@ -157,7 +157,7 @@
   margin-right: 23px;
 }
 .meslek-hastaligi select {
-  width: 75px;
+  width: 80px;
   text-align: center;
   border-radius: 3px;
 }
@@ -166,7 +166,7 @@
   margin-top: 5px;
 }
 .ayakta-baslama input {
-  width: 160px;
+  width: 205px;
 }
 .ayakta-baslama label {
   margin-right: 16px;
@@ -176,7 +176,7 @@
   margin-top: 5px;
 }
 .ayakta-bitis input {
-  width: 160px;
+  width: 205px;
 }
 .ayakta-bitis label {
   margin-right: 44px;
@@ -189,7 +189,7 @@
   margin-right: 43px;
 }
 .rapor-doktor select {
-  width: 160px;
+  width: 205px;
   border-radius: 3px;
 }
 .doktor-brans {
@@ -200,7 +200,7 @@
   margin-right: 75px;
 }
 .doktor-brans select {
-  width: 160px;
+  width: 205px;
   border-radius: 3px;
 }
 .rapor-aciklama {
