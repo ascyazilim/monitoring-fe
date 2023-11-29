@@ -44,6 +44,21 @@ const HastaYatis = ({ onClose }) => {
               <option value="doktor6">Doç.Dr. Hakan Demirel</option>
             </select>
           </div>
+          <div className="hasta-yatis-istek-asistan">
+            <label htmlFor="istek-asistan">İstek Asistan: </label>
+            <select name="istek-asistan" id="istek-asistan">
+              <option value="asistan1">Asistan 1</option>
+              <option value="asistan2">Asistan 2</option>
+              <option value="asistan3">Asistan 3</option>
+            </select>
+          </div>
+          <div className="hasta-yatis-tip">
+            <label htmlFor="yatis-tip">Yatış Tip: </label>
+            <select name="yatis-tip" id="yatis-tip">
+              <option value="istek">İstek</option>
+              <option value="diger">Diğer</option>
+            </select>
+          </div>
         </div>
         <div className="hasta-yatis-form-sag">
           <div className="yatak-grubu">
@@ -54,6 +69,32 @@ const HastaYatis = ({ onClose }) => {
             <label htmlFor="yatak-turu">Yatak Türü: </label>
             <select name="yatak-turu" id="yatak-turu"></select>
           </div>
+          <div className="hasta-yatis-aciklama">
+            <label htmlFor="yatis-aciklama">Açıklama:</label>
+            <textarea
+              name="yatis-aciklama"
+              id="yatis-aciklama"
+              cols="25"
+              rows="2"
+            ></textarea>
+          </div>
+          <div className="hasta-yatis-tarihi">
+            <label htmlFor="yatis-tarihi">Yatış Tarihi: </label>
+            <input type="datetime-local" />
+          </div>
+          <div className="hasta-yatis-sure">
+            <label htmlFor="yatis-sure">Yatış Süre: </label>
+            <input type="text" id="yatis-sure-input" />
+            <select name="yatis-sure" id="yatis-sure">
+              <option value="gun">Gün</option>
+              <option value="ay">Ay</option>
+            </select>
+          </div>    
+          <div className="taburcu-tarihi">
+            <label htmlFor="taburcu-tarihi">Taburcu Tarihi: </label>
+            <input type="date" id="taburcu-tarihi-input" />
+            <p className="beklenen">(beklenen)</p>
+          </div>        
         </div>
       </div>
     </div>

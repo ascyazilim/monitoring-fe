@@ -25,6 +25,13 @@
 .hasta-yatis-form{
     display: flex;
 }
+.hasta-yatis-form textarea {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    padding: 4px;
+    display: inline-block;
+}
 
 .hasta-yatis-form input, .hasta-yatis-form select {
     width: 190px;
@@ -55,6 +62,20 @@
 .hasta-yatis-istek-doktor label {
     margin-right: 5px;
 }
+.hasta-yatis-istek-asistan {
+    margin-top: 5px;
+}
+.hasta-yatis-istek-asistan label {
+    margin-right: 3px;
+}
+.hasta-yatis-tip {
+    margin-top: 5px;
+}
+.hasta-yatis-tip label {
+    margin-right: 32px;
+}
+
+
 .hasta-yatis-form-sag{
     margin-left: 30px;
 }
@@ -69,4 +90,46 @@
 }
 .yatak-turu label {
     margin-right: 22px;
+}
+.hasta-yatis-aciklama {
+    margin-top: 5px;
+}
+.hasta-yatis-aciklama label {
+    display: inline-block;
+    margin-right: 35px;
+    vertical-align: top;
+}
+.hasta-yatis-tarihi {
+    margin-top: 5px;
+}
+.hasta-yatis-tarihi label {
+    margin-right: 17px;
+}
+.hasta-yatis-sure {
+    margin-top: 5px;
+}
+.hasta-yatis-sure label {
+    margin-right: 20px;
+}
+#yatis-sure-input {
+    width: 80px;
+}
+#yatis-sure{
+    margin-left: 8px;
+    margin-right: 10px;
+    width: 90px;
+}
+.taburcu-tarihi {
+    margin-top: 5px;
+}
+.taburcu-tarihi label {
+    margin-right: 9px;
+}
+#taburcu-tarihi-input {
+    width: 120px;
+}
+.taburcu-tarihi p{
+    display: inline-block;
+    vertical-align: top;
+    margin-top: 4px;
 }
