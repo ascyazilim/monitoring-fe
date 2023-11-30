@@ -119,16 +119,16 @@
     margin-right: 10px;
     width: 90px;
 }
-.taburcu-tarihi {
+.hasta-yatis-taburcu-tarihi {
     margin-top: 5px;
 }
-.taburcu-tarihi label {
+.hasta-yatis-taburcu-tarihi label {
     margin-right: 9px;
 }
-#taburcu-tarihi-input {
+#hasta-yatis-taburcu-tarihi-input {
     width: 120px;
 }
-.taburcu-tarihi p{
+.hasta-yatis-taburcu-tarihi p{
     display: inline-block;
     vertical-align: top;
     margin-top: 4px;

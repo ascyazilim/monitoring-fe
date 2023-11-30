@@ -1,14 +1,22 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./TaburcuIstek.css";
 import axios from "axios";
 
-const TaburcuIstek = ({ onClose }) => {
+const TaburcuIstek = ({selectedHasta, onClose }) => {
   const [yatisBilgileri, setYatisBilgileri] = useState("");
   const [taburcuTarihi, setTaburcuTarihi] = useState("");
   const [taburcuTipi, setTaburcuTipi] = useState("");
   const [doktor, setDoktor] = useState("");
   const [ekip, setEkip] = useState("");
   const [aciklama, setAciklama] = useState("");
+
+  useEffect(() => {
+    console.log("Selected Hasta: ",selectedHasta);
+    if(selectedHasta){
+      setYatisBilgileri(`${selectedHasta.ad} ${selectedHasta.soyad}, TC: ${selectedHasta.tcKimNo}`)
+    }
+  }, [selectedHasta]);
+
 
   const handleSave = async () => {
     const data = {
@@ -29,6 +37,7 @@ const TaburcuIstek = ({ onClose }) => {
       console.error("Veri kaydedilirken bir hata oluştu", error);
     }
   };
+  
   return (
     <div className="main-taburcu">
       <div className="baslik">Hasta Taburcu İstek İşlemleri</div>
@@ -38,11 +47,15 @@ const TaburcuIstek = ({ onClose }) => {
       <div className="taburcu-content">
         <div className="yatis-bilgileri">
           <label htmlFor="yatis-bilgileri">Yatış Bilgileri:</label>
-          <input
+          {selectedHasta && (
+            <h3>{selectedHasta.ad} {selectedHasta.soyad}</h3>
+          )}
+            
+          {/* <input
             type="text"
             value={yatisBilgileri}
             onChange={(e) => setYatisBilgileri(e.target.value)}
-          />
+          /> */}
         </div>
         <div className="taburcu-tarihi">
           <label htmlFor="taburcu-tarihi">Taburcu Tarihi: </label>

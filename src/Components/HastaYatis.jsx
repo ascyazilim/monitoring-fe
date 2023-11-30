@@ -90,9 +90,9 @@ const HastaYatis = ({ onClose }) => {
               <option value="ay">Ay</option>
             </select>
           </div>    
-          <div className="taburcu-tarihi">
-            <label htmlFor="taburcu-tarihi">Taburcu Tarihi: </label>
-            <input type="date" id="taburcu-tarihi-input" />
+          <div className="hasta-yatis-taburcu-tarihi">
+            <label htmlFor="hasta-yatis-taburcu-tarihi">Taburcu Tarihi: </label>
+            <input type="date" id="hasta-yatis-taburcu-tarihi-input" />
             <p className="beklenen">(beklenen)</p>
           </div>        
         </div>

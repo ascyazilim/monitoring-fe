@@ -174,32 +174,7 @@ const App = () => {
           <Grid item xs={9}>
             <Paper elevation={3} style={{ padding: "10px" }}>
               
-              {/* <div className="arama">
-                <form onSubmit={handleSearch}>
-                  <input
-                    type="text"
-                    value={tcKimlikNo}
-                    onChange={(e) => setTcKimlikNo(e.target.value)}
-                    placeholder="Tc Kimlik No ile Ara"
-                  />
-                  <button type="submit">Ara</button>
-                </form>
-                {error && <p>{error}</p>}
-                {hastaBilgileri && (
-                  <ul style={{ listStyleType: "none" }}>
-                    {hastaBilgileri.map((hasta) => (
-                      <li key={hasta.id} onClick={() => {
-                        setSelectedHasta(hasta);
-                        setHastaBilgileri([]);
-                      }}>
-                        Ad: {hasta.ad}, Soyad: {hasta.soyad}, Tc Kimlik No:{" "}
-                        {hasta.tcKimNo}
-                      </li>
-                    ))}
-                  </ul>
-                )}
-                
-              </div> */}
+            
 
               <div style={{ display: "flex", justifyContent: "start" }}>
                 <Card
@@ -305,7 +280,7 @@ const App = () => {
                 <Route path="/login" element={<Login />} />
                 <Route path="/ilac-detay/:id" element={<IlacBilgisiDetay />} />
                 <Route path="/ilac-listesi" element={<IlacListesi />} />
-                <Route path="/anamnez" element={<Anamnez />} />
+                <Route path="/anamnez" element={<Anamnez selectedHasta={selectedHasta}/>} />
                 <Route path="/tahlil-sonuclari" element={<TahlilSonuc />} />
 
                 <Route path="/ameliyat-giris" element={<AmeliyatGiris />} />

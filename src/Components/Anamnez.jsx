@@ -14,7 +14,7 @@ import IsGormezlikRaporu from "./IsGormezlikRaporu";
 import IlacRaporu from "./IlacRaporu";
 import HastaYatis from "./HastaYatis";
 
-function Anamnez() {
+function Anamnez({selectedHasta}) {
   //Şikayet ve Hikaye Alanları
   const [sikayet, setSikayet] = useState("");
   const [hikaye, setHikaye] = useState("");
@@ -820,6 +820,7 @@ function Anamnez() {
         </button>
         {isModalOpenTaburcu && (
           <TaburcuIstek
+            selectedHasta= {selectedHasta}  //eklenen kısım
             onClose={handleCloseModalTaburcu}
             onSelectedItemsChange={handleSelectedTaburcuChange}
           />
