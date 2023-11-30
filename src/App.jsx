@@ -41,7 +41,6 @@ const App = () => {
   const [hastaBilgileri, setHastaBilgileri] = useState(null);
   const [selectedHasta, setSelectedHasta] = useState(null);
 
-
   //Navbar Search kısmı
   const [tumHastalar, setTumHastalar] = useState([]);
   const [filtrelenmisHastalar, setFiltrelenmisHastalar] = useState([]);
@@ -65,16 +64,7 @@ const App = () => {
     fetchHastalar();
   }, []);
 
-  // useEffect(() => {
-  //   axios.get('http://localhost:8080/hasta/all')
-  //     .then(response => setTumHastalar(response.data))
-  //     .catch(error => console.error("Hastalar yükenirken hata oluştu", error));
-  // }, []);
 
-  // const filtrelenmisHastalar = tcKimlikNo
-  //   ? tumHastalar.filter(hasta => hasta.tcKimNo.includes(tcKimlikNo))
-  //   : [];
-//-------------------------------------------------------------------------------------
   const handleMuayeneIdSelection = (id) => {
     setSelectedMuayeneId(id);
   };
@@ -83,32 +73,7 @@ const App = () => {
     setTcKimlikNo(e.target.value);
   };
 
-  // const handleSearch = async (e) => {
-  //   e.preventDefault();
-  //   if(tcKimlikNo.trim() === ''){
-  //     setError("Lütfen Tc Kimlik No girin");
-  //     setHastaBilgileri(null);
-  //     setSelectedHasta(null);
-  //     return;
-  //   }
-  //   try {
-  //     const response = await axios.get(`http://localhost:8080/hasta/search`, {
-  //       params: { query: tcKimlikNo },
-  //     });
-  //     if(response.data.length > 0) {
-  //       setHastaBilgileri(response.data);
-  //       setError("");
-  //     }else {
-  //       setError('Hasta bulunamadı.');
-  //       setHastaBilgileri(null);
-  //     }
-  //     setSelectedHasta(null);
-  //   } catch (err) {
-  //     setError("Arama sırasında bir hata oluştu");
-  //     setHastaBilgileri(null);
-  //     setSelectedHasta(null);
-  //   }
-  // };
+ 
 
   const handleSearch = (e) => {
     e.preventDefault();
