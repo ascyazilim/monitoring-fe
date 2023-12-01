@@ -8,7 +8,7 @@ const HastaYatis = ({ onClose }) => {
   const [birim, setBirim] = useState("");
   const [istekDoktor, setIstekDoktor] = useState("");
   const [istekAsistan, setIstekAsistan] = useState("");
-  const [yatisTipi, setYatisTipi] = useState("");
+  const [yatisTip, setYatisTip] = useState("");
   const [yatakGrubu, setYatakGrubu] = useState("");
   const [yatakTuru, setYatakTuru] = useState("");
   const [aciklama, setAciklama] = useState("");
@@ -24,7 +24,7 @@ const HastaYatis = ({ onClose }) => {
       birim,
       istekDoktor,
       istekAsistan,
-      yatisTipi,
+      yatisTip,
       yatakGrubu,
       yatakTuru,
       aciklama,
@@ -112,6 +112,7 @@ const HastaYatis = ({ onClose }) => {
               <option value="asistan1">Asistan 1</option>
               <option value="asistan2">Asistan 2</option>
               <option value="asistan3">Asistan 3</option>
+              
             </select>
           </div>
           <div className="hasta-yatis-tip">
@@ -119,8 +120,8 @@ const HastaYatis = ({ onClose }) => {
             <select
               name="yatis-tip"
               id="yatis-tip"
-              value={yatisTipi}
-              onChange={(e) => setYatisTipi(e.target.value)}
+              value={yatisTip}
+              onChange={(e) => setYatisTip(e.target.value)}
             >
               <option value="istek">İstek</option>
               <option value="diger">Diğer</option>
