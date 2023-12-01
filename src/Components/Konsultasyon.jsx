@@ -220,45 +220,7 @@ export const Konsultasyon = ({ onClose }) => {
           </div>
         </div>
       </div>
-      {/* <div className="karsilama-not">
-        <div className="karsilama-not-button">
-          <button
-            className={`istek-button ${noteType === "istek" ? "active" : ""}`}
-            onClick={() => setNoteType("istek")}
-          >
-            İstek Notu
-          </button>
-          <button
-            className={`karsilama-button ${
-              noteType === "karsilama" ? "active" : ""
-            }`}
-            onClick={() => setNoteType("karsilama")}
-          >
-            Karşılama Notu
-          </button>
-        </div>
-        {noteType === "istek" ? (
-          <textarea
-            name="istek-note"
-            id="istek-note"
-            cols="122"
-            rows="6"
-            placeholder="İstek Notu girin"
-            value={istekNotu}
-            onChange={(e) => setIstekNotu(e.target.value)}
-          ></textarea>
-        ) : (
-          <textarea
-            name="karsilama-note"
-            id="karsilama-note"
-            cols="122"
-            rows="6"
-            placeholder="Karşılama Notu girin"
-            value={karsilamaNotu}
-            onChange={(e) => setKarsilamaNotu(e.target.value)}
-          ></textarea>
-        )}
-      </div> */}
+
       <div className="tabstrip-konsultasyon">
         <button
           className={

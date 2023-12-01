@@ -54,7 +54,7 @@ const TaburcuIstek = ({selectedHasta, onClose }) => {
           {/* <input
             type="text"
             value={yatisBilgileri}
-            onChange={(e) => setYatisBilgileri(e.target.value)}
+            onChange={(e) => setYatisBilgileri(e.target.value)}  
           /> */}
         </div>
         <div className="taburcu-tarihi">

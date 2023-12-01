@@ -41,6 +41,7 @@ const App = () => {
   const [hastaBilgileri, setHastaBilgileri] = useState(null);
   const [selectedHasta, setSelectedHasta] = useState(null);
 
+  
   //Navbar Search kısmı
   const [tumHastalar, setTumHastalar] = useState([]);
   const [filtrelenmisHastalar, setFiltrelenmisHastalar] = useState([]);
@@ -126,14 +127,7 @@ const App = () => {
                   </li>
                 ))}
               </ul>
-              {/* {error && <p>{error}</p>} */}
-              {/* <ul style={{listStyleType:"none"}}>
-                {filtrelenmisHastalar.map((hasta) => (
-                  <li key={hasta.id} onClick={() => selectHasta(hasta)}>
-                     {hasta.ad} {hasta.soyad}, {hasta.tcKimNo}
-                  </li>
-                ))}
-              </ul> */}
+              
             </div>
           </Grid>
           <Grid item xs={9}>
