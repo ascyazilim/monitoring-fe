@@ -1,42 +1,63 @@
-import React from "react";
-import * as cornerstone from "cornerstone-core";
-import * as cornerstoneTools from "cornerstone-tools";
-import * as cornerstoneWADOImageLoader from "cornerstone-wado-image-loader";
-import * as dicomParser from "dicom-parser";
-import { useRef } from "react";
-import { useEffect } from "react";
+import React, { useEffect, useRef, useState } from 'react';
+import  cornerstone from 'cornerstone-core';
+import * as cornerstoneTools from 'cornerstone-tools';
+//import * as cornerstoneWADOImageLoader from 'cornerstone-wado-image-loader';
+// import * as dicomImageLoader from 'dicom-image-loader';
+import cornerstoneWADOImageLoader from 'cornerstone-wado-image-loader';
+import * as dicomParser from 'dicom-parser';
+
 
 cornerstoneWADOImageLoader.external.cornerstone = cornerstone;
 cornerstoneWADOImageLoader.external.dicomParser = dicomParser;
 
-function DicomViewer({ dicomUrl }) {
-  const dicomImageRef = useRef(null);
+cornerstoneTools.external.cornerstone = cornerstone;
 
-  useEffect(() => {
-    const element = dicomImageRef.current;
 
-    //Cornerstone araçlarını etkinleştir.
-    cornerstoneTools.init();
+// dicomImageLoader.external.cornerstone = cornerstone;
+// dicomImageLoader.external.dicomParser = dicomParser; 
 
-    //DICOM görüntüsünü yükle ve göster
-    function loadAndDisplayImage(url) {
-      cornerstone.loadImage(url).then((image) => {
-        cornerstone.displayImage(element, image);
+function DicomViewer() {
 
-        //Zoom ve diğer araçları etkinleştir
-        cornerstoneTools.addTool(cornerstoneTools.ZoomTool);
-        cornerstoneTools.setToolActive("Zoom", { mouseButtonMask: 1 });
-      });
-    }
-    loadAndDisplayImage(dicomUrl);
+    //OHIFViewer-----------------------------------------------------------
+    // const ohifViewerUrl = 'http://localhost:8080';
+    // const dicomFile = '/00000001';
+    //OHIF Viewer URL + DICOM dosya adını birleştirme
+    // const viewerUrl = '${ohifViewerUrl}/viewer/${dicomFile}';
+    //-------------------------------------------------------------
 
-    return () => {
-      cornerstone.disable(element);
-    };
-  }, [dicomUrl]);
-  return (
-    <div ref={dicomImageRef} style={{ width: "512px", height: "512px" }}></div>
-  );
+    //Eski cornerstone----------------------------------------- 
+    const dicomImageRef = useRef(null);
+    const dicomUrl = process.env.PUBLIC_URL + '/00000001'; // DICOM dosyasının URL'si
+
+    useEffect(() => {
+        const element = dicomImageRef.current;
+
+        cornerstoneTools.init();
+
+        function loadAndDisplayImage(url) {
+            cornerstone.loadImage(url).then((image) => {
+                cornerstone.displayImage(element, image);
+                
+                cornerstoneTools.addTool(cornerstoneTools.ZoomTool);
+                cornerstoneTools.setToolActive('Zoom', {mouseButtonMask: 1});
+            });
+        }
+        loadAndDisplayImage(dicomUrl);
+        
+        return () => {
+            cornerstone.disable(element);
+        };
+    }, [dicomUrl]);
+
+    
+    return (
+        <div ref={dicomImageRef} style={{width:"512px", height:"512px"}}></div>
+        
+    );
+
 }
 
 export default DicomViewer;
+
+
+

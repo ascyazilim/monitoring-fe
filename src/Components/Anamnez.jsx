@@ -276,6 +276,7 @@ function Anamnez({selectedHasta}) {
   const handleSelectedHastaChange = (selectedItems) => {
     setSelectedHastaYatis(selectedItems);
   };
+  
 
 
   //Doz ekleme

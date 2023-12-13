@@ -5,13 +5,15 @@ import Rontgen from "./Rontgen";
 import KanSonuc from "./KanSonuc";
 import IdrarSonuc from "./IdrarSonuc";
 import TomografiSonuc from "./TomografiSonuc";
+import DicomViewer from "./DicomViewer";
 
 function TahlilSonuc({onClose}) {
   const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState("MR");
 
   const tabs = [
-    { name: "MR", title: "Röntgen Sonuçları", content: <Rontgen /> },
+    //{ name: "MR", title: "Röntgen Sonuçları", content: <Rontgen /> },
+    {name: "MR", title: "Röntgen Sonuçları", content: <DicomViewer/>},
     { name: "Kan", title: "Kan Sonuçları", content: <KanSonuc /> },
     {
       name: "Idrar",
