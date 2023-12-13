@@ -36,14 +36,28 @@ function DicomViewer() {
         cornerstoneTools.init();
 
         function loadAndDisplayImage(url) {
-            cornerstone.loadImage(url).then((image) => {
-                cornerstone.displayImage(element, image);
-                
-                cornerstoneTools.addTool(cornerstoneTools.ZoomTool);
-                cornerstoneTools.setToolActive('Zoom', {mouseButtonMask: 1});
-            });
+
+            const imageId = cornerstoneWADOImageLoader.wadouri.fileManager.add(url);
+
+            try {
+                cornerstone.loadImage(imageId).then((image) => {
+                    cornerstone.displayImage(element, image);
+                    cornerstoneTools.addTool(cornerstoneTools.ZoomTool);
+                    cornerstoneTools.setToolActive('Zoom', {mouseButtonMask: 1});
+                });
+            } catch (error){
+                console.error(error);
+            }
+
+            // cornerstone.loadImage(imageId).then((image) => {
+
+            //     cornerstone.displayImage(element, image);
+            //     cornerstoneTools.addTool(cornerstoneTools.ZoomTool);
+            //     cornerstoneTools.setToolActive('Zoom', {mouseButtonMask: 1});
+            // });
         }
         loadAndDisplayImage(dicomUrl);
+        
         
         return () => {
             cornerstone.disable(element);
