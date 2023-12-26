@@ -8,6 +8,7 @@ import TomografiSonuc from "./TomografiSonuc";
 import DicomViewer from "./DicomViewer";
 
 function TahlilSonuc({onClose}) {
+  const dicomFileUrl = '/00000001'
   const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState("MR");
 
