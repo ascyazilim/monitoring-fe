@@ -1,0 +1,21 @@
+#Base image
+FROM node:14
+
+#Create app directory
+WORKDIR /usr/src/app
+
+#Install app dependencies
+COPY package*.json ./
+RUN npm Install
+
+#Bundle app source
+COPY . .
+
+#Install serve to serve your app on container
+RUN npm install -g serve
+
+#Serve the app on port 3000
+CMD ["serve", "-s", "build", "-1", "3000"]
+
+#Expose the port the app run on
+EXPOSE 3000
