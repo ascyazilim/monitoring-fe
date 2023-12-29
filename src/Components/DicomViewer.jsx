@@ -28,7 +28,7 @@ function DicomViewer() {
 
     cornerstoneTools.store.state.touchProximity = 40;
 
-    //IMAGE LOADER
+    //IMAGE LOADER 
     cornerstoneWADOImageLoader.external.cornerstone = cornerstone;
     cornerstoneWADOImageLoader.external.dicomParser = dicomParser;
     cornerstoneWADOImageLoader.webWorkerManager.initialize({
